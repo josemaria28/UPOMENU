@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<upomenu>
+	<plato>
+		<id>1</id>
+		<nombre>Papas Bravas</nombre>
+		<tipo>Tapa</tipo>
+		<precio>5,50</precio>
+		<ingrediente>
+			<nombre>Papas</nombre>
+			<nombre>Aceite Oliva</nombre>
+			<nombre>Ajo</nombre>
+			<nombre>Salsa Picante</nombre>
+			<nombre>Alioli</nombre>
+			<alergerno>Cluten</alergerno>
+			<alergerno>Huevo</alergerno>
+		</ingrediente>
+	</plato>
+	<plato>
+		<id>2</id>
+		<nombre>Huevas Aliñadas</nombre>
+		<tipo>Tapa</tipo>
+		<precio>3,50</precio>
+		<ingrediente>
+			<nombre>Huevas</nombre>
+			<nombre>Aceite Oliva</nombre>
+			<nombre>Cebolla</nombre>
+			<nombre>Pimiento</nombre>
+			<nombre>Sal</nombre>
+		</ingrediente>
+	</plato>
+	<plato>
+		<id>3</id>
+		<nombre>Pico de Gallo</nombre>
+		<tipo>Tapa</tipo>
+		<precio>5,50</precio>
+		<ingrediente>
+			<nombre>Tomate Rojo</nombre>
+			<nombre>Cebolla Roja</nombre>
+			<nombre>Zumo de Lima</nombre>
+			<nombre>Sal</nombre>
+			<nombre>Huevo Duro</nombre>
+			<nombre>Cilantro</nombre>
+			<alergerno>Cluten</alergerno>
+			<alergerno>Huevo</alergerno>
+		</ingrediente>
+	</plato>
+	<plato>
+		<id>4</id>
+		<nombre>Tarta de la Cassa</nombre>
+		<tipo>Plato</tipo>
+		<precio>22,50</precio>
+		<ingrediente>
+			<nombre>Gelatina</nombre>
+			<nombre>Cafe Molido</nombre>
+			<nombre>Azúcar</nombre>
+			<nombre>Queso Mascarpone</nombre>
+			<nombre>Chololate</nombre>
+			<alergerno>Cluten</alergerno>
+		</ingrediente>
+	</plato>
+	<plato>
+		<id>5</id>
+		<nombre>Tallarines a la marinera con almejas y gambas </nombre>
+		<tipo>Plaro</tipo>
+		<precio>7,50</precio>
+		<ingrediente>
+			<nombre>Tallarines</nombre>
+			<nombre>Almejas Grandes</nombre>
+			<nombre>Gambas</nombre>
+			<nombre>Salsa Picante</nombre>
+			<nombre>Tomate</nombre>
+			<nombre>Ajo</nombre>
+			<nombre>Caldo de Pescado</nombre>
+			<alergerno>Cluten</alergerno>
+			<alergerno>Marisco</alergerno>
+		</ingrediente>
+	</plato>
+</upomenu>
