@@ -10,6 +10,7 @@ class plato{
 	toString(){
 		return "ID - "+this.id+", Nombre - "+this.nombre+", Tipo - "+this.tipo+", Precio: "+this.precio;
 	}
+	añadirPlato(){}
 }
 
 // Ingredientes
