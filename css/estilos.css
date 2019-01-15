@@ -1,0 +1,89 @@
+#btnLogin{
+  
+float: right;
+padding: 6px;
+margin-top: 8px;
+margin-right: 16px;
+background-color:#ddd;
+font-size: 17px;
+border: none;
+
+}
+
+#btnLogin:hover{
+    background-color: green;
+}
+
+#logoiniciosesion{
+    width: 30px;
+    margin: 5px;
+}
+
+.nav-link{
+    margin: 8px;
+    font-size: 20px;
+}
+
+.nav-link:hover{
+    background-color: rgba(116, 1, 1, 0.986);
+    border-radius: 10px;
+}
+.btnInicioSesion{
+    background-color: rgba(116, 1, 1, 0.986);
+    width: 230px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    opacity: 0,9;
+}
+#carrusel{
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+.carousel-inner{
+    width: 100%;
+    max-height: 600px;
+}
+
+.carousel-inner img{
+    width: 100%;
+    max-height: 600px;
+}
+.tituloSlide{
+    height: 350px;
+    font-size: 5vw;
+    color: rgba(116, 1, 1, 0.986);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.descripcionSlide{
+    font-size: 30px;
+    color:  rgba(116, 1, 1, 0.986);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.btnCarrusel{
+    background-color: rgba(116, 1, 1, 0.986);
+    border-radius: 7px;
+    border: none;
+    opacity: 0.85;
+    width: 250px;
+    height: 50px;
+
+}
+.enlaceCarrusel{
+    color: whitesmoke;
+    text-decoration: none;
+    font-weight: bold;
+}
+.enlaceCarrusel:hover{
+    text-decoration: none;
+    color: royalblue;
+}
+.enlaceRegistro{
+    text-decoration: none;
+    color: whitesmoke;
+
+}
+.enlaceRegistro:hover{
+    text-decoration: none;
+    color: royalblue;
+}
