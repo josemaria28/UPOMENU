@@ -28,6 +28,7 @@ class ingrediente extends plato{
 
 // Funciones y Operaciones
 
+// Añadir un plato
 UpoMenu.prototype.añadirPlato = function(oPlato){
 	var pAñadido = false;
 	if(this._buscaPlato(oPlato.nombre) == null){
@@ -37,6 +38,7 @@ UpoMenu.prototype.añadirPlato = function(oPlato){
 	return pAñadido;
 };
 
+// Buscar platos
 UpoMenu.prototype._buscarPlato = function(oPlato){
 	var bPlato = null;
 	for (var i = 0; i < this.platos.length && bPlato == null; i++) {
