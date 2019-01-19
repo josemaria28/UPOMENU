@@ -10,7 +10,7 @@
 
 -  (P,F)Platos, (P,F)Ingredientes - > José María
 - (P)Menu, (P,F)Bebidas - > Ildefonso
-- (P)Inicio, (P,F)Clientes - > Dani
+- (P)Inicio, (P,F)Clientes,  (P,F) Evento - > Dani
 
 
 
