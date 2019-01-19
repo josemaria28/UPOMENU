@@ -28,7 +28,7 @@ border: none;
     background-color: rgba(116, 1, 1, 0.986);
     border-radius: 10px;
 }
-.btnInicioSesion{
+.btnInicioSesion, button{
     background-color: rgba(116, 1, 1, 0.986);
     width: 230px;
     height: 50px;
@@ -86,4 +86,8 @@ border: none;
 .enlaceRegistro:hover{
     text-decoration: none;
     color: royalblue;
+}
+
+section{
+    margin-top: 7%;
 }
