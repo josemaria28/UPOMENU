@@ -27,3 +27,22 @@ class ingrediente extends plato{
 
 
 // Funciones y Operaciones
+
+UpoMenu.prototype.añadirPlato = function(oPlato){
+	var pAñadido = false;
+	if(this._buscaPlato(oPlato.nombre) == null){
+		this.platos.push(oPlato);
+		pAñadido = true;
+	}
+	return pAñadido;
+};
+
+UpoMenu.prototype._buscarPlato = function(oPlato){
+	var bPlato = null;
+	for (var i = 0; i < this.platos.length && bPlato == null; i++) {
+		if (this.platos[i].nombre == oPlato) {
+		bPlato = this.platos[i];
+		}
+	}
+	return bPlato;
+};
