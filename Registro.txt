@@ -2,13 +2,13 @@
 
 - Modelo -
 
-- Ingredientes, Plato y Personal - > José María
+- Ingredientes, Plato - > José María
 - Bebida, Menu - > Ildefonso
 - Cliente, Evento - > Dani
 
 - Interfaz Grafica -
 
-- (P)Personal , (P,F)Platos, (P,F)Ingredientes - > José María
+-  (P,F)Platos, (P,F)Ingredientes - > José María
 - (P)Menu, (P,F)Bebidas - > Ildefonso
 - (P)Inicio, (P,F)Clientes - > Dani
 

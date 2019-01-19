@@ -11,7 +11,7 @@
 			<nombre>Ajo</nombre>
 			<nombre>Salsa Picante</nombre>
 			<nombre>Alioli</nombre>
-			<alergerno>Cluten</alergerno>
+			<alergerno>Gluten</alergerno>
 			<alergerno>Huevo</alergerno>
 		</ingrediente>
 	</plato>
@@ -40,7 +40,7 @@
 			<nombre>Sal</nombre>
 			<nombre>Huevo Duro</nombre>
 			<nombre>Cilantro</nombre>
-			<alergerno>Cluten</alergerno>
+			<alergerno>Gluten</alergerno>
 			<alergerno>Huevo</alergerno>
 		</ingrediente>
 	</plato>
@@ -55,7 +55,7 @@
 			<nombre>Azúcar</nombre>
 			<nombre>Queso Mascarpone</nombre>
 			<nombre>Chololate</nombre>
-			<alergerno>Cluten</alergerno>
+			<alergerno>Gluten</alergerno>
 		</ingrediente>
 	</plato>
 	<plato>
@@ -71,7 +71,7 @@
 			<nombre>Tomate</nombre>
 			<nombre>Ajo</nombre>
 			<nombre>Caldo de Pescado</nombre>
-			<alergerno>Cluten</alergerno>
+			<alergerno>Gluten</alergerno>
 			<alergerno>Marisco</alergerno>
 		</ingrediente>
 	</plato>
