@@ -62,12 +62,21 @@
 		<article class="row">
 			<form class="form-horizontal col-md-12" name="frmAltaPlato">
 				<div class="form-group">
-					<label for="email">Email:</label>
-					<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+					<label for="text">Nombre:</label>
+					<input type="text" class="form-control" id="txtNombre" placeholder="Nombre" name="txtNombre">
 				</div>
 				<div class="form-group">
-					<label for="pwd">Password:</label>
-					<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+					<label for="text">Tipo:</label>
+					<input type="text" class="form-control" id="txtTipo" placeholder="Tipo" name="txtTipo">
+				</div>
+				<div class="form-group">
+					<label for="text">Precio:</label>
+					<input type="text" class="form-control" id="txtPrecio" placeholder="Precio" name="txtPrecio">
+				</div>
+				<!-- Ingredientes -->
+				<div class="form-group">
+					<label for="text">Ingredientes:</label>
+					<select multiple class="form-control" id="txtIngredientes" name="txtIngredientes"></select>
 				</div>
 				<button type="submit" class="btn btn-primary btn-block btn btn-secondary">Añadir</button>
 			</form>
