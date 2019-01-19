@@ -12,9 +12,6 @@ class plato{
 		this.precio = precio;
 		this.ingrdientes = new Array();
 	}
-	añadirPlato(oPlato){
-		
-	}
 }
 
 // Ingredientes
@@ -26,3 +23,7 @@ class ingrediente extends plato{
 	}
 	
 }
+
+
+
+// Funciones y Operaciones
