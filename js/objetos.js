@@ -13,7 +13,7 @@ class plato{
 		this.ingrdientes = new Array();
 	}
 	añadirPlato(oPlato){
-
+		
 	}
 }
 
