@@ -1,3 +1,8 @@
+// Objetos
+function upoMenu(){
+	this.platos = new Array();
+	this.ingredientes = new Array();
+}
 // Platos
 class plato{
 	contructor(id,nombre,tipo,precio){
@@ -5,12 +10,11 @@ class plato{
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.precio = precio;
-		//this.ingrdientes = new ingrediente();
+		this.ingrdientes = new Array();
 	}
-	toString(){
-		return "ID - "+this.id+", Nombre - "+this.nombre+", Tipo - "+this.tipo+", Precio: "+this.precio;
+	añadirPlato(oPlato){
+
 	}
-	añadirPlato(){}
 }
 
 // Ingredientes
@@ -20,15 +24,5 @@ class ingrediente extends plato{
 		this.nombre = new Array();
 		this.alergenos = new Array();
 	}
-	toString(){
-		var cad = "";
-		var cadena = "";
-		for (var i = 0; i < this.nombre.length; i++) {
-			cadena+=this.nombre[i]+" ";
-		}
-		for (var i = 0; i < this.alergenos.length; i++) {
-			cadena+=this.alergenos[i]+" ";
-		}
-		return "Ingrdiente "+cad+", Alergenos : "+cadena;
-	}
+	
 }
