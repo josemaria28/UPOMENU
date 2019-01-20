@@ -28,7 +28,7 @@ border: none;
     background-color: rgba(116, 1, 1, 0.986);
     border-radius: 10px;
 }
-.btnInicioSesion, button{
+.btnInicioSesion{
     background-color: rgba(116, 1, 1, 0.986);
     width: 230px;
     height: 50px;
