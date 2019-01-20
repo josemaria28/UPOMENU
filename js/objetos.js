@@ -1,24 +1,24 @@
 // Objetos
-function upoMenu(){
+function UpoMenu(){
 	this.platos = new Array();
 	this.ingredientes = new Array();
 }
 // Platos
-class plato{
-	contructor(id,nombre,tipo,precio){
-		this.id = id;
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.precio = precio;
+class Plato{
+	constructor(iId,sNombre,sTipo,fPrecio){
+		this.id = iId;
+		this.nombre = sNombre;
+		this.tipo = sTipo;
+		this.precio = parseFloat(fPrecio);
 		this.ingrdientes = new Array();
 	}
 }
 
 // Ingredientes
-class ingrediente extends plato{
-	contructor(nombre,alergenos){
-		super(4);
-		this.nombre = new Array();
+class Ingrediente extends Plato{
+	constructor(iId,sNombre,sTipo,fPrecio,sNombreIngrediente,sAlergenos){
+		super(iId,sNombre,sTipo,fPrecio);
+		this.nombre = sNombreIngrediente;
 		this.alergenos = new Array();
 	}
 	
