@@ -3,27 +3,49 @@ class UpoMenu{
     constructor()
     {
         this.listaClientes = [];
+        this.platos = [];
+        this.ingredientes = [];
     }
     // Añadir un plato
 	añadirPlato(oPlato){
-	var pAñadido = false;
-	if(this._buscaPlato(oPlato.nombre) == null){
-		this.platos.push(oPlato);
-		pAñadido = true;
+    	var pAñadido = false;
+    	if(this._buscaPlato(oPlato.nombre) == null){
+    		this.platos.push(oPlato);
+    		pAñadido = true;
+    	}
+    	return pAñadido;
 	}
-	return pAñadido;
-	}
-
 	// Buscar platos
-	buscarPlato(oPlato){
-	var bPlato = null;
-	for (var i = 0; i < this.platos.length && bPlato == null; i++) {
-		if (this.platos[i].nombre == oPlato) {
-		bPlato = this.platos[i];
-		}
+	_buscarPlato(oPlato){
+    	var bPlato = null;
+    	for (var i = 0; i < this.platos.length && bPlato == null; i++) {
+    		if (this.platos[i].nombre == oPlato) {
+    		bPlato = this.platos[i];
+    		}
+    	}
+    	return bPlato;
 	}
-	return bPlato;
-	}	
+    // Añadir Ingrediente
+    añadirIngrediente(oIngrediente){
+        var iAñadido = false;
+        if(this._buscaIngrediente(oIngrediente.nombre) == null){
+            // Si esta Añadir Alergenos
+            
+            this.platos.push(oIngrediente);
+            oAñadido = true;
+        }
+        return oAñadido;
+    }
+    // Buscar platos
+    _buscaIngrediente(oPlato){
+        var bIngrediente = null;
+        for (var i = 0; i < this.platos.length && bIngrediente == null; i++) {
+            if (this.platos[i].nombre == oPlato) {
+            bIngrediente = this.platos[i];
+            }
+        }
+        return bIngrediente;
+    }
     _buscarCliente(sDni)
     {
         var oCliente = null;
@@ -69,7 +91,7 @@ class Plato{
 		this.nombre = sNombre;
 		this.tipo = sTipo;
 		this.precio = parseFloat(fPrecio);
-		this.ingrdientes = new Array();
+		this.ingredientes = [];
 	}
 }
 
@@ -78,7 +100,7 @@ class Ingrediente extends Plato{
 	constructor(iId,sNombre,sTipo,fPrecio,sNombreIngrediente,sAlergenos){
 		super(iId,sNombre,sTipo,fPrecio);
 		this.nombre = sNombreIngrediente;
-		this.alergenos = new Array();
+		this.alergenos = [];
 	}
 	
 }

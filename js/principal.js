@@ -55,7 +55,7 @@ function añadirIngrediente(){
         alert(sError);
     } else {
     	// Añadir ingrdiente
-
+    	// var oIngrediente = oUpoMenu.añadirPlato(new );
         frmAltaIngrediente.submit();
     }
 }
