@@ -40,8 +40,6 @@
 			<nombre>Sal</nombre>
 			<nombre>Huevo Duro</nombre>
 			<nombre>Cilantro</nombre>
-			<alergerno>Gluten</alergerno>
-			<alergerno>Huevo</alergerno>
 		</ingrediente>
 	</plato>
 	<plato>
@@ -55,7 +53,6 @@
 			<nombre>Azúcar</nombre>
 			<nombre>Queso Mascarpone</nombre>
 			<nombre>Chololate</nombre>
-			<alergerno>Gluten</alergerno>
 		</ingrediente>
 	</plato>
 	<plato>
@@ -71,8 +68,6 @@
 			<nombre>Tomate</nombre>
 			<nombre>Ajo</nombre>
 			<nombre>Caldo de Pescado</nombre>
-			<alergerno>Gluten</alergerno>
-			<alergerno>Marisco</alergerno>
 		</ingrediente>
 	</plato>
 </upomenu>
