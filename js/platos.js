@@ -5,8 +5,8 @@ document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlat
 cargarDatos();
 function cargarDatos(){
 
-	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85)));
-	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85)));
+	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85),new Array()));
+	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85),new Array()));
 
 	oUpoMenu.mostrar();
 }
@@ -85,9 +85,22 @@ function añadirPlato(){
 		limpiarColor("txtPrecioPlato");
 	}
 	// Validar seleccionar ingredientes
+	var sIngredientes = frmAltaPlato.txtIngredientePlato.value.trim();
+	// Separados por coma,,,,
+	// oExpReg = /^[0-9]{3}\,[0-9]{2}$/;
 
+	if (!oExpReg.test(sIngredientes)) {
+		bValido = false;
 
-
+		frmAltaPlato.txtIngredientePlato.classList.add("Error");
+		errorColor("txtIngredientePlato");
+		limpiar("txtIngredientePlato");
+		// frmAltaPlato.txtIngredientePlato.focus();
+		
+		sError += "El precio solo debe contener números ( 99.66 ).";
+	}else {
+		limpiarColor("txtIngredientePlato");
+	}
 
 
 	if (bValido == false) {
@@ -107,6 +120,7 @@ function limpiarErrores() {
 	frmAltaPlato.txtNombrePlato.classList.remove("Error");
 	frmAltaPlato.txtTipoPlato.classList.remove("Error");
 	frmAltaPlato.txtPrecioPlato.classList.remove("Error");
+	frmAltaPlato.txtIngredientePlato.classList.remove("Error");
 }
 // Color Error
 function errorColor(campo){
