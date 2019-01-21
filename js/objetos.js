@@ -28,14 +28,14 @@ class UpoMenu{
     // Añadir Ingrediente
     añadirIngrediente(oIngrediente){
         var iAñadido = false;
-        if(this._buscaIngrediente(oIngrediente.nombre) == null){
+        if(this._buscarIngrediente(oIngrediente.nombre) == null){
             this.ingredientes.push(oIngrediente);
             iAñadido = true;
         }
         return iAñadido;
     }
     // Buscar ingrediente
-    _buscaIngrediente(oIngrediente){
+    _buscarIngrediente(oIngrediente){
         var bIngrediente = null;
         for (var i = 0; i < this.ingredientes.length && bIngrediente == null; i++) {
             if (this.ingredientes[i].nombre == oIngrediente) {
