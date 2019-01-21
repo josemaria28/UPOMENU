@@ -4,16 +4,17 @@ function cargarXML(){}
 cargarDatos();
 function cargarDatos(){
 
-	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3,85),new Array()));
-	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8,85),new Array()));
+	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85)));
+	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85)));
 
-	//mostrar();
+	oUpoMenu.mostrar();
 }
 
 // Añadir Plato
+//document.getElementById("btnAñadirPlatos").addEventListener('click',añadirPlato,false);
+//document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
 document.getElementById("btnAñadirPlatos").addEventListener('click',añadirPlato,false);
-document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
-
+//document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
 
 function añadirPlato(){
 	// Verificar formulario Errores ...
@@ -84,7 +85,7 @@ function añadirPlato(){
 		limpiar("txtPrecioPlato");
 		frmAltaPlato.txtPrecioPlato.focus();
 		
-		sError += "El precio solo debe contener numeros ( 00,00 ).";
+		sError += "El precio solo debe contener numeros ( 99.66 ).";
 	}else {
 		limpiarColor("txtPrecioPlato");
 	}

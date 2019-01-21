@@ -6,6 +6,11 @@ class UpoMenu{
         this.platos = new Array();
         this.ingredientes = new Array();
     }
+    mostrar(){
+        for (var i = 0; i < this.platos.length; i++) {
+            console.log(this.platos[i]);
+        }
+    }
     // Añadir un plato
 	añadirPlato(oPlato){
     	var pAñadido = false;
