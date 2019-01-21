@@ -2,14 +2,14 @@
 class UpoMenu{
     constructor()
     {
-        this.listaClientes = [];
+        this.listaClientes = new Array();
         this.platos = new Array();
         this.ingredientes = new Array();
     }
     // Añadir un plato
 	añadirPlato(oPlato){
     	var pAñadido = false;
-    	if(this._buscaPlato(oPlato.nombre) == null){
+    	if(this._buscarPlato(oPlato.nombre) == null){
     		this.platos.push(oPlato);
     		pAñadido = true;
     	}
@@ -110,7 +110,7 @@ class Ingrediente extends Plato{
 	constructor(iId,sNombre,sTipo,fPrecio,sNombreIngrediente,sAlergenos){
 		super(iId,sNombre,sTipo,fPrecio);
 		this.nombre = sNombreIngrediente;
-		this.alergenos = [];
+		this.alergenos = new Array();
 	}
 	
 }
