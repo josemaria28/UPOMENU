@@ -1,6 +1,44 @@
 var oUpoMenu = new UpoMenu();
 // Meter XML necesario
-function cargarXML(){}
+var oXML = cargarXML("../XML/alergenos.xml");
+function cargarXML(){
+	if (window.XMLHttpRequest) {
+		xhttp = new XMLHttpRequest();
+            } else // code for IE5 and IE6
+            {
+            	xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhttp.open("GET", filename, false);
+
+            xhttp.send();
+
+            return xhttp.responseXML;
+}
+function cargaralergenos() {
+
+	var oYears = oXML.querySelectorAll("year");
+	var sYear = formulario.txtYear.value.trim();
+	var sListaTitulos = [];
+
+	for (var i = 0; i < oYears.length; i++) {
+		if (oYears[i].textContent == sYear) {
+			sListaTitulos.push(oYears[i].parentNode.querySelector("title").textContent);
+		}
+	}
+
+	if (document.querySelector("#resultado ul") != null)
+		document.querySelector("#resultado ul").remove();
+	var oUL = document.createElement("UL");
+
+	for (var j = 0; j < sListaTitulos.length; j++) {
+		var oLI = document.createElement("LI");
+		oLI.textContent = sListaTitulos[j];
+
+		oUL.appendChild(oLI);
+	}
+
+	document.querySelector("#resultado").appendChild(oUL);
+}
 cargarDatos();
 function cargarDatos(){
 
@@ -11,10 +49,8 @@ function cargarDatos(){
 }
 
 // Añadir Plato
-//document.getElementById("btnAñadirPlatos").addEventListener('click',añadirPlato,false);
-//document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
 document.getElementById("btnAñadirPlatos").addEventListener('click',añadirPlato,false);
-//document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
+document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
 
 function añadirPlato(){
 	// Verificar formulario Errores ...
@@ -105,7 +141,7 @@ function añadirPlato(){
     		alert("alergeno Introducido");
     	}
     	alert("Gracias");
-        frmAltaIngrediente.submit();
+    	frmAltaIngrediente.submit();
     }
 }
 // Añadir Ingrediente
@@ -156,11 +192,14 @@ function añadirIngrediente(){
     } else {
     	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
     	// Añadir ingrdiente
+
+
+
     	if (oUpoMenu._buscarAlergeno(sAlergeno)) {
     		alert("alergeno Introducido");
     	}
     	alert("Gracias");
-        frmAltaIngrediente.submit();
+    	frmAltaIngrediente.submit();
     }
 }
 // Limpiamos todos los Errores
