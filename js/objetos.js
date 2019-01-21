@@ -1,16 +1,112 @@
-// Objetos
-function UpoMenu(){
-	this.platos = new Array();
-	this.ingredientes = new Array();
+//Clase principal del proyecto
+class UpoMenu{
+    constructor()
+    {
+        this.listaClientes = new Array();
+        this.platos = new Array();
+        this.ingredientes = new Array();
+    }
+    mostrar(){
+        for (var i = 0; i < this.platos.length; i++) {
+            console.log(this.platos[i]);
+        }
+    }
+    // Añadir un plato
+	añadirPlato(oPlato){
+    	var pAñadido = false;
+    	if(this._buscarPlato(oPlato.nombre) == null){
+    		this.platos.push(oPlato);
+    		pAñadido = true;
+    	}
+    	return pAñadido;
+	}
+	// Buscar platos
+	_buscarPlato(oPlatoNombre){
+    	var bPlato = null;
+    	for (var i = 0; i < this.platos.length && bPlato == null; i++) {
+    		if (this.platos[i] == oPlatoNombre) {
+    		  bPlato = this.platos[i];
+    		}
+    	}
+    	return bPlato;
+	}
+    // Añadir Ingrediente
+    añadirIngrediente(oIngrediente){
+        var iAñadido = false;
+        if(this._buscarIngrediente(oIngrediente.nombre) == null){
+            this.ingredientes.push(oIngrediente);
+            iAñadido = true;
+        }
+        return iAñadido;
+    }
+    // Buscar ingrediente
+    _buscarIngrediente(oIngrediente){
+        var bIngrediente = null;
+        for (var i = 0; i < this.ingredientes.length && bIngrediente == null; i++) {
+            if (this.ingredientes[i].nombre == oIngrediente) {
+                bIngrediente = this.ingredientes[i];
+            }
+        }
+
+        return bIngrediente;
+    }
+    // Buscar alergeno
+    _buscarAlergeno(oIngrediente){
+        var bAlergeno = null;
+        for (var i = 0; i < this.ingredientes.alergenos.length && alergeno == null; i++) {
+            if (this.ingredientes.alergenos[i] == oIngrediente) {
+                alergeno = this.ingredientes.alergenos[i];
+            }
+        }
+
+        return bAlergeno;
+    }
+    _buscarCliente(sDni)
+    {
+        var oCliente = null;
+        var i=0;
+        while(i<this.listaClientes.length && oCliente == null)
+        {
+            if(this.listaClientes[i].dni == sDni)
+            {
+                oCliente = this.listaClientes[i].dni;
+            }
+            i++;
+        }
+        return oCliente;
+    }
+    altaCliente(oCliente)
+    {
+        var bInsertado = false;
+
+        if(this._buscarCliente(oCliente.dni)==null)
+        {
+            this.listaClientes.push(oCliente);
+            bInsertado = true;
+        }
+        return bInsertado;
+    }
 }
+
+//Cliente, necesita nombre,teléfono,email y un número identificador(suponemos que es el dni)
+class Cliente{
+    constructor(sNombre,iTelefono,sEmail,sDni)
+    {
+        this.nombre = sNombre;
+        this.telefono = parseInt(iTelefono);
+        this.email = sEmail;
+        this.dni = sDni;
+    }
+}
+
 // Platos
 class Plato{
-	constructor(iId,sNombre,sTipo,fPrecio){
+	constructor(iId,sNombre,sTipo,fPrecio,sIngrediente, sIngredientes){
 		this.id = iId;
 		this.nombre = sNombre;
 		this.tipo = sTipo;
 		this.precio = parseFloat(fPrecio);
-		this.ingrdientes = new Array();
+		this.ingredientes = new Array();
 	}
 }
 
@@ -23,29 +119,3 @@ class Ingrediente extends Plato{
 	}
 	
 }
-
-
-
-// Funciones y Operaciones
-
-// Añadir un plato
-UpoMenu.prototype.añadirPlato = function(oPlato){
-	var pAñadido = false;
-	if(this._buscaPlato(oPlato.nombre) == null){
-		this.platos.push(oPlato);
-		pAñadido = true;
-	}
-	return pAñadido;
-};
-
-// Buscar platos
-UpoMenu.prototype._buscarPlato = function(oPlato){
-	var bPlato = null;
-	for (var i = 0; i < this.platos.length && bPlato == null; i++) {
-		if (this.platos[i].nombre == oPlato) {
-		bPlato = this.platos[i];
-		}
-	}
-	return bPlato;
-};
-
