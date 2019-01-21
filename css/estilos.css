@@ -94,3 +94,8 @@ section{
 .negrita{
     color: white;
 }
+#divInfoRegistro{
+    margin: 0 auto;
+    text-transform: uppercase;
+    
+}
