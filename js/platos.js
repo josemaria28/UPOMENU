@@ -80,7 +80,7 @@ function añadirPlato(){
 		limpiar("txtPrecioPlato");
 		// frmAltaPlato.txtPrecioPlato.focus();
 		
-		sError += "El precio solo debe contener números ( 99.66 ).";
+		sError += "El precio solo debe contener números ( 99.66 ).\n";
 	}else {
 		limpiarColor("txtPrecioPlato");
 	}
@@ -97,7 +97,7 @@ function añadirPlato(){
 		limpiar("txtIngredientePlato");
 		// frmAltaPlato.txtIngredientePlato.focus();
 		
-		sError += "El precio solo debe contener números ( 99.66 ).";
+		sError += "Ingrediente no debe de contener números ni caracteres raros.";
 	}else {
 		limpiarColor("txtIngredientePlato");
 	}
