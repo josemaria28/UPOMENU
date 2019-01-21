@@ -1,7 +1,7 @@
 var oUpoMenu = new UpoMenu();
 // Meter XML necesario
 var oXML = cargarXML("../XML/alergenos.xml");
-function cargarXML(){
+function cargarXML(filename){
 	if (window.XMLHttpRequest) {
 		xhttp = new XMLHttpRequest();
             } else // code for IE5 and IE6
@@ -14,6 +14,7 @@ function cargarXML(){
 
             return xhttp.responseXML;
 }
+
 function cargaralergenos() {
 
 	var oYears = oXML.querySelectorAll("year");
@@ -87,7 +88,7 @@ function añadirPlato(){
 		limpiar("txtNombrePlato");
 		frmAltaPlato.txtNombrePlato.focus();
 		
-		sError += "El nombre no debe de contener numeros ni caracteres raros.\n";
+		sError += "El nombre no debe de contener números ni caracteres raros.\n";
 	}else {
 		limpiarColor("txtNombrePlato");
 	}
@@ -103,7 +104,7 @@ function añadirPlato(){
 		limpiar("txtTipoPlato");
 		frmAltaPlato.txtTipoPlato.focus();
 		
-		sError += "Tipo no debe de contener numeros ni caracteres raros.\n";
+		sError += "Tipo no debe de contener números ni caracteres raros.\n";
 	}else {
 		limpiarColor("txtTipoPlato");
 	}
@@ -121,7 +122,7 @@ function añadirPlato(){
 		limpiar("txtPrecioPlato");
 		frmAltaPlato.txtPrecioPlato.focus();
 		
-		sError += "El precio solo debe contener numeros ( 99.66 ).";
+		sError += "El precio solo debe contener números ( 99.66 ).";
 	}else {
 		limpiarColor("txtPrecioPlato");
 	}
@@ -165,7 +166,7 @@ function añadirIngrediente(){
 		limpiar("txtNombreIngrediente");
 		frmAltaIngrediente.txtNombreIngrediente.focus();
 		
-		sError += "El nombre no debe de contener numeros ni caracteres raros.";
+		sError += "El nombre no debe de contener números ni caracteres raros.";
 	}else {
 		limpiarColor("txtNombreIngrediente");
 	}

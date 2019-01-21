@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="../css/estilos.css" />
-	<link rel="shortcut icon" type="image/png" href="img/logoRegistro.png"/>
+	<link rel="shortcut icon" type="image/png" href="../img/logoregistro.png"/>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark fixed-top navbar-dark" role="navigation">
@@ -63,7 +63,7 @@
             <div id="divInfoRegistro" class="alert alert-info">
                 <span class="textoRegistro"><strong>Bienvenido a la página de registro de UPOMenu</strong></span>
             </div>
-			<form class="form-horizontal col-md-12" name="frmAltaPlato">
+			<form class="form-horizontal col-md-12" id="frmRegistroCliente" name="frmRegistroCliente">
 				<div class="form-group">
 					<label for="text">DNI</label>
 					<input type="text" class="form-control" id="txtDNI" placeholder="DNI" name="txtDNI">
@@ -80,7 +80,19 @@
 				<div class="form-group">
 					<label for="text">Teléfono:</label>
 					<input type="text" class="form-control" id="txtTlf" placeholder="NºTeléfono" name="txtTlf">
-				</div>
+                </div>
+                <div class="form-group">
+                    <label for="text">Email:</label>
+                    <input type="mail" class="form-control" id="txtEmail" placeholder="Correo electrónico" name="txtEmail">
+                </div>
+                <div class="form-group">
+                    <label for="text">Contraseña:</label>
+                    <input type="password" class="form-control" id="txtPassword" placeholder="Contraseña" name="txtPassword">
+                </div>
+                <div class="form-group">
+                        <label for="text">Repetir contraseña:</label>
+                        <input type="password2" class="form-control" id="txtPassword2" placeholder="Repita su contrasseña" name="txtPassword2">
+                    </div>
 				<button type="submit" id="btnRegistro" class="btn btn-block btn-primary btn btn-secondary">Registrarme</button>
 			</form>
 		</article>
@@ -88,6 +100,9 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- Script -->
+	<script src="../js/objetos.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="../js/principal.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>
