@@ -3,6 +3,7 @@ var oUpoMenu = new UpoMenu();
 function cargarXML(){}
 cargarDatos();
 function cargarDatos(){
+
 	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3,85),new Array()));
 	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8,85),new Array()));
 
@@ -10,18 +11,36 @@ function cargarDatos(){
 }
 
 // Añadir Plato
-document.getElementById("btnAñadirPlato").addEventListener('click',añadirPlato,false);
+document.getElementById("btnAñadirPlatos").addEventListener('click',añadirPlato,false);
+document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
+
+
 function añadirPlato(){
 	// Verificar formulario Errores ...
 	var bValido = true;
 	var sError = "";
 	limpiarErrores();
 
+	var oExpReg = /[A-Za-z0-9]/g;
+	var sId = frmAltaPlato.txtIDPlato.value.trim();
+
+	if (!oExpReg.test(sId)) {
+		bValido = false;
+
+		frmAltaPlato.txtIDPlato.classList.add("Error");
+		errorColor("txtIDPlato");
+		limpiar("txtIDPlato");
+		frmAltaPlato.txtIDPlato.focus();
+		
+		sError += "El ID no debe de contener caracteres raros.\n";
+	}else {
+		limpiarColor("txtIDPlato");
+	}
 	// Validar campo Nombre
 	var sNombre = frmAltaPlato.txtNombrePlato.value.trim();
 
 	// Error de Numeros
-	var oExpReg = /[A-Za-z\s]/g;
+	oExpReg = /[A-Za-z\s]/g;
 	///-----------------------------
 	if (!oExpReg.test(sNombre)) {
 		bValido = false;
@@ -31,7 +50,7 @@ function añadirPlato(){
 		limpiar("txtNombrePlato");
 		frmAltaPlato.txtNombrePlato.focus();
 		
-		sError += "El nombre no debe de contener numeros ni caracteres raros.";
+		sError += "El nombre no debe de contener numeros ni caracteres raros.\n";
 	}else {
 		limpiarColor("txtNombrePlato");
 	}
@@ -47,7 +66,7 @@ function añadirPlato(){
 		limpiar("txtTipoPlato");
 		frmAltaPlato.txtTipoPlato.focus();
 		
-		sError += "\nTipo no debe de contener numeros ni caracteres raros.";
+		sError += "Tipo no debe de contener numeros ni caracteres raros.\n";
 	}else {
 		limpiarColor("txtTipoPlato");
 	}
@@ -65,7 +84,7 @@ function añadirPlato(){
 		limpiar("txtPrecioPlato");
 		frmAltaPlato.txtPrecioPlato.focus();
 		
-		sError += "\nEl precio solo debe contener numeros ( 00,00 ).";
+		sError += "El precio solo debe contener numeros ( 00,00 ).";
 	}else {
 		limpiarColor("txtPrecioPlato");
 	}
@@ -89,7 +108,6 @@ function añadirPlato(){
     }
 }
 // Añadir Ingrediente
-document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
 function añadirIngrediente(){
 	// Verificar formulario Errores ...
 	var bValido = true;
