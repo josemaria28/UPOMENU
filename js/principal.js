@@ -1,14 +1,95 @@
 var oUpoMenu = new UpoMenu();
 // Meter XML necesario
 function cargarXML(){}
-// Eventos
+cargarDatos();
+function cargarDatos(){
+	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3,85),new Array()));
+	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8,85),new Array()));
+
+	//mostrar();
+}
+
+// Añadir Plato
+document.getElementById("btnAñadirPlato").addEventListener('click',añadirPlato,false);
+function añadirPlato(){
+	// Verificar formulario Errores ...
+	var bValido = true;
+	var sError = "";
+	limpiarErrores();
+
+	// Validar campo Nombre
+	var sNombre = frmAltaPlato.txtNombrePlato.value.trim();
+
+	// Error de Numeros
+	var oExpReg = /[A-Za-z\s]/g;
+	///-----------------------------
+	if (!oExpReg.test(sNombre)) {
+		bValido = false;
+
+		frmAltaPlato.txtNombrePlato.classList.add("Error");
+		errorColor("txtNombrePlato");
+		limpiar("txtNombrePlato");
+		frmAltaPlato.txtNombrePlato.focus();
+		
+		sError += "El nombre no debe de contener numeros ni caracteres raros.";
+	}else {
+		limpiarColor("txtNombrePlato");
+	}
+	
+	// Validar campo Tipo
+	var sTipo = frmAltaPlato.txtTipoPlato.value.trim();
+	
+	if (!oExpReg.test(sTipo)) {
+		bValido = false;
+
+		frmAltaPlato.txtTipoPlato.classList.add("Error");
+		errorColor("txtTipoPlato");
+		limpiar("txtTipoPlato");
+		frmAltaPlato.txtTipoPlato.focus();
+		
+		sError += "\nTipo no debe de contener numeros ni caracteres raros.";
+	}else {
+		limpiarColor("txtTipoPlato");
+	}
+
+	// Validar campo Precio
+	var fPrecio = frmAltaPlato.txtPrecioPlato.value.trim();
+
+	oExpReg = /[0-9]{3}\,[0-9]{2}/g;
+
+	if (!oExpReg.test(fPrecio)) {
+		bValido = false;
+
+		frmAltaPlato.txtPrecioPlato.classList.add("Error");
+		errorColor("txtPrecioPlato");
+		limpiar("txtPrecioPlato");
+		frmAltaPlato.txtPrecioPlato.focus();
+		
+		sError += "\nEl precio solo debe contener numeros ( 00,00 ).";
+	}else {
+		limpiarColor("txtPrecioPlato");
+	}
+	// Validar seleccionar ingredientes
 
 
-// Todo lo demas
 
-// Manejo Ingredientes
+
+
+	if (bValido == false) {
+        // Mostrar errores
+        alert(sError);
+    } else {
+    	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
+    	// Añadir ingrdiente
+    	if (oUpoMenu._buscarAlergeno(sAlergeno)) {
+    		alert("alergeno Introducido");
+    	}
+    	alert("Gracias");
+        frmAltaIngrediente.submit();
+    }
+}
+// Añadir Ingrediente
 document.getElementById("btnAñadirIngredientes").addEventListener('click',añadirIngrediente,false);
-
 function añadirIngrediente(){
 	// Verificar formulario Errores ...
 	var bValido = true;
@@ -54,8 +135,12 @@ function añadirIngrediente(){
         // Mostrar errores
         alert(sError);
     } else {
+    	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
     	// Añadir ingrdiente
-    	// var oIngrediente = oUpoMenu.añadirPlato(new );
+    	if (oUpoMenu._buscarAlergeno(sAlergeno)) {
+    		alert("alergeno Introducido");
+    	}
+    	alert("Gracias");
         frmAltaIngrediente.submit();
     }
 }

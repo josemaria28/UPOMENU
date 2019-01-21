@@ -3,8 +3,8 @@ class UpoMenu{
     constructor()
     {
         this.listaClientes = [];
-        this.platos = [];
-        this.ingredientes = [];
+        this.platos = new Array();
+        this.ingredientes = new Array();
     }
     // Añadir un plato
 	añadirPlato(oPlato){
@@ -16,11 +16,11 @@ class UpoMenu{
     	return pAñadido;
 	}
 	// Buscar platos
-	_buscarPlato(oPlato){
+	_buscarPlato(oPlatoNombre){
     	var bPlato = null;
     	for (var i = 0; i < this.platos.length && bPlato == null; i++) {
-    		if (this.platos[i].nombre == oPlato) {
-    		bPlato = this.platos[i];
+    		if (this.platos[i] == oPlatoNombre) {
+    		  bPlato = this.platos[i];
     		}
     	}
     	return bPlato;
@@ -29,22 +29,32 @@ class UpoMenu{
     añadirIngrediente(oIngrediente){
         var iAñadido = false;
         if(this._buscaIngrediente(oIngrediente.nombre) == null){
-            // Si esta Añadir Alergenos
-            
-            this.platos.push(oIngrediente);
-            oAñadido = true;
+            this.ingredientes.push(oIngrediente);
+            iAñadido = true;
         }
-        return oAñadido;
+        return iAñadido;
     }
-    // Buscar platos
-    _buscaIngrediente(oPlato){
+    // Buscar ingrediente
+    _buscaIngrediente(oIngrediente){
         var bIngrediente = null;
-        for (var i = 0; i < this.platos.length && bIngrediente == null; i++) {
-            if (this.platos[i].nombre == oPlato) {
-            bIngrediente = this.platos[i];
+        for (var i = 0; i < this.ingredientes.length && bIngrediente == null; i++) {
+            if (this.ingredientes[i].nombre == oIngrediente) {
+                bIngrediente = this.ingredientes[i];
             }
         }
+
         return bIngrediente;
+    }
+    // Buscar alergeno
+    _buscarAlergeno(oIngrediente){
+        var bAlergeno = null;
+        for (var i = 0; i < this.ingredientes.alergenos.length && alergeno == null; i++) {
+            if (this.ingredientes.alergenos[i] == oIngrediente) {
+                alergeno = this.ingredientes.alergenos[i];
+            }
+        }
+
+        return bAlergeno;
     }
     _buscarCliente(sDni)
     {
@@ -86,12 +96,12 @@ class Cliente{
 
 // Platos
 class Plato{
-	constructor(iId,sNombre,sTipo,fPrecio){
+	constructor(iId,sNombre,sTipo,fPrecio,sIngrediente, sIngredientes){
 		this.id = iId;
 		this.nombre = sNombre;
 		this.tipo = sTipo;
 		this.precio = parseFloat(fPrecio);
-		this.ingredientes = [];
+		this.ingredientes = new Array();
 	}
 }
 
