@@ -6,7 +6,7 @@ class UpoMenu{
         this.platos = new Array();
         this.ingredientes = new Array();
     }
-    mostrar(){
+    mostrar(){ // Platos
         for (var i = 0; i < this.platos.length; i++) {
             console.log(this.platos[i]);
         }
