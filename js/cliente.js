@@ -102,7 +102,7 @@ function validarCliente(oEvento)
     //Validar contraseña
     var clave = formulario.txtPassword.value.trim();
 	var clave2 = formulario.txtPassword2.value.trim();
-	oExpReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,20})+$/;
+	oExpReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
 
 	if(oExpReg.test(clave) == false)
 	{
@@ -112,7 +112,8 @@ function validarCliente(oEvento)
 			formulario.txtPassword.focus();
 		}
 		formulario.txtPassword.classList.add("error");
-		sError+= "\n-La contraseña debe contener alguna letra minúscula o mayúscula o un número y tener entre 6 y 15 caracteres";
+        sError+= "\n-La contraseña debe contener alguna letra minúscula o mayúscula o un número y tener entre 8 y 15 caracteres";
+        sError+= "\n No puede admitir espacios en blanco"
 	}
 	if(clave !== clave2)
 	{
