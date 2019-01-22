@@ -61,7 +61,7 @@ function validarCliente(oEvento)
     //Validar Apellidos
 
     var apellidos = formulario.txtApellidos.value.trim();
-    oExpReg = /^[A-Za-zÁÉÍÓÚñáéíóúÑ]{3,30}$/;
+    oExpReg = /^([a-z ñáéíóú]{2,40})$/;
 
     if(oExpReg.test(apellidos)==false)
     {
@@ -141,5 +141,12 @@ function limpiarErrores()
     formulario.txtTlf.classList.remove("error");
     formulario.txtEmail.classList.remove("error");
     formulario.txtApellidos.classList.remove("error");
+
+}
+
+registrarCliente()
+{
+    oUpoMenu.altaCliente();
+    alert("Has sido registrado correctamente");
 
 }
