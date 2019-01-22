@@ -86,7 +86,24 @@ class UpoMenu{
             bInsertado = true;
         }
         return bInsertado;
-    }
+	}
+	// Añadir una bebida
+	agregarBebida(bebida) {
+    	if(!this._buscarBebida(bebida.nombre)){
+    		this.bebidas.push(bebida);
+    		return true;
+    	}
+    	return false;
+	}
+	// Buscar bebidas
+	_buscarBebida(nombre) {
+    	for (var i = 0; i < this.bebidas.length; i++) {
+    		if (this.bebidas[i].nombre == nombre) {
+				return true;
+    		}
+    	}
+    	return false;
+	}
 }
 
 //Cliente, necesita nombre,teléfono,email y un número identificador(suponemos que es el dni)
