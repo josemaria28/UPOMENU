@@ -3,18 +3,18 @@ var oUpoMenu = new UpoMenu();
 document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
 
 
-cargarDatos();
-function cargarDatos(){
+// cargarDatos();
+// function cargarDatos(){
 
-	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85),new Array()));
-	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85),new Array()));
+// 	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85),new Array()));
+// 	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85),new Array()));
 
-	var cad = "maria,laura,juan";
-	var arrayIngredientes = cad.split(",");
-	oUpoMenu.añadirIngredientesPlato(arrayIngredientes, "a1");
+// 	var cad = "maria,laura,juan";
+// 	var arrayIngredientes = cad.split(",");
+// 	oUpoMenu.añadirIngredientesPlato(arrayIngredientes, "a1");
 
-	oUpoMenu.mostrarPlatos();
-}
+// 	oUpoMenu.mostrarPlatos();
+// }
 
 
 function añadirPlato(){
@@ -38,7 +38,7 @@ function añadirPlato(){
 		limpiarColor("txtIDPlato");
 	}
 	// Validar campo Nombre
-	/*var sNombre = frmAltaPlato.txtNombrePlato.value.trim();
+	var sNombre = frmAltaPlato.txtNombrePlato.value.trim();
 
 	// Error de Numeros
 	oExpReg = /^[A-Za-z\s]$/;
@@ -75,7 +75,7 @@ function añadirPlato(){
 	// Validar campo Precio
 	var fPrecio = frmAltaPlato.txtPrecioPlato.value.trim();
 
-	oExpReg = /^[0-9]{3}\,[0-9]{2}$/;
+	oExpReg = /^[0-9]{0,}\,[0-9]{2}$/;
 
 	if (!oExpReg.test(fPrecio)) {
 		bValido = false;
@@ -116,8 +116,7 @@ function añadirPlato(){
     	
     	alert("Gracias");
     	frmAltaPlato.submit();
-    	//oUpoMenu.mostrarPlatos();
-    }*/
+    }
 }
 // Limpiamos todos los Errores
 function limpiarErrores() {
