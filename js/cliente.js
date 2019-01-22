@@ -84,7 +84,7 @@ function validarCliente(oEvento)
     //Validar correo electrónico
 
     var correo = formulario.txtEmail.value.trim();
-    oExpReg = /[\w]+@{1}[\w]+\.[a-z]{2,3}/;
+    oExpReg = /[\w]+@{1}[\w]+\.[a-z]{2,3}$/;
 
     if(oExpReg.test(correo)==false)
     {
