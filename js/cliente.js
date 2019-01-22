@@ -102,7 +102,7 @@ function validarCliente(oEvento)
     //Validar contraseña
     var clave = formulario.txtPassword.value.trim();
 	var clave2 = formulario.txtPassword2.value.trim();
-	oExpReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+	oExpReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,20})+$/;
 
 	if(oExpReg.test(clave) == false)
 	{
