@@ -2,6 +2,21 @@ var oUpoMenu = new UpoMenu();
 
 document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
 
+cargarDatos();
+function cargarDatos(){
+
+	oUpoMenu.añadirIngrediente(new Ingrediente("p"));
+	oUpoMenu.añadirIngrediente(new Ingrediente("m"));
+
+	//oUpoMenu.añadirIngredientesPlato(["maria"], "a1");
+	var cad = "maria,laura,juan,mariano";
+	var arrayIngredientes = cad.split(",");
+	oUpoMenu.añadirIngredientesAlergeno(arrayIngredientes, "p");
+    console.log(arrayIngredientes);
+
+	// oUpoMenu.mostrarPlatos();
+	oUpoMenu.mostrarIngredientes();
+}
 
 // Añadir Ingrediente
 function añadirIngrediente(){
@@ -51,12 +66,9 @@ function añadirIngrediente(){
     } else {
     	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
     	// Añadir ingrdiente
+    	var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente));
+    	oUpoMenu.añadirIngredientesAlergeno(sAlergeno, sIngrediente);
 
-
-
-    	if (oUpoMenu._buscarAlergeno(sAlergeno)) {
-    		alert("alergeno Introducido");
-    	}
     	alert("Gracias");
     	frmAltaIngrediente.submit();
     }
