@@ -107,6 +107,8 @@ function actualizarDesplegable() {
 
 		primerPlato.appendChild(option);
 	}
+
+	mostrarPrecio();
 	
 	var segundoPlato = document.querySelector("#txtSegundoPlato");
 
@@ -159,6 +161,20 @@ function actualizarPrecio() {
 
 	var total = document.querySelector("#txtTotal");
 	total.value = precioTotal + " €";
+}
+
+function mostrarPrecio(elemento) {
+
+	var div = document.createElement("div");
+	div.classList.add("col-md-1");
+	var input = document.createElement("input");
+	input.type = "text";
+	input.disabled = true;
+	input.value = elemento.selectedOptions[0].dataset.precio + " €";
+	input.classList.add("text-center")
+	div.appendChild(input);
+	var padre = elemento.parentElement;
+	padre.after(div);
 }
 
 function inicializarEventos() {
