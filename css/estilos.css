@@ -89,8 +89,13 @@ border: none;
 }
 
 section{
+    clear: both;
     margin-top: 7%;
+
 }
+
+.clear {clear:both;}
+
 .negrita{
     color: white;
 }

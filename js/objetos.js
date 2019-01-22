@@ -101,7 +101,7 @@ class Cliente{
 
 // Platos
 class Plato{
-	constructor(iId,sNombre,sTipo,fPrecio,sIngrediente, sIngredientes){
+	constructor(iId,sNombre,sTipo,fPrecio){
 		this.id = iId;
 		this.nombre = sNombre;
 		this.tipo = sTipo;
@@ -112,7 +112,7 @@ class Plato{
 
 // Ingredientes
 class Ingrediente extends Plato{
-	constructor(iId,sNombre,sTipo,fPrecio,sNombreIngrediente,sAlergenos){
+	constructor(iId,sNombre,sTipo,fPrecio,sNombreIngrediente){
 		super(iId,sNombre,sTipo,fPrecio);
 		this.nombre = sNombreIngrediente;
 		this.alergenos = new Array();
