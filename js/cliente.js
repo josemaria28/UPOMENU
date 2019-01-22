@@ -1,9 +1,23 @@
+window.addEventListener("load",inicio,false);
 var oUpoMenu = new UpoMenu();
 
 var formulario = document.getElementById("frmRegistroCliente");
 
-//Registrar cliente
-document.getElementById("btnRegistro").addEventListener("click",validarCliente);
+function inicio()
+{
+    //Registrar cliente
+    formulario.btnRegistro.addEventListener("click",validarCliente);
+    //Función para que el número de telefono sean sólo números
+    formulario.txtTlf.addEventListener("keypress",solonumeros,false);
+}
+
+function solonumeros(e){
+	var key = window.event ? e.which : e.keyCode;
+	if (key < 48 || key > 57) {
+  		e.preventDefault();
+	}
+}
+
 
 function validarCliente(oEvento)
 {
@@ -11,7 +25,7 @@ function validarCliente(oEvento)
     
     var oE = oEvento || window.event;
 	var bValido = true;
-	var sError = "<div class='alert alert-danger'>";
+	var sError = "";
 
 	
 	limpiarErrores();
@@ -47,7 +61,7 @@ function validarCliente(oEvento)
     //Validar Apellidos
 
     var apellidos = formulario.txtApellidos.value.trim();
-    oExpReg = /^[A-Za-zÁÉÍÓÚñáéíóúÑ]{3}?$/;
+    oExpReg = /^([a-z ñáéíóú]{2,40})$/;
 
     if(oExpReg.test(apellidos)==false)
     {
@@ -57,7 +71,7 @@ function validarCliente(oEvento)
         formulario.txtApellidos.focus();
         sError+= "\n- El/los apellido/s deben tener mínimo 3 caracteres";
     }
-    //Validar nº de teléfono
+    //Validar nº de teléfono 
 
     var nTelefono = formulario.txtTlf.value.trim();
     oExpReg = /^[\d]{3}[-]*([\d]{2}[-]*){2}[\d]{2}$/;
@@ -74,7 +88,7 @@ function validarCliente(oEvento)
     //Validar correo electrónico
 
     var correo = formulario.txtEmail.value.trim();
-    oExpReg = /[\w]+@{1}[\w]+\.[a-z]{2,3}/;
+    oExpReg = /[\w]+@{1}[\w]+\.[a-z]{2,3}$/;
 
     if(oExpReg.test(correo)==false)
     {
@@ -82,13 +96,13 @@ function validarCliente(oEvento)
 
         formulario.txtEmail.classList.add("error");
         formulario.txtEmail.focus();
-        sError+= "\n- El formato de correo no es válido";
+        sError+= "\n- El formato de correo electrónico no es válido";
     }
 
     //Validar contraseña
     var clave = formulario.txtPassword.value.trim();
 	var clave2 = formulario.txtPassword2.value.trim();
-	oExpReg = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
+	oExpReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
 
 	if(oExpReg.test(clave) == false)
 	{
@@ -98,7 +112,8 @@ function validarCliente(oEvento)
 			formulario.txtPassword.focus();
 		}
 		formulario.txtPassword.classList.add("error");
-		sError+= "\n-La contraseña debe contener alguna letra minúscula o mayúscula o un número y tener entre 6 y 15 caracteres";
+        sError+= "\n-La contraseña debe contener alguna letra minúscula o mayúscula o un número y tener entre 8 y 15 caracteres";
+        sError+= "\n No puede admitir espacios en blanco"
 	}
 	if(clave !== clave2)
 	{
@@ -109,7 +124,6 @@ function validarCliente(oEvento)
     
     if(bValido == false)
     {
-        sError+= "</div>";
         alert(sError);
     }
     else
@@ -119,20 +133,20 @@ function validarCliente(oEvento)
 
 }
 
-function solonumeros(e){
-	var key = window.event ? e.which : e.keyCode;
-	if (key < 48 || key > 57) {
-  		e.preventDefault();
-	}
-}
 
 function limpiarErrores()
 {
     formulario.txtDNI.classList.remove("error");
     formulario.txtNuevoNombre.classList.remove("error");
-    formulario.txtPassword.classList.remove("error");
+    formulario.txtApellidos.classList.remove("error");
     formulario.txtTlf.classList.remove("error");
     formulario.txtEmail.classList.remove("error");
-    formulario.txtApellidos.classList.remove("error");
+    formulario.txtPassword.classList.remove("error");
+}
+
+function registrarCliente()
+{
+    oUpoMenu.altaCliente();
+    alert("Has sido registrado correctamente");
 
 }
