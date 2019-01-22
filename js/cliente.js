@@ -5,17 +5,16 @@ var formulario = document.getElementById("frmRegistroCliente");
 //Registrar cliente
 document.getElementById("btnRegistro").addEventListener("click",validarCliente);
 
-function validarCliente()
+function validarCliente(oEvento)
 {
 	//Primero antes de incluirlo en la lista de cliente debemos verificar el formulario de registro...
     
     var oE = oEvento || window.event;
 	var bValido = true;
-	var sError = "";
+	var sError = "<div class='alert alert-danger'>";
 
 	
 	limpiarErrores();
-	todosRequeridos();
     solonumeros(oE);
     
     //Validar DNI
@@ -26,9 +25,9 @@ function validarCliente()
     if(oExpReg.test(dni)==false)
     {
         bValido = false;
-        formulario.txtDNIclassList.add("error");
+        formulario.txtDNI.classList.add("error");
 		formulario.txtDNI.focus();
-		sError+= "-El DNI debe tener 8 letras y 1 número";
+		sError+= "\n- El DNI debe tener 8 letras y 1 número";
     }
 
     //Validar Nombre
@@ -42,7 +41,7 @@ function validarCliente()
 
 		formulario.txtNuevoNombre.classList.add("error");
 		formulario.txtNuevoNombre.focus();
-        sError+= "-El nombre debe tener entre 3 y 15 caracteres";
+        sError+= "\n- El nombre debe tener entre 3 y 15 caracteres";
     }
 
     //Validar Apellidos
@@ -56,7 +55,7 @@ function validarCliente()
 
         formulario.txtApellidos.classList.add("error");
         formulario.txtApellidos.focus();
-        sError+= "-El/los apellido/s deben tener mínimo 3 caracteres";
+        sError+= "\n- El/los apellido/s deben tener mínimo 3 caracteres";
     }
     //Validar nº de teléfono
 
@@ -69,7 +68,7 @@ function validarCliente()
 
         formulario.txtTlf.classList.add("error");
         formulario.txtTlf.focus();
-        sError+= "-El número de teléfono debe tener 9 cifras";
+        sError+= "\n- El número de teléfono debe tener 9 cifras";
     }
 
     //Validar correo electrónico
@@ -83,7 +82,7 @@ function validarCliente()
 
         formulario.txtEmail.classList.add("error");
         formulario.txtEmail.focus();
-        sError+= "El formato de correo no es válido";
+        sError+= "\n- El formato de correo no es válido";
     }
 
     //Validar contraseña
@@ -110,6 +109,7 @@ function validarCliente()
     
     if(bValido == false)
     {
+        sError+= "</div>";
         alert(sError);
     }
     else
@@ -124,4 +124,15 @@ function solonumeros(e){
 	if (key < 48 || key > 57) {
   		e.preventDefault();
 	}
+}
+
+function limpiarErrores()
+{
+    formulario.txtDNI.classList.remove("error");
+    formulario.txtNuevoNombre.classList.remove("error");
+    formulario.txtPassword.classList.remove("error");
+    formulario.txtTlf.classList.remove("error");
+    formulario.txtEmail.classList.remove("error");
+    formulario.txtApellidos.classList.remove("error");
+
 }
