@@ -103,6 +103,7 @@ section{
 #btnRegistro{
     background-color: rgba(116, 1, 1, 0.986);
     opacity: 0.85;
+    margin: 10px;
 }
 .textoRegistro{
     text-align: center;

@@ -15,7 +15,6 @@ function validarCliente()
 
 	
 	limpiarErrores();
-	todosRequeridos();
     solonumeros(oE);
     
     //Validar DNI
@@ -124,4 +123,15 @@ function solonumeros(e){
 	if (key < 48 || key > 57) {
   		e.preventDefault();
 	}
+}
+
+function limpiarErrores()
+{
+    formulario.txtDNI.classList.remove("error");
+    formulario.txtNuevoNombre.classList.remove("error");
+    formulario.txtPassword.classList.remove("error");
+    formulario.txtTlf.classList.remove("error");
+    formulario.txtEmail.classList.remove("error");
+    formulario.txtApellidos.classList.remove("error");
+
 }
