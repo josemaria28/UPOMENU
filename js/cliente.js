@@ -25,7 +25,7 @@ function validarCliente(oEvento)
     if(oExpReg.test(dni)==false)
     {
         bValido = false;
-        formulario.txtDNIclassList.add("error");
+        formulario.txtDNI.classList.add("error");
 		formulario.txtDNI.focus();
 		sError+= "-El DNI debe tener 8 letras y 1 número";
     }
