@@ -92,7 +92,7 @@ function añadirPlato(){
 	// Validar seleccionar ingredientes
 	var sIngredientes = frmAltaPlato.txtIngredientePlato.value.trim();
 	// Separados por coma,,,,
-	// oExpReg = /^[0-9]{3}\,[0-9]{2}$/;
+	 oExpReg = /^[A-Za-z]{0,}\,[A-Za-z]{0,}$/;
 
 	if (!oExpReg.test(sIngredientes)) {
 		bValido = false;
@@ -110,7 +110,6 @@ function añadirPlato(){
 	if (bValido == false) {
         alert(sError);
     } else {
-
 		var arrayIngredientesPlato = sIngredientes.split(",");
     	var oPlato = oUpoMenu.añadirPlato(new Plato(sId,sNombre,sTipo,fPrecio));
     	oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
