@@ -137,14 +137,13 @@ function limpiarErrores()
 {
     formulario.txtDNI.classList.remove("error");
     formulario.txtNuevoNombre.classList.remove("error");
-    formulario.txtPassword.classList.remove("error");
+    formulario.txtApellidos.classList.remove("error");
     formulario.txtTlf.classList.remove("error");
     formulario.txtEmail.classList.remove("error");
-    formulario.txtApellidos.classList.remove("error");
-
+    formulario.txtPassword.classList.remove("error");
 }
 
-registrarCliente()
+function registrarCliente()
 {
     oUpoMenu.altaCliente();
     alert("Has sido registrado correctamente");
