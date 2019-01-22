@@ -11,7 +11,7 @@ function validarCliente(oEvento)
     
     var oE = oEvento || window.event;
 	var bValido = true;
-	var sError = "";
+	var sError = "<div class='alert alert-danger'>";
 
 	
 	limpiarErrores();
@@ -27,7 +27,7 @@ function validarCliente(oEvento)
         bValido = false;
         formulario.txtDNI.classList.add("error");
 		formulario.txtDNI.focus();
-		sError+= "-El DNI debe tener 8 letras y 1 número";
+		sError+= "\n- El DNI debe tener 8 letras y 1 número";
     }
 
     //Validar Nombre
@@ -41,7 +41,7 @@ function validarCliente(oEvento)
 
 		formulario.txtNuevoNombre.classList.add("error");
 		formulario.txtNuevoNombre.focus();
-        sError+= "-El nombre debe tener entre 3 y 15 caracteres";
+        sError+= "\n- El nombre debe tener entre 3 y 15 caracteres";
     }
 
     //Validar Apellidos
@@ -55,7 +55,7 @@ function validarCliente(oEvento)
 
         formulario.txtApellidos.classList.add("error");
         formulario.txtApellidos.focus();
-        sError+= "-El/los apellido/s deben tener mínimo 3 caracteres";
+        sError+= "\n- El/los apellido/s deben tener mínimo 3 caracteres";
     }
     //Validar nº de teléfono
 
@@ -68,7 +68,7 @@ function validarCliente(oEvento)
 
         formulario.txtTlf.classList.add("error");
         formulario.txtTlf.focus();
-        sError+= "-El número de teléfono debe tener 9 cifras";
+        sError+= "\n- El número de teléfono debe tener 9 cifras";
     }
 
     //Validar correo electrónico
@@ -82,7 +82,7 @@ function validarCliente(oEvento)
 
         formulario.txtEmail.classList.add("error");
         formulario.txtEmail.focus();
-        sError+= "El formato de correo no es válido";
+        sError+= "\n- El formato de correo no es válido";
     }
 
     //Validar contraseña
@@ -109,6 +109,7 @@ function validarCliente(oEvento)
     
     if(bValido == false)
     {
+        sError+= "</div>";
         alert(sError);
     }
     else
