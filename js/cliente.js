@@ -5,7 +5,15 @@ var formulario = document.getElementById("frmRegistroCliente");
 //Registrar cliente
 document.getElementById("btnRegistro").addEventListener("click",validarCliente);
 //Función para que el número de telefono sean sólo números
-formulario.txtEmail.addEventListener("keypress",solonumeros,false);
+formulario.txtTlf.addEventListener("keypress",solonumeros,false);
+
+function solonumeros(e){
+	var key = window.event ? e.which : e.keyCode;
+	if (key < 48 || key > 57) {
+  		e.preventDefault();
+	}
+}
+
 
 function validarCliente(oEvento)
 {
@@ -59,7 +67,7 @@ function validarCliente(oEvento)
         formulario.txtApellidos.focus();
         sError+= "\n- El/los apellido/s deben tener mínimo 3 caracteres";
     }
-    //Validar nº de teléfono hola
+    //Validar nº de teléfono 
 
     var nTelefono = formulario.txtTlf.value.trim();
     oExpReg = /^[\d]{3}[-]*([\d]{2}[-]*){2}[\d]{2}$/;
@@ -120,12 +128,6 @@ function validarCliente(oEvento)
 
 }
 
-function solonumeros(e){
-	var key = window.event ? e.which : e.keyCode;
-	if (key < 48 || key > 57) {
-  		e.preventDefault();
-	}
-}
 
 function limpiarErrores()
 {
