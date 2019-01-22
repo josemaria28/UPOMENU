@@ -1,11 +1,15 @@
+window.addEventListener("load",inicio,false);
 var oUpoMenu = new UpoMenu();
 
 var formulario = document.getElementById("frmRegistroCliente");
 
-//Registrar cliente
-document.getElementById("btnRegistro").addEventListener("click",validarCliente);
-//Función para que el número de telefono sean sólo números
-formulario.txtTlf.addEventListener("keypress",solonumeros,false);
+function inicio()
+{
+    //Registrar cliente
+    formulario.btnRegistro.addEventListener("click",validarCliente);
+    //Función para que el número de telefono sean sólo números
+    formulario.txtTlf.addEventListener("keypress",solonumeros,false);
+}
 
 function solonumeros(e){
 	var key = window.event ? e.which : e.keyCode;
