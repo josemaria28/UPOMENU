@@ -119,3 +119,44 @@ class Ingrediente extends Plato{
 	}
 	
 }
+
+// Menu
+class Menu {
+	constructor(nombre, precio) {
+		this.precio = precio;
+		this.nombre = nombre;
+		this.listaPlatos = new Array();
+		this.listaBebidas = new Array();
+	}
+
+	altaPlato(plato) {
+		this.listaPlatos.push(plato);
+	}
+	
+	altaBebida(bebida) {
+		this.listaPlatos.push(bebida);
+	}
+}
+
+// Bebidas
+class Bebida {
+	constructor(nombre, precio, alcoholico, gaseoso, azucarado) {
+		this.nombre = nombre;
+		this.precio = precio;
+		this.alcoholico = alcoholico;
+		this.gaseoso = gaseoso;
+		this.azucarado = azucarado;
+	}
+}
+
+// Evento
+class Evento {
+	constructor(nombre, fecha, lugar, numComensales, numEmpleados, duracion) {
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.lugar = lugar;
+		this.numComensales = numComensales;
+		this.numEmpleados = numEmpleados;
+		this.duracion = duracion;
+	}
+}
