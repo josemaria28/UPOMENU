@@ -38,7 +38,7 @@ function añadirPlato(){
 		limpiarColor("txtIDPlato");
 	}
 	// Validar campo Nombre
-	var sNombre = frmAltaPlato.txtNombrePlato.value.trim();
+	/*var sNombre = frmAltaPlato.txtNombrePlato.value.trim();
 
 	// Error de Numeros
 	oExpReg = /^[A-Za-z\s]$/;
@@ -117,7 +117,7 @@ function añadirPlato(){
     	alert("Gracias");
     	frmAltaPlato.submit();
     	//oUpoMenu.mostrarPlatos();
-    }
+    }*/
 }
 // Limpiamos todos los Errores
 function limpiarErrores() {
