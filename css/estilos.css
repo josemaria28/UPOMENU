@@ -129,3 +129,6 @@ section{
 .error{
     background-color: yellow;
   }
+  #frmAltaPlato{
+      margin: 5px;
+  }
