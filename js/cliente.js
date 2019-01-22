@@ -92,13 +92,13 @@ function validarCliente(oEvento)
 
         formulario.txtEmail.classList.add("error");
         formulario.txtEmail.focus();
-        sError+= "\n- El formato de correo no es válido";
+        sError+= "\n- El formato de correo electrónico no es válido";
     }
 
     //Validar contraseña
     var clave = formulario.txtPassword.value.trim();
 	var clave2 = formulario.txtPassword2.value.trim();
-	oExpReg = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
+	oExpReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
 	if(oExpReg.test(clave) == false)
 	{
