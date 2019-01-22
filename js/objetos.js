@@ -4,9 +4,10 @@ class UpoMenu{
     {
         this.listaClientes = new Array();
         this.platos = new Array();
-        this.ingredientes = new Array();
+		this.ingredientes = new Array();
+		this.bebidas = new Array();
     }
-    mostrar(){
+    mostrar(){ // Platos
         for (var i = 0; i < this.platos.length; i++) {
             console.log(this.platos[i]);
         }
@@ -20,6 +21,20 @@ class UpoMenu{
     	}
     	return pAñadido;
 	}
+    // Añadir Ingredientes al Plato
+    añadirIngredientesPlato(arrayIngredientesPlato, sId){
+
+        for (var i = 0; i < this.platos.length; i++) {
+            if (this.platos[i].id == sId){
+                this.platos[i].ingredientes = arrayIngredientesPlato;
+            }
+        }
+        for (var i = 0; i < arrayIngredientesPlato.length; i++) {
+            if (this._buscarIngrediente(arrayIngredientesPlato[i])) {
+                this.ingredientes.push(arrayIngredientesPlato[i]);
+            }
+        }
+    }
 	// Buscar platos
 	_buscarPlato(oPlatoNombre){
     	var bPlato = null;
@@ -85,7 +100,24 @@ class UpoMenu{
             bInsertado = true;
         }
         return bInsertado;
-    }
+	}
+	// Añadir una bebida
+	agregarBebida(bebida) {
+    	if(!this._buscarBebida(bebida.nombre)){
+    		this.bebidas.push(bebida);
+    		return true;
+    	}
+    	return false;
+	}
+	// Buscar bebidas
+	_buscarBebida(nombre) {
+    	for (var i = 0; i < this.bebidas.length; i++) {
+    		if (this.bebidas[i].nombre == nombre) {
+				return true;
+    		}
+    	}
+    	return false;
+	}
 }
 
 //Cliente, necesita nombre,teléfono,email y un número identificador(suponemos que es el dni)
@@ -101,7 +133,7 @@ class Cliente{
 
 // Platos
 class Plato{
-	constructor(iId,sNombre,sTipo,fPrecio,sIngrediente, sIngredientes){
+	constructor(iId,sNombre,sTipo,fPrecio){
 		this.id = iId;
 		this.nombre = sNombre;
 		this.tipo = sTipo;
@@ -112,10 +144,51 @@ class Plato{
 
 // Ingredientes
 class Ingrediente extends Plato{
-	constructor(iId,sNombre,sTipo,fPrecio,sNombreIngrediente,sAlergenos){
+	constructor(iId,sNombre,sTipo,fPrecio,sNombreIngrediente){
 		super(iId,sNombre,sTipo,fPrecio);
 		this.nombre = sNombreIngrediente;
 		this.alergenos = new Array();
 	}
 	
+}
+
+// Menu
+class Menu {
+	constructor(nombre, precio) {
+		this.precio = precio;
+		this.nombre = nombre;
+		this.listaPlatos = new Array();
+		this.listaBebidas = new Array();
+	}
+
+	altaPlato(plato) {
+		this.listaPlatos.push(plato);
+	}
+	
+	altaBebida(bebida) {
+		this.listaPlatos.push(bebida);
+	}
+}
+
+// Bebidas
+class Bebida {
+	constructor(nombre, precio, alcoholico, gaseoso, azucarado) {
+		this.nombre = nombre;
+		this.precio = precio;
+		this.alcoholico = alcoholico;
+		this.gaseoso = gaseoso;
+		this.azucarado = azucarado;
+	}
+}
+
+// Evento
+class Evento {
+	constructor(nombre, fecha, lugar, numComensales, numEmpleados, duracion) {
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.lugar = lugar;
+		this.numComensales = numComensales;
+		this.numEmpleados = numEmpleados;
+		this.duracion = duracion;
+	}
 }
