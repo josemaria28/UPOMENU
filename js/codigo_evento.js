@@ -220,6 +220,24 @@ function actualizaValor(e) {
 
 
 function datosPrueba() {
+	var platos = xml.querySelectorAll("plato");
+
+	for (var i = 0; i < platos.length; i++) {
+		var id = platos[i].querySelector("id").textContent;
+		var nombre = platos[i].querySelector("nombre").textContent;
+		var tipo = platos[i].querySelector("tipo").textContent;
+		var precio = platos[i].querySelector("precio").textContent;
+		var ingredientes = platos[i].querySelectorAll("ingrediente");
+		var arrayIngredientes = new Array();
+
+		for (var i = 0; i < ingredientes.length; i++) {
+			arrayIngredientes.push(ingredientes[i].textContent);
+		}
+		upoMenu.añadirIngredientesPlato(arrayIngredientes, id);
+
+		upoMenu.añadirPlato(new Plato(id, nombre, tipo, precio));
+	}
+
 	upoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
 	upoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
 	upoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
