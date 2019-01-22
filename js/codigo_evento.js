@@ -185,31 +185,20 @@ function actualizaValor(e) {
 
 
 function datosPrueba() {
-	var pla = new Plato(1, "patatas", "primer", 3.5);
-	upoMenu.platos.push(pla);
-	var pla = new Plato(2, "albondigas", "primer", 4.7);
-	upoMenu.platos.push(pla);
-	var pla = new Plato(3, "ensalada", "segundo", 2.5);
-	upoMenu.platos.push(pla);
-	var pla = new Plato(4, "helado", "postre", 1.5);
-	upoMenu.platos.push(pla);
-	var pla = new Plato(5, "plátano", "postre", 0.75);
-	upoMenu.platos.push(pla);
-	var pla = new Plato(6, "filete", "primer", 3.5);
-	upoMenu.platos.push(pla);
-	var pla = new Plato(7, "pescado", "segundo", 2.5);
-	upoMenu.platos.push(pla);
+	upoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
+	upoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
+	upoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
+	upoMenu.añadirPlato(new Plato(4, "helado", "postre", 1.5));
+	upoMenu.añadirPlato(new Plato(5, "plátano", "postre", 0.75));
+	upoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
+	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
+	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
 
-	var b = new Bebida("coca-cola", 0.75, false, true, true);
-	upoMenu.bebidas.push(b);
-	var b = new Bebida("fanta", 0.5, false, true, true);
-	upoMenu.bebidas.push(b);
-	var b = new Bebida("barceló", 6, true, false, false);
-	upoMenu.bebidas.push(b);
-	var b = new Bebida("7 up", 0.65, false, true, true);
-	upoMenu.bebidas.push(b);
-	var b = new Bebida("camaleón", 0.75, false, true, true);
-	upoMenu.bebidas.push(b);
-	var b = new Bebida("te", 0.95, false, true, false);
-	upoMenu.bebidas.push(b);
+	upoMenu.agregarBebida(new Bebida("coca-cola", 0.75, false, true, true));
+	upoMenu.agregarBebida(new Bebida("fanta", 0.5, false, true, true));
+	upoMenu.agregarBebida(new Bebida("barceló", 6, true, false, false));
+	upoMenu.agregarBebida(new Bebida("7 up", 0.65, false, true, true));
+	upoMenu.agregarBebida(new Bebida("camaleón", 0.75, false, true, true));
+	upoMenu.agregarBebida(new Bebida("te", 0.95, false, true, false));
+	upoMenu.agregarBebida(new Bebida("te", 0.95, false, true, false));
 }
