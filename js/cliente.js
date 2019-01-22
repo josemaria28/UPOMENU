@@ -11,7 +11,7 @@ function validarCliente(oEvento)
     
     var oE = oEvento || window.event;
 	var bValido = true;
-	var sError = "<div class='alert alert-danger'>";
+	var sError = "";
 
 	
 	limpiarErrores();
@@ -109,7 +109,6 @@ function validarCliente(oEvento)
     
     if(bValido == false)
     {
-        sError+= "</div>";
         alert(sError);
     }
     else
