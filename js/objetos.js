@@ -112,7 +112,7 @@ class UpoMenu{
     {
         var bInsertado = false;
 
-        if(this._buscarCliente(oCliente.dni)==null)
+        if(!this._buscarCliente(oCliente.dni))
         {
             this.listaClientes.push(oCliente);
             bInsertado = true;
