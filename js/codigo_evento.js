@@ -216,7 +216,6 @@ function datosPrueba() {
 	upoMenu.añadirPlato(new Plato(5, "plátano", "postre", 0.75));
 	upoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
 	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
-	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
 
 	upoMenu.agregarBebida(new Bebida("coca-cola", 0.75, false, true, true));
 	upoMenu.agregarBebida(new Bebida("fanta", 0.5, false, true, true));
