@@ -2,7 +2,7 @@ window.addEventListener("load", inicio);
 
 var upoMenu = new UpoMenu();
 //var xml = cargarXML("https://github.com/ilde123/UPOMENU/blob/master/XML/menu.xml");
-//var xml = cargarXML("../XML/menu.xml");
+var xml = cargarXML("../XML/menu.xml");
 
 // Eventos
 
@@ -108,8 +108,6 @@ function actualizarDesplegable() {
 		primerPlato.appendChild(option);
 	}
 
-	mostrarPrecio();
-	
 	var segundoPlato = document.querySelector("#txtSegundoPlato");
 
 	for (var i = 0; i < platos.length; i++) {
@@ -120,7 +118,7 @@ function actualizarDesplegable() {
 
 		segundoPlato.appendChild(option);
 	}
-	
+
 	var postre = document.querySelector("#txtPostre");
 
 	for (var i = 0; i < platos.length; i++) {
@@ -150,11 +148,13 @@ function actualizarDesplegable() {
 function actualizarPrecio() {
 	var desplegables = document.querySelectorAll("select");
 	var precioTotal = 0;
+	borrarPrecio();
 
 	for (var i = 0; i < desplegables.length; i++) {
 		var index = desplegables[i].selectedIndex;
 
 		var precio = desplegables[i].options[index].dataset.precio;
+		mostrarPrecio(desplegables[i]);
 
 		precioTotal += parseFloat(precio);
 	}
@@ -164,9 +164,8 @@ function actualizarPrecio() {
 }
 
 function mostrarPrecio(elemento) {
-
 	var div = document.createElement("div");
-	div.classList.add("col-md-1");
+	div.classList.add("col-md-1", "capa-precio");
 	var input = document.createElement("input");
 	input.type = "text";
 	input.disabled = true;
@@ -175,6 +174,16 @@ function mostrarPrecio(elemento) {
 	div.appendChild(input);
 	var padre = elemento.parentElement;
 	padre.after(div);
+}
+
+function borrarPrecio() {
+	var capas = document.querySelectorAll(".capa-precio");
+
+	if (capas.length > 0) {
+		for (var i = 0; i < capas.length; i++) {
+			capas[i].remove();
+		}
+	}
 }
 
 function inicializarEventos() {
@@ -211,6 +220,24 @@ function actualizaValor(e) {
 
 
 function datosPrueba() {
+	var platos = xml.querySelectorAll("plato");
+
+	for (var i = 0; i < platos.length; i++) {
+		var id = platos[i].querySelector("id").textContent;
+		var nombre = platos[i].querySelector("nombre").textContent;
+		var tipo = platos[i].querySelector("tipo").textContent;
+		var precio = platos[i].querySelector("precio").textContent;
+		var ingredientes = platos[i].querySelectorAll("ingrediente");
+		var arrayIngredientes = new Array();
+
+		for (var i = 0; i < ingredientes.length; i++) {
+			arrayIngredientes.push(ingredientes[i].textContent);
+		}
+		upoMenu.añadirIngredientesPlato(arrayIngredientes, id);
+
+		upoMenu.añadirPlato(new Plato(id, nombre, tipo, precio));
+	}
+
 	upoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
 	upoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
 	upoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
