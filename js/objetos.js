@@ -7,9 +7,17 @@ class UpoMenu{
 		this.ingredientes = new Array();
 		this.bebidas = new Array();
     }
-    mostrar(){ // Platos
+    mostrarPlatos(){ // Platos
+        console.log(".......Platos........");
         for (var i = 0; i < this.platos.length; i++) {
             console.log(this.platos[i]);
+        }
+        
+    }
+    mostrarIngredientes(){
+        console.log(".......Ingredientes.........");
+        for (var i = 0; i < this.ingredientes.length; i++) {
+            console.log(this.ingredientes[i]);
         }
     }
     // Añadir un plato
@@ -29,9 +37,19 @@ class UpoMenu{
                 this.platos[i].ingredientes = arrayIngredientesPlato;
             }
         }
+        //***********++++
         for (var i = 0; i < arrayIngredientesPlato.length; i++) {
             if (this._buscarIngrediente(arrayIngredientesPlato[i])) {
+                console.log(i)
                 this.ingredientes.push(arrayIngredientesPlato[i]);
+            }
+        }
+    }
+    // Añadir Ingredientes al Plato
+    añadirIngredientesAlergeno(sTablaAlergeno, sIngrediente){
+        for (var i = 0; i < this.platos.length; i++) {
+            if (this.platos[i].nombre == sIngrediente){
+                this.platos[i].alergenos = sTablaAlergeno;
             }
         }
     }
@@ -143,9 +161,9 @@ class Plato{
 }
 
 // Ingredientes
-class Ingrediente extends Plato{
-	constructor(iId,sNombre,sTipo,fPrecio,sNombreIngrediente){
-		super(iId,sNombre,sTipo,fPrecio);
+class Ingrediente {
+	constructor(/*iId,sNombre,sTipo,fPrecio,*/sNombreIngrediente){
+		// super(iId,sNombre,sTipo,fPrecio);
 		this.nombre = sNombreIngrediente;
 		this.alergenos = new Array();
 	}
