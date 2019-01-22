@@ -1,28 +1,15 @@
+window.addEventListener("load", inicio);
+
 var upoMenu = new UpoMenu();
 //var xml = cargarXML("https://github.com/ilde123/UPOMENU/blob/master/XML/menu.xml");
 //var xml = cargarXML("../XML/menu.xml");
 
-// Meter XML necesario
-function cargarXML(fichero) {
-	if (window.XMLHttpRequest) {
-		xhttp = new XMLHttpRequest();
-	} else { // code for IE5 and IE6
-		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-
-	xhttp.open("GET", fichero, false);
-	xhttp.send();
-
-	return xhttp.responseXML;
-}
-
 // Eventos
-window.addEventListener("load", inicio);
 
 function inicio() {
 	datosPrueba();
 	actualizarDesplegable();
-	inicializareventos();
+	inicializarEventos();
 }
 
 // Todo lo demas
@@ -33,7 +20,7 @@ function validarFormulario() {
 	var error = new Array();
 
 	var nombre = document.querySelector("#txtNombreEvento").value.trim();
-	var exReg = /^[a-zA-Z0-9]{6,50}$/;
+	var exReg = /^[a-zA-ZÁÉÍÓÚñáéíóúÑ0-9]{6,50}$/;
 
 	if (exReg.test(nombre) == false) {
 		valido = false;
@@ -174,7 +161,7 @@ function actualizarPrecio() {
 	total.value = precioTotal + " €";
 }
 
-function inicializareventos() {
+function inicializarEventos() {
 	document.querySelector("#btnAceptarEvento").addEventListener("click", validarFormulario);
 	document.querySelector("#btnIncremento").addEventListener("click", actualizaValor);
 	document.querySelector("#btnDecremento").addEventListener("click", actualizaValor);
@@ -186,6 +173,7 @@ function inicializareventos() {
 }
 
 function actualizaValor(e) {
+
 	var comensales = document.querySelector("#txtComensales");
 	var valor = parseInt(comensales.value);
 
@@ -195,12 +183,10 @@ function actualizaValor(e) {
 
 			comensales.value = valor;
 		}
-		else {
-			if (valor > 1) {
+		else if (valor > 0) {
 			valor--;
 
 			comensales.value = valor;
-			}
 		}
 	}
 }
@@ -224,4 +210,17 @@ function datosPrueba() {
 	upoMenu.agregarBebida(new Bebida("camaleón", 0.75, false, true, true));
 	upoMenu.agregarBebida(new Bebida("te", 0.95, false, true, false));
 	upoMenu.agregarBebida(new Bebida("te", 0.95, false, true, false));
+}
+
+function cargarXML(fichero) {
+	if (window.XMLHttpRequest) {
+		xhttp = new XMLHttpRequest();
+	} else { // code for IE5 and IE6
+		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	xhttp.open("GET", fichero, false);
+	xhttp.send();
+
+	return xhttp.responseXML;
 }
