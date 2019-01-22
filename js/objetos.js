@@ -4,7 +4,8 @@ class UpoMenu{
     {
         this.listaClientes = new Array();
         this.platos = new Array();
-        this.ingredientes = new Array();
+		this.ingredientes = new Array();
+		this.bebidas = new Array();
     }
     mostrar(){ // Platos
         for (var i = 0; i < this.platos.length; i++) {
