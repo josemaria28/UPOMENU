@@ -30,6 +30,7 @@ function validarFormulario() {
 	limpiarErrores();
 
 	var valido = true;
+	var error = new Array();
 
 	var nombre = document.querySelector("#txtNombreEvento").value.trim();
 	var exReg = /^[a-zA-Z0-9]{6,50}$/;
@@ -38,6 +39,7 @@ function validarFormulario() {
 		valido = false;
 
 		document.querySelector("#txtNombreEvento").classList.add("is-invalid");
+		error.push("El nombre debe contener caracteres alfanumérico de entre 6 y 50 caracteres");
 	}
 
 	var fecha = document.querySelector("#txtFecha").value;
@@ -47,6 +49,8 @@ function validarFormulario() {
 		valido = false;
 
 		document.querySelector("#txtFecha").classList.add("is-invalid");
+		
+		error.push("Debe seleccionar una fecha");
 	}
 
 	var comensales = document.querySelector("#txtComensales").value.trim();
@@ -56,6 +60,7 @@ function validarFormulario() {
 		valido = false;
 
 		document.querySelector("#txtComensales").classList.add("is-invalid");
+		error.push("Comensales debe ser un número");
 	}
 
 	var duracion = document.querySelector("#txtDuracion").value.trim();
@@ -65,15 +70,28 @@ function validarFormulario() {
 		valido = false;
 
 		document.querySelector("#txtDuracion").classList.add("is-invalid");
+		error.push("Debe escribir Mañana, Tarde o Noche");
 	}
 
 	if (!valido) {
 		document.querySelector(".is-invalid").focus();
+		mostrarMensajeError(error);
 	}
 	else {
 		frmEvento.submit();
 	}
+}
 
+function mostrarMensajeError(error) {
+	var elemento = document.querySelectorAll(".is-invalid");
+
+	for (var i = 0; i < elemento.length; i++) {
+		var div = document.createElement("div");
+		div.classList.add("texto-error");
+		div.textContent = error[i];
+
+		elemento[i].parentElement.appendChild(div);
+	}
 }
 
 function limpiarErrores() {
@@ -81,6 +99,12 @@ function limpiarErrores() {
 
 	for (var i = 0; i < errores.length; i++) {
 		errores[i].classList.remove("is-invalid");
+	}
+
+	errores = document.querySelectorAll(".texto-error");
+
+	for (var i = 0; i < errores.length; i++) {
+		errores[i].remove();
 	}
 }
 
