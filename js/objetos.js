@@ -21,6 +21,20 @@ class UpoMenu{
     	}
     	return pAñadido;
 	}
+    // Añadir Ingredientes al Plato
+    añadirIngredientesPlato(arrayIngredientesPlato, sId){
+
+        for (var i = 0; i < this.platos.length; i++) {
+            if (this.platos[i].id == sId){
+                this.platos[i].ingredientes = arrayIngredientesPlato;
+            }
+        }
+        for (var i = 0; i < arrayIngredientesPlato.length; i++) {
+            if (this._buscarIngrediente(arrayIngredientesPlato[i])) {
+                this.ingredientes.push(arrayIngredientesPlato[i]);
+            }
+        }
+    }
 	// Buscar platos
 	_buscarPlato(oPlatoNombre){
     	var bPlato = null;

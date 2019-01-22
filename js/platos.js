@@ -2,11 +2,17 @@ var oUpoMenu = new UpoMenu();
 
 document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
 
+
 cargarDatos();
 function cargarDatos(){
 
 	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85),new Array()));
 	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85),new Array()));
+
+	//oUpoMenu.añadirIngredientesPlato(["maria"], "a1");
+	/*var cad = "maria,laura,juan"
+	var arrayIngredientes = cad.split(",");
+    console.log(arrayIngredientes);*/
 
 	oUpoMenu.mostrar();
 }
@@ -107,8 +113,13 @@ function añadirPlato(){
         // Mostrar errores
         alert(sError);
     } else {
-    	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
-    	// Añadir ingrdiente
+    	// Recorrer Ingredientes
+    	var arrayIngredientesPlato = sIngredientes.split(",");
+    	//console.log(arrayIngredientes);
+    	// Añadir Plato
+    	var oPlato = oUpoMenu.añadirPlato(new Plato(sID,sNombre,sTipo,fPrecio));
+
+    	oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
     	
     	alert("Gracias");
     	frmAltaPlato.submit();
