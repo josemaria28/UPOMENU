@@ -5,7 +5,7 @@ var formulario = document.getElementById("frmRegistroCliente");
 //Registrar cliente
 document.getElementById("btnRegistro").addEventListener("click",validarCliente);
 
-function validarCliente()
+function validarCliente(oEvento)
 {
 	//Primero antes de incluirlo en la lista de cliente debemos verificar el formulario de registro...
     
