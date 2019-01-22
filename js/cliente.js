@@ -57,7 +57,7 @@ function validarCliente(oEvento)
     //Validar Apellidos
 
     var apellidos = formulario.txtApellidos.value.trim();
-    oExpReg = /^[A-Za-zÁÉÍÓÚñáéíóúÑ]{3}?$/;
+    oExpReg = /^[A-Za-zÁÉÍÓÚñáéíóúÑ]{3,30}$/;
 
     if(oExpReg.test(apellidos)==false)
     {
