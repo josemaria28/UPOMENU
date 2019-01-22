@@ -59,7 +59,7 @@ function validarCliente(oEvento)
         formulario.txtApellidos.focus();
         sError+= "\n- El/los apellido/s deben tener mínimo 3 caracteres";
     }
-    //Validar nº de teléfono
+    //Validar nº de teléfono hola
 
     var nTelefono = formulario.txtTlf.value.trim();
     oExpReg = /^[\d]{3}[-]*([\d]{2}[-]*){2}[\d]{2}$/;
