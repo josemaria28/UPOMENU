@@ -4,6 +4,8 @@ var formulario = document.getElementById("frmRegistroCliente");
 
 //Registrar cliente
 document.getElementById("btnRegistro").addEventListener("click",validarCliente);
+//Función para que el número de telefono sean sólo números
+formulario.txtEmail.addEventListener("keypress",solonumeros,false);
 
 function validarCliente(oEvento)
 {
