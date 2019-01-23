@@ -247,6 +247,18 @@ function datosPrueba() {
 		upoMenu.añadirIngredientesPlato(arrayIngredientes, id);
 	}
 /*
+	var bebidas = xml.querySelectorAll("bebida");
+
+	for (var i = 0; i < bebidas.length; i++) {
+		var nombre = bebidas[i].nombre;
+		var precio = bebidas[i].precio;
+		var alcoholico = bebidas[i].alcoholico;
+		var gaseoso = bebidas[i].gaseoso;
+		var azucarado = bebidas[i].azucarado;
+
+		upoMenu.agregarBebida(new Bebida(nombre, precio, alcoholico, gaseoso, azucarado));
+	}
+/*
 	upoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
 	upoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
 	upoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
@@ -255,13 +267,12 @@ function datosPrueba() {
 	upoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
 	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
 */
-	upoMenu.agregarBebida(new Bebida("coca-cola", 0.75, false, true, true));
-	upoMenu.agregarBebida(new Bebida("fanta", 0.5, false, true, true));
-	upoMenu.agregarBebida(new Bebida("barceló", 6, true, false, false));
+	upoMenu.agregarBebida(new Bebida("Coca-Cola", 0.75, false, true, true));
+	upoMenu.agregarBebida(new Bebida("Fanta", 0.5, false, true, true));
+	upoMenu.agregarBebida(new Bebida("Barceló", 6, true, false, false));
 	upoMenu.agregarBebida(new Bebida("7 up", 0.65, false, true, true));
-	upoMenu.agregarBebida(new Bebida("camaleón", 0.75, false, true, true));
-	upoMenu.agregarBebida(new Bebida("te", 0.95, false, true, false));
-	upoMenu.agregarBebida(new Bebida("te", 0.95, false, true, false));
+	upoMenu.agregarBebida(new Bebida("Camaleón", 0.75, false, true, true));
+	upoMenu.agregarBebida(new Bebida("Te", 0.95, false, true, false));
 }
 
 function cargarXML(fichero) {
