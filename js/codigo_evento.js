@@ -151,9 +151,9 @@ function actualizarPrecio() {
 	borrarPrecio();
 
 	for (var i = 0; i < desplegables.length; i++) {
-		var index = desplegables[i].selectedIndex;
+//		var index = desplegables[i].selectedIndex;
 
-		var precio = desplegables[i].options[index].dataset.precio;
+		var precio = desplegables[i].selectedOptions[0].dataset.precio;
 		mostrarPrecio(desplegables[i]);
 
 		precioTotal += parseFloat(precio);
@@ -219,6 +219,12 @@ function actualizaValor(e) {
 
 
 
+function numeroComa(numero) {
+	numero.toString();
+	numero = numero.replace(",", ".");
+	return parseFloat(numero);
+}
+
 function datosPrueba() {
 	var platos = xml.querySelectorAll("plato");
 
@@ -226,18 +232,21 @@ function datosPrueba() {
 		var id = platos[i].querySelector("id").textContent;
 		var nombre = platos[i].querySelector("nombre").textContent;
 		var tipo = platos[i].querySelector("tipo").textContent;
-		var precio = platos[i].querySelector("precio").textContent;
+		var precio = numeroComa(platos[i].querySelector("precio").textContent);
 		var ingredientes = platos[i].querySelectorAll("ingrediente");
 		var arrayIngredientes = new Array();
 
-		for (var i = 0; i < ingredientes.length; i++) {
-			arrayIngredientes.push(ingredientes[i].textContent);
+		for (var j = 0; j < ingredientes.length; j++) {
+			var nombresIngredientes = ingredientes[j].querySelectorAll("nombre");
+
+			for (var s = 0; s < nombresIngredientes.length; s++) {
+				arrayIngredientes.push(nombresIngredientes[s].textContent);
+			}
 		}
-		upoMenu.añadirIngredientesPlato(arrayIngredientes, id);
-
 		upoMenu.añadirPlato(new Plato(id, nombre, tipo, precio));
+		upoMenu.añadirIngredientesPlato(arrayIngredientes, id);
 	}
-
+/*
 	upoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
 	upoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
 	upoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
@@ -245,7 +254,7 @@ function datosPrueba() {
 	upoMenu.añadirPlato(new Plato(5, "plátano", "postre", 0.75));
 	upoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
 	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
-
+*/
 	upoMenu.agregarBebida(new Bebida("coca-cola", 0.75, false, true, true));
 	upoMenu.agregarBebida(new Bebida("fanta", 0.5, false, true, true));
 	upoMenu.agregarBebida(new Bebida("barceló", 6, true, false, false));
