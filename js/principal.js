@@ -128,10 +128,6 @@ function añadirPlato(){
 	}
 	// Validar seleccionar ingredientes
 
-
-
-
-
 	if (bValido == false) {
         // Mostrar errores
         alert(sError);
@@ -139,7 +135,7 @@ function añadirPlato(){
     	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
     	// Añadir ingrdiente
     	if (oUpoMenu._buscarAlergeno(sAlergeno)) {
-    		alert("alergeno Introducido");
+    		alert("Alérgeno introducido");
     	}
     	alert("Gracias");
     	frmAltaIngrediente.submit();
