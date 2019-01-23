@@ -7,7 +7,7 @@ class UpoMenu{
 		this.ingredientes = new Array();
 		this.bebidas = new Array();
     }
-    mostrarPlatos(){ // Platos
+    /*mostrarPlatos(){ // Platos
         console.log(".......Platos........");
         for (var i = 0; i < this.platos.length; i++) {
             console.log(this.platos[i]);
@@ -19,7 +19,7 @@ class UpoMenu{
         for (var i = 0; i < this.ingredientes.length; i++) {
             console.log(this.ingredientes[i]);
         }
-    }
+    }*/
     // Añadir un plato
 	añadirPlato(oPlato){
     	var pAñadido = false;
@@ -31,19 +31,19 @@ class UpoMenu{
 	}
     // Añadir Ingredientes al Plato
     añadirIngredientesPlato(arrayIngredientesPlato, sId){
-
+        // Mete tabla ingredientes ingrdiente[]
         for (var i = 0; i < this.platos.length; i++) {
             if (this.platos[i].id == sId){
                 this.platos[i].ingredientes = arrayIngredientesPlato;
             }
         }
         //***********++++
-        for (var i = 0; i < arrayIngredientesPlato.length; i++) {
+        /*for (var i = 0; i < arrayIngredientesPlato.length; i++) {
             if (this._buscarIngrediente(arrayIngredientesPlato[i])) {
                 console.log(i)
                 this.ingredientes.push(arrayIngredientesPlato[i]);
             }
-        }
+        }*/
     }
     // Añadir Ingredientes al Plato
     añadirIngredientesAlergeno(sTablaAlergeno, sIngrediente){

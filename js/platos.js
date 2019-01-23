@@ -3,18 +3,18 @@ var oUpoMenu = new UpoMenu();
 document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
 
 
-// cargarDatos();
-// function cargarDatos(){
+/*cargarDatos();
+function cargarDatos(){
 
-// 	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85),new Array()));
-// 	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85),new Array()));
+	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85),new Array()));
+	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85),new Array()));
 
-// 	var cad = "maria,laura,juan";
-// 	var arrayIngredientes = cad.split(",");
-// 	oUpoMenu.añadirIngredientesPlato(arrayIngredientes, "a1");
+	var cad = "maria,laura,juan";
+	var arrayIngredientes = cad.split(",");
+	oUpoMenu.añadirIngredientesPlato(arrayIngredientes, "a1");
 
-// 	oUpoMenu.mostrarPlatos();
-// }
+	oUpoMenu.mostrarPlatos();
+}*/
 
 
 function añadirPlato(){
@@ -23,7 +23,7 @@ function añadirPlato(){
 	var sError = "";
 	limpiarErrores();
 
-	var oExpReg = /^[A-Za-z0-9]$/;
+	var oExpReg = /[A-Za-z0-9]/g;
 	var sId = frmAltaPlato.txtIDPlato.value.trim();
 
 	if (!oExpReg.test(sId)) {
@@ -32,6 +32,7 @@ function añadirPlato(){
 		frmAltaPlato.txtIDPlato.classList.add("Error");
 		errorColor("txtIDPlato");
 		limpiar("txtIDPlato");
+		frmAltaPlato.txtIDPlato.focus();
 		
 		sError += "El ID no debe de contener caracteres raros.\n";
 	}else {
@@ -41,15 +42,18 @@ function añadirPlato(){
 	var sNombre = frmAltaPlato.txtNombrePlato.value.trim();
 
 	// Error de Numeros
-	oExpReg = /^[A-Za-z\s]$/;
+	oExpReg = /[A-Za-z\s]/g;
 	///-----------------------------
-	if (!oExpReg.test(sNombre)) {
-		bValido = false;
+	if (sNombre=="" || !oExpReg.test(sNombre)) {
+		if (bValido) {
+			bValido = false;
+			limpiarColor("txtNombrePlato");
+			limpiar("txtNombrePlato");
+			frmAltaPlato.txtNombrePlato.focus();
+		}
 
 		frmAltaPlato.txtNombrePlato.classList.add("Error");
 		errorColor("txtNombrePlato");
-		limpiar("txtNombrePlato");
-		// frmAltaPlato.txtNombrePlato.focus();
 		
 		sError += "El nombre no debe de contener números ni caracteres raros.\n";
 	}else {
@@ -60,12 +64,15 @@ function añadirPlato(){
 	var sTipo = frmAltaPlato.txtTipoPlato.value.trim();
 	
 	if (!oExpReg.test(sTipo)) {
-		bValido = false;
+		if (bValido) {
+			bValido = false;
+			limpiarColor("txtTipoPlato");
+			limpiar("txtTipoPlato");
+			frmAltaPlato.txtTipoPlato.focus();
+		}
 
 		frmAltaPlato.txtTipoPlato.classList.add("Error");
 		errorColor("txtTipoPlato");
-		limpiar("txtTipoPlato");
-		// frmAltaPlato.txtTipoPlato.focus();
 		
 		sError += "Tipo no debe de contener números ni caracteres raros.\n";
 	}else {
@@ -75,15 +82,17 @@ function añadirPlato(){
 	// Validar campo Precio
 	var fPrecio = frmAltaPlato.txtPrecioPlato.value.trim();
 
-	oExpReg = /^[0-9]{0,}\,[0-9]{2}$/;
+	oExpReg = /[0-9]{0,}\.[0-9]{2}/g;
 
 	if (!oExpReg.test(fPrecio)) {
-		bValido = false;
-
+		if (bValido) {
+			bValido = false;
+			limpiarColor("txtPrecioPlato");
+			limpiar("txtPrecioPlato");
+			frmAltaPlato.txtPrecioPlato.focus();
+		}
 		frmAltaPlato.txtPrecioPlato.classList.add("Error");
 		errorColor("txtPrecioPlato");
-		limpiar("txtPrecioPlato");
-		// frmAltaPlato.txtPrecioPlato.focus();
 		
 		sError += "El precio solo debe contener números ( 99.66 ).\n";
 	}else {
@@ -92,14 +101,17 @@ function añadirPlato(){
 	// Validar seleccionar ingredientes
 	var sIngredientes = frmAltaPlato.txtIngredientePlato.value.trim();
 	// Separados por coma,,,,
-	 oExpReg = /^[A-Za-z]{0,}\,[A-Za-z]{0,}$/;
+	 oExpReg = /[A-Za-z]{0,}\,[A-Za-z]{0,}/g;
 
 	if (!oExpReg.test(sIngredientes)) {
-		bValido = false;
-
+		if (bValido) {
+			bValido = false;
+			limpiarColor("txtIngredientePlato");
+			limpiar("txtIngredientePlato");
+			frmAltaPlato.txtIngredientePlato.focus();
+		}
 		frmAltaPlato.txtIngredientePlato.classList.add("Error");
 		errorColor("txtIngredientePlato");
-		limpiar("txtIngredientePlato");
 		
 		sError += "Ingrediente no debe de contener números ni caracteres raros.";
 	}else {
@@ -107,7 +119,7 @@ function añadirPlato(){
 	}
 
 
-	if (bValido == false) {
+	if (!bValido) {
         alert(sError);
     } else {
 		var arrayIngredientesPlato = sIngredientes.split(",");
@@ -116,6 +128,7 @@ function añadirPlato(){
     	
     	alert("Gracias");
     	frmAltaPlato.submit();
+    	oUpoMenu.mostrarPlatos();
     }
 }
 // Limpiamos todos los Errores

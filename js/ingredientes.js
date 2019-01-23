@@ -8,13 +8,11 @@ function cargarDatos(){
 	oUpoMenu.añadirIngrediente(new Ingrediente("p"));
 	oUpoMenu.añadirIngrediente(new Ingrediente("m"));
 
-	//oUpoMenu.añadirIngredientesPlato(["maria"], "a1");
 	var cad = "maria,laura,juan,mariano";
 	var arrayIngredientes = cad.split(",");
 	oUpoMenu.añadirIngredientesAlergeno(arrayIngredientes, "p");
     console.log(arrayIngredientes);
 
-	// oUpoMenu.mostrarPlatos();
 	oUpoMenu.mostrarIngredientes();
 }
 
@@ -29,7 +27,7 @@ function añadirIngrediente(){
 	var sIngrediente = frmAltaIngrediente.txtNombreIngrediente.value.trim();
 	//alert(sIngrediente);
 	// Error de Numeros
-	var oExpReg = /^[A-Za-z]$/;
+	var oExpReg = /[A-Za-z]/g;
 	///-----------------------------
 	if (!oExpReg.test(sIngrediente)) {
 		bValido = false;
@@ -37,7 +35,7 @@ function añadirIngrediente(){
 		frmAltaIngrediente.txtNombreIngrediente.classList.add("Error");
 		errorColor("txtNombreIngrediente");
 		limpiar("txtNombreIngrediente");
-		// frmAltaIngrediente.txtNombreIngrediente.focus();
+		frmAltaIngrediente.txtNombreIngrediente.focus();
 		
 		sError += "El nombre no debe de contener números ni caracteres raros.";
 	}else {
@@ -45,14 +43,20 @@ function añadirIngrediente(){
 	}
 
 	// Validar Alergeno
+	oExpReg = /[A-Za-z]{0,}\,[A-Za-z]{0,}/g;
 	var sAlergeno = frmAltaIngrediente.txtAlergenoIngrediente.value.trim();
 	if (!oExpReg.test(sAlergeno)) {
-		bValido = false;
+		if (bValido == true) {
+			bValido = false;
+			limpiarColor("txtAlergenoIngrediente");
+			limpiar("txtAlergenoIngrediente");
+			//frmAltaIngrediente.txtAlergenoIngrediente.focus();
+		}
 
 		frmAltaIngrediente.txtAlergenoIngrediente.classList.add("Error");
 		errorColor("txtAlergenoIngrediente");
 		limpiar("txtAlergenoIngrediente");
-		// frmAltaIngrediente.txtAlergenoIngrediente.focus();
+		//frmAltaIngrediente.txtAlergenoIngrediente.focus();
 		
 		sError += "\nEl Alergeno no debe de contener caracteres raros.";
 	}else {
