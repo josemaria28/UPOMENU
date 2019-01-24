@@ -2,7 +2,7 @@ var oUpoMenu = new UpoMenu();
 
 document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
 
-
+crearSelectMultipleDeIngredientesPorPlato();
 cargarDatos();
 function cargarDatos(){
 
@@ -166,4 +166,32 @@ function limpiarCamposPlato(){
 	limpiar("txtTipoPlato");
 	limpiar("txtPrecioPlato");
 	limpiar("txtIngredientePlato");
+}
+
+
+function crearSelectMultipleDeIngredientesPorPlato(){
+	// Seleccionamos el ultimo hijo del dormulario
+	var nodoDiv = document.querySelector("#frmAltaPlato");
+	
+	/*var selectIngredientes = document.createElement("SELECT").multiple = true;
+	var contenidoIngredientes = document.createTextNode("Hola Mundo!");*/
+
+	var iG = ["Maria","Juan","Jose","Lorena"];
+	//////// Creamos el Select ///////////
+	var selectIngredientes = document.createElement("select");
+	// No funciona
+	// selectIngredientes.multiline= true;
+
+	// Añadimos identificadores
+	selectIngredientes.id ="txtIngredientePlato";
+	selectIngredientes.className = "form-control";
+
+	// Añadir el contenido
+	
+
+
+	var contenido = document.createTextNode("Este es el parrafo...");
+	selectIngredientes.appendChild(contenido);
+	nodoDiv.appendChild(selectIngredientes);
+
 }

@@ -42,10 +42,24 @@ class UpoMenu{
     añadirIngredientesAlergeno(sTablaAlergeno, sIngrediente){
         for (var i = 0; i < this.ingredientes.length; i++) {
             if (this.ingredientes[i].nombre == sIngrediente){
+                /*for (var j = 0; j < this.ingredientes[i].alergenos.length; j++) {
+                    this.ingredientes[i].alergenos.push(sTablaAlergeno[j]);
+                }*/
                 this.ingredientes[i].alergenos = sTablaAlergeno;
             }
         }
     }
+    /*
+        if (!this.ingredientes[i].nombre.includes(sIngrediente)){
+                if (this.ingredientes[i].nombre == sIngrediente) {
+                    for (var j = 0; j < this.ingredientes[i].alergenos.length; j++) {
+                        this.ingredientes[i].alergenos.push(sTablaAlergeno[j]);
+                    }
+                }
+            }else {
+                this.ingredientes[i].alergenos = sTablaAlergeno;
+            }
+    */
 	// Buscar platos
 	_buscarPlato(oPlatoNombre){
     	var bPlato = null;
@@ -155,8 +169,7 @@ class Plato{
 
 // Ingredientes
 class Ingrediente {
-	constructor(/*iId,sNombre,sTipo,fPrecio,*/sNombreIngrediente){
-		// super(iId,sNombre,sTipo,fPrecio);
+	constructor(sNombreIngrediente){
 		this.nombre = sNombreIngrediente;
 		this.alergenos = new Array();
 	}

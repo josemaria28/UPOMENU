@@ -2,6 +2,7 @@ var oUpoMenu = new UpoMenu();
 
 document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
 var oXML = loadXMLDoc("../XML/ingredientes.xml");
+// document.getElementById("añadirMASAlergenos").addEventListener("click",añadirMASAlergenos, false);
 cargarDatos();
 function cargarDatos(){
 	// Generar options
@@ -54,7 +55,7 @@ function añadirIngrediente(){
 	}
 
 	// Validar Alergeno
-	oExpReg = /[A-Za-z\,]{0,}/g;
+	oExpReg = /[A-Za-z]\,{0,}/g;
 	var sAlergeno = frmAltaIngrediente.txtAlergenoIngrediente.value.trim();
 	if (!oExpReg.test(sAlergeno)) {
 		if (bValido == true) {
@@ -69,7 +70,7 @@ function añadirIngrediente(){
 		limpiar("txtAlergenoIngrediente");
 		//frmAltaIngrediente.txtAlergenoIngrediente.focus();
 		
-		sError += "\nEl Alergeno no debe de contener caracteres raros.";
+		sError += "\nPara introducir los alergenos debe separarlos por comas.\n\tEjemplo: Leche,Soja,...";
 	}else {
 		limpiarColor("txtAlergenoIngrediente");
 	}
@@ -88,12 +89,21 @@ function añadirIngrediente(){
     		alert("Ingrediente añadido.");
     		// frmAltaIngrediente.submit();
     		limpiarCamposPlato();
+    		crearSelectMultipleDeIngredientesPorPlato();
     	}else {
     		alert("Ese ingrediente ya existe.");
     	}
     }
     oUpoMenu.mostrarIngredientes();
 }
+// Añadir alergenos a Ingrediente
+/*function añadirMASAlergenos(){
+	if (oUpoMenu._buscarIngrediente(frmAltaIngrediente.txtNombreIngrediente.value.trim())){
+		var arrayIngredientesAlergenos = sAlergeno.split(",");
+		oUpoMenu.añadirIngredientesAlergeno(arrayIngredientesAlergenos, sIngrediente);
+
+	}
+}*/
 
 // Limpiamos todos los Errores
 function limpiarErrores() {
@@ -134,4 +144,15 @@ function loadXMLDoc(filename) {
 function limpiarCamposPlato(){
 	limpiar("txtNombreIngrediente");
 	limpiar("txtAlergenoIngrediente");
+}
+function crearSelectMultipleDeIngredientesPorPlato(){
+	// Seleccionamos el ultimo hijo del dormulario
+	var nodoDiv = document.querySelector("#frmAltaPlato").lastChild;
+	var selectIngredientes = document.createElement("SELECT").multiple = true;
+
+	/*var parrafo = document.createElement("p");
+	var contenido = document.createTextNode("Hola Mundo!");
+	parrafo.appendChild(contenido);
+	document.body.appendChild(parrafo);*/
+
 }
