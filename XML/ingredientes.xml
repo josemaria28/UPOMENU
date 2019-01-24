@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<upomenu>
+	<ingrediente>
+		<nombre>Papas</nombre>
+			<alergeno>Gluten</alergeno>
+			<alergeno>Huevo</alergeno>
+			<alergeno>Marisco</alergeno>
+	</ingrediente>
+	<ingrediente>
+		<nombre>Gambas</nombre>
+			<alergeno>Leche</alergeno>
+			<alergeno>Perca</alergeno>
+			<alergeno>Lenguado</alergeno>
+			<alergeno>Bacalao</alergeno>
+	</ingrediente>
+	<ingrediente>
+		<nombre>Cafe Molido</nombre>
+			<alergeno>Trigo</alergeno>
+			<alergeno>Cacahuate</alergeno>
+			<alergeno>Nuece</alergeno>
+			<alergeno>Pacana</alergeno>
+			<alergeno>Almendra</alergeno>
+	</ingrediente>
+	<ingrediente>
+		<nombre>Tallarines</nombre>
+			<alergeno>Soya</alergeno>
+			<alergeno>Soja</alergeno>
+	</ingrediente>
+</upomenu>

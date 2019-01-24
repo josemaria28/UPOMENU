@@ -7,7 +7,7 @@ class UpoMenu{
 		this.ingredientes = new Array();
 		this.bebidas = new Array();
     }
-   /* mostrarPlatos(){ // Platos
+    mostrarPlatos(){ // Platos
         console.log(".......Platos........");
         for (var i = 0; i < this.platos.length; i++) {
             console.log(this.platos[i]);
@@ -19,7 +19,7 @@ class UpoMenu{
         for (var i = 0; i < this.ingredientes.length; i++) {
             console.log(this.ingredientes[i]);
         }
-    }*/
+    }
     // Añadir un plato
 	añadirPlato(oPlato){
     	var pAñadido = false;

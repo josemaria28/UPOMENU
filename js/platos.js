@@ -127,8 +127,9 @@ function añadirPlato(){
 			var arrayIngredientesPlato = sIngredientes.split(",");
 	    	var oPlato = oUpoMenu.añadirPlato(new Plato(sId,sNombre,sTipo,fPrecio));
 	    	oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
-	    	alert("Gracias");
-    		frmAltaPlato.submit();
+	    	alert("Plato añadido.");
+	    	limpiarCamposPlato();
+    		//frmAltaPlato.submit();
     		oUpoMenu.mostrarPlatos();
     	//}else
     	//	alert("Ese plato ya e")
@@ -158,4 +159,11 @@ function vacio(campo){
 // Limpar color
 function limpiarColor(campo){
 	return document.getElementById(campo).style.background = 'white';
+}
+function limpiarCamposPlato(){
+	limpiar("txtIDPlato");
+	limpiar("txtNombrePlato");
+	limpiar("txtTipoPlato");
+	limpiar("txtPrecioPlato");
+	limpiar("txtIngredientePlato");
 }

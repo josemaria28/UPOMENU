@@ -1,10 +1,21 @@
 var oUpoMenu = new UpoMenu();
 
 document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
-
+var oXML = loadXMLDoc("../XML/ingredientes.xml");
 cargarDatos();
 function cargarDatos(){
+	// Generar options
+		/*var oIngrediente = oXML.querySelector("ingrediente");
+		var oNombre = oIngrediente.querySelector("nombre");
+		var oAlergeno = oIngrediente.querySelectorAll("alergeno");
+		var oIngredienteMeter = null;
 
+        for (var i = 0; i < oIngrediente.length; i++) {
+        	oIngredienteMeter = oIngrediente[i].textContent;
+
+
+        }
+*/
 	oUpoMenu.añadirIngrediente(new Ingrediente("p"));
 	oUpoMenu.añadirIngrediente(new Ingrediente("m"));
 
@@ -75,7 +86,8 @@ function añadirIngrediente(){
     	if (oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente))) {
     		oUpoMenu.añadirIngredientesAlergeno(arrayIngredientesAlergenos, sIngrediente);
     		alert("Ingrediente añadido.");
-    		frmAltaIngrediente.submit();
+    		// frmAltaIngrediente.submit();
+    		limpiarCamposPlato();
     	}else {
     		alert("Ese ingrediente ya existe.");
     	}
@@ -103,4 +115,23 @@ function vacio(campo){
 // Limpar color
 function limpiarColor(campo){
 	return document.getElementById(campo).style.background = 'white';
+}
+
+function loadXMLDoc(filename) {
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else // code for IE5 and IE6
+    {
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.open("GET", filename, false);
+
+    xhttp.send();
+
+    return xhttp.responseXML;
+}
+
+function limpiarCamposPlato(){
+	limpiar("txtNombreIngrediente");
+	limpiar("txtAlergenoIngrediente");
 }
