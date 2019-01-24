@@ -70,11 +70,20 @@ function añadirIngrediente(){
     } else {
     	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
     	// Añadir ingrdiente
+    	var arrayIngredientesAlergenos = sAlergeno.split(",");
     	var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente));
-    	oUpoMenu.añadirIngredientesAlergeno(sAlergeno, sIngrediente);
+    	if (oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente)) {
+    		alert("Gracias");
+    	}else {
+    		
+    	}
+
+    	oUpoMenu.añadirIngredientesAlergeno(arrayIngredientesAlergenos, sIngrediente);
+    	oUpoMenu.mostrarIngredientes();
 
     	alert("Gracias");
     	frmAltaIngrediente.submit();
+    	oUpoMenu.mostrarIngredientes();
     }
 }
 

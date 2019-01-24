@@ -3,7 +3,7 @@ var oUpoMenu = new UpoMenu();
 document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
 
 
-/*cargarDatos();
+cargarDatos();
 function cargarDatos(){
 
 	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85),new Array()));
@@ -14,7 +14,7 @@ function cargarDatos(){
 	oUpoMenu.añadirIngredientesPlato(arrayIngredientes, "a1");
 
 	oUpoMenu.mostrarPlatos();
-}*/
+}
 
 
 function añadirPlato(){
@@ -122,13 +122,17 @@ function añadirPlato(){
 	if (!bValido) {
         alert(sError);
     } else {
-		var arrayIngredientesPlato = sIngredientes.split(",");
-    	var oPlato = oUpoMenu.añadirPlato(new Plato(sId,sNombre,sTipo,fPrecio));
-    	oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
+		
+		//if (oUpoMenu.) {
+			var arrayIngredientesPlato = sIngredientes.split(",");
+	    	var oPlato = oUpoMenu.añadirPlato(new Plato(sId,sNombre,sTipo,fPrecio));
+	    	oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
+	    	alert("Gracias");
+    		frmAltaPlato.submit();
+    		oUpoMenu.mostrarPlatos();
+    	//}else
+    	//	alert("Ese plato ya e")
     	
-    	alert("Gracias");
-    	frmAltaPlato.submit();
-    	oUpoMenu.mostrarPlatos();
     }
 }
 // Limpiamos todos los Errores

@@ -7,7 +7,7 @@ class UpoMenu{
 		this.ingredientes = new Array();
 		this.bebidas = new Array();
     }
-    /*mostrarPlatos(){ // Platos
+    mostrarPlatos(){ // Platos
         console.log(".......Platos........");
         for (var i = 0; i < this.platos.length; i++) {
             console.log(this.platos[i]);
@@ -19,11 +19,11 @@ class UpoMenu{
         for (var i = 0; i < this.ingredientes.length; i++) {
             console.log(this.ingredientes[i]);
         }
-    }*/
+    }
     // Añadir un plato
 	añadirPlato(oPlato){
     	var pAñadido = false;
-    	if(this._buscarPlato(oPlato.nombre) == null){
+    	if(this._buscarPlato(oPlato.id) == null){
     		this.platos.push(oPlato);
     		pAñadido = true;
     	}
@@ -47,9 +47,9 @@ class UpoMenu{
     }
     // Añadir Ingredientes al Plato
     añadirIngredientesAlergeno(sTablaAlergeno, sIngrediente){
-        for (var i = 0; i < this.platos.length; i++) {
-            if (this.platos[i].nombre == sIngrediente){
-                this.platos[i].alergenos = sTablaAlergeno;
+        for (var i = 0; i < this.ingredientes.length; i++) {
+            if (this.ingredientes[i].nombre == sIngrediente){
+                this.ingredientes[i].alergenos = sTablaAlergeno;
             }
         }
     }
@@ -57,7 +57,7 @@ class UpoMenu{
 	_buscarPlato(oPlatoNombre){
     	var bPlato = null;
     	for (var i = 0; i < this.platos.length && bPlato == null; i++) {
-    		if (this.platos[i] == oPlatoNombre) {
+    		if (this.platos[i].id == oPlatoNombre) {
     		  bPlato = this.platos[i];
     		}
     	}
