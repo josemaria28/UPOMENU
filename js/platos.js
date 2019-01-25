@@ -171,8 +171,8 @@ function limpiarCamposPlato(){
 
 function crearSelectMultipleDeIngredientesPorPlato(){
 	// Seleccionamos el ultimo hijo del dormulario
-	var nodoDiv = document.querySelector("#frmAltaPlato");
-	
+	var nodoDiv = document.querySelector("#frmAltaPlato");//.lastChild;
+	// alert(nodoDiv.value);
 	/*var selectIngredientes = document.createElement("SELECT").multiple = true;
 	var contenidoIngredientes = document.createTextNode("Hola Mundo!");*/
 
@@ -192,6 +192,7 @@ function crearSelectMultipleDeIngredientesPorPlato(){
 
 	var contenido = document.createTextNode("Este es el parrafo...");
 	selectIngredientes.appendChild(contenido);
+	
 	nodoDiv.appendChild(selectIngredientes);
 
 }
