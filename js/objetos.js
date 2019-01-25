@@ -6,6 +6,7 @@ class UpoMenu{
         this.platos = new Array();
 		this.ingredientes = new Array();
 		this.bebidas = new Array();
+		this.eventos = new Array();
     }
     mostrarPlatos(){ // Platos
         console.log(".......Platos........");
@@ -143,6 +144,23 @@ class UpoMenu{
     	}
     	return false;
 	}
+	// Añadir un evento
+	agregarEvento(evento) {
+		if (!this._buscarEvento(evento.nombre)) {
+			this.eventos.push(evento);
+			return true;
+		}
+		return false;
+	}
+	// Buscar un evento
+	_buscarEvento(nombre) {
+		for (var i = 0; i < this.eventos.length; i++) {
+			if (nombre == this.eventos[i].nombre) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
 
 //Cliente, necesita nombre,teléfono,email y un número identificador(suponemos que es el dni)
@@ -207,12 +225,11 @@ class Bebida {
 
 // Evento
 class Evento {
-	constructor(nombre, fecha, lugar, numComensales, numEmpleados, duracion) {
+	constructor(nombre, fecha, numComensales, duracion, menu) {
 		this.nombre = nombre;
 		this.fecha = fecha;
-		this.lugar = lugar;
 		this.numComensales = numComensales;
-		this.numEmpleados = numEmpleados;
 		this.duracion = duracion;
+		this.menu = menu;
 	}
 }
