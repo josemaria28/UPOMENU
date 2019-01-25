@@ -82,7 +82,7 @@ function validarFormulario() {
 //		var evento = new Evento(nombre, fecha, comensales, duracion)
 //		upoMenu.agregarEvento();
 
-}
+	}
 }
 
 function agregarSpinner() {
@@ -120,7 +120,7 @@ function limpiarErrores() {
 		errores[i].remove();
 	}
 }
-
+/*
 function actualizarDesplegable() {
 	var primerPlato = document.querySelector("#txtPrimerPlato");
 	var platos = upoMenu.platos;
@@ -211,7 +211,7 @@ function borrarPrecio() {
 		}
 	}
 }
-
+*/
 function inicializarEventos() {
 	document.querySelector("#btnAceptarEvento").addEventListener("click", validarFormulario);
 	document.querySelector("#btnIncremento").addEventListener("click", actualizaValor);
@@ -223,6 +223,7 @@ function inicializarEventos() {
 	}
 }
 
+// Actualiza el valor de los comensales
 function actualizaValor(e) {
 
 	var comensales = document.querySelector("#txtComensales");
@@ -244,7 +245,7 @@ function actualizaValor(e) {
 
 
 
-
+// de formato de float a numero
 function numeroComa(numero) {
 	numero.toString();
 	numero = numero.replace(",", ".");

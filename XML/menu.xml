@@ -81,6 +81,16 @@
 			Coca-cola
 		</bebidas>
 	</menu>
+	<menu>
+		<nombre>Menu especial</nombre>
+		<precio>36,25</precio>
+		<primerPlato>3</primerPlato>
+		<segundoPlato>5</segundoPlato>
+		<postre>4</postre>
+		<bebidas>
+			Coca-cola
+		</bebidas>
+	</menu>
 	<bebida>
 		<nombre>Coca-Cola</nombre>
 		<precio>0,75</precio>
