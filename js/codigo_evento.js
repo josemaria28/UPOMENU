@@ -87,10 +87,11 @@ function validarFormulario() {
 
 function agregarSpinner() {
 	var boton = document.querySelector("#btnAceptarEvento");
+	boton.textContent = "Guardando... ";
 	var span = document.createElement("span");
 	span.classList.add("spinner-border", "spinner-border-sm");
 	boton.appendChild(span);
-	setTimeout(function() {frmEvento.submit();}, 2500);
+	setTimeout(function() {frmEvento.submit();}, 3000);
 }
 
 
