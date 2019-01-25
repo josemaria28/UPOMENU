@@ -118,7 +118,7 @@ function validarCliente(oEvento)
 			formulario.txtPassword.focus();
 		}
 		formulario.txtPassword.classList.add("error");
-        sError+= "\n-La contraseña debe contener alguna letra minúscula ,mayúscula, número, un caracter especial (@,#,$)";
+        sError+= "\n-La contraseña debe contener alguna letra minúscula ,mayúscula,  número, un caracter especial (@,#,$)";
         sError+= "\n tener entre 8 y 15 caracteres y no puede admitir espacios en blanco";
 	}
 	if(clave !== clave2)
