@@ -65,12 +65,23 @@ function validarFormulario() {
 		mostrarMensajeError(error);
 	}
 	else {
+
+		agregarSpinner();
 //		var evento = new Evento(nombre, fecha, comensales, duracion)
 //		upoMenu.agregarEvento();
 
-		frmEvento.submit();
-	}
 }
+}
+
+function agregarSpinner() {
+	var boton = document.querySelector("#btnAceptarEvento");
+	var span = document.createElement("span");
+	span.classList.add("spinner-border", "spinner-border-sm");
+	boton.appendChild(span);
+	setTimeout(function() {frmEvento.submit();}, 2500);
+}
+
+
 
 function mostrarMensajeError(error) {
 	var elemento = document.querySelectorAll(".is-invalid");
