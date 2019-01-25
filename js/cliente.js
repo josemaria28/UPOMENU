@@ -2,6 +2,13 @@ window.addEventListener("load",inicio,false);
 var oUpoMenu = new UpoMenu();
 
 var formulario = document.getElementById("frmRegistroCliente");
+var dni = formulario.txtDNI.value.trim();
+var nombre = formulario.txtNuevoNombre.value.trim();
+var apellidos = formulario.txtApellidos.value.trim();
+var nTelefono = formulario.txtTlf.value.trim();
+var correo = formulario.txtEmail.value.trim();
+var clave = formulario.txtPassword.value.trim();
+var clave2 = formulario.txtPassword2.value.trim();
 
 function inicio()
 {
@@ -33,7 +40,7 @@ function validarCliente(oEvento)
     
     //Validar DNI
 
-    var dni = formulario.txtDNI.value.trim();
+    
     var oExpReg = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
 
     if(oExpReg.test(dni)==false)
@@ -46,7 +53,7 @@ function validarCliente(oEvento)
 
     //Validar Nombre
 
-    var nombre = formulario.txtNuevoNombre.value.trim();
+    
     oExpReg = /^[a-zA-Z\s]{3,15}$/;
 
 	if(oExpReg.test(nombre)== false)
@@ -60,8 +67,8 @@ function validarCliente(oEvento)
 
     //Validar Apellidos
 
-    var apellidos = formulario.txtApellidos.value.trim();
-    oExpReg = /^([a-zA-Zñáéíóú]{2,40})$/;
+    
+    oExpReg = /^([a-zA-Zñáéíóú]{3,40})$/;
 
     if(oExpReg.test(apellidos)==false)
     {
@@ -73,7 +80,7 @@ function validarCliente(oEvento)
     }
     //Validar nº de teléfono 
 
-    var nTelefono = formulario.txtTlf.value.trim();
+    
     oExpReg = /^[\d]{3}[-]*([\d]{2}[-]*){2}[\d]{2}$/;
 
     if(oExpReg.test(nTelefono)==false)
@@ -87,7 +94,7 @@ function validarCliente(oEvento)
 
     //Validar correo electrónico
 
-    var correo = formulario.txtEmail.value.trim();
+    
     oExpReg = /[\w]+@{1}[\w]+\.[a-z]{2,3}$/;
 
     if(oExpReg.test(correo)==false)
@@ -100,8 +107,7 @@ function validarCliente(oEvento)
     }
 
     //Validar contraseña
-    var clave = formulario.txtPassword.value.trim();
-	var clave2 = formulario.txtPassword2.value.trim();
+    
 	oExpReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
 
 	if(oExpReg.test(clave) == false)
@@ -112,8 +118,8 @@ function validarCliente(oEvento)
 			formulario.txtPassword.focus();
 		}
 		formulario.txtPassword.classList.add("error");
-        sError+= "\n-La contraseña debe contener alguna letra minúscula o mayúscula o un número y tener entre 8 y 15 caracteres";
-        sError+= "\n No puede admitir espacios en blanco"
+        sError+= "\n-La contraseña debe contener alguna letra minúscula ,mayúscula, número, un caracter especial (@,#,$)";
+        sError+= "\n tener entre 8 y 15 caracteres y no puede admitir espacios en blanco";
 	}
 	if(clave !== clave2)
 	{
@@ -146,7 +152,8 @@ function limpiarErrores()
 
 function registrarCliente()
 {
-    oUpoMenu.altaCliente();
+    var oCliente = new oCliente(nombre,nTelefono,correo,dni);
+    oUpoMenu.altaCliente(oCliente);
     alert("Has sido registrado correctamente");
 
 }
