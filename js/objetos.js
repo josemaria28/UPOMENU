@@ -196,17 +196,15 @@ class Ingrediente {
 
 // Menu
 class Menu {
-	constructor(nombre, precio) {
+	constructor(nombre, precio, primerPlato, segundoPlato, postre) {
 		this.precio = precio;
 		this.nombre = nombre;
-		this.listaPlatos = new Array();
+		this.primerPlato = primerPlato;
+		this.segundoPlato = segundoPlato;
+		this.postre = postre;
 		this.listaBebidas = new Array();
 	}
 
-	altaPlato(plato) {
-		this.listaPlatos.push(plato);
-	}
-	
 	altaBebida(bebida) {
 		this.listaPlatos.push(bebida);
 	}

@@ -28,6 +28,9 @@ function validarFormulario() {
 		document.querySelector("#txtNombreEvento").classList.add("is-invalid");
 		error.push("El nombre debe contener caracteres alfanumérico de entre 6 y 50 caracteres");
 	}
+	else {
+		document.querySelector("#txtNombreEvento").classList.add("is-valid");
+	}
 
 	var fecha = document.querySelector("#txtFecha").value;
 //	exreg = /^[0-9]{4}([\-/.])(0?[1-9]|1[1-2])([\-/.])(3[01]|[12][0-9]|0?[1-9])$/;
@@ -39,6 +42,9 @@ function validarFormulario() {
 		
 		error.push("Debe seleccionar una fecha");
 	}
+	else {
+		document.querySelector("#txtFecha").classList.add("is-valid");
+	}
 
 	var comensales = document.querySelector("#txtComensales").value.trim();
 	exReg = /^[0-9]{1,3}$/;
@@ -49,6 +55,9 @@ function validarFormulario() {
 		document.querySelector("#txtComensales").classList.add("is-invalid");
 		error.push("Comensales debe ser un número");
 	}
+	else {
+		document.querySelector("#txtComensales").classList.add("is-valid");
+	}
 
 	var duracion = document.querySelector("#txtDuracion").value.trim();
 	exReg = /(\W|^)([mM]añana|[tT]arde|[nN]oche)(\W|$)/;
@@ -58,6 +67,9 @@ function validarFormulario() {
 
 		document.querySelector("#txtDuracion").classList.add("is-invalid");
 		error.push("Debe escribir Mañana, Tarde o Noche");
+	}
+	else {
+		document.querySelector("#txtDuracion").classList.add("is-valid");
 	}
 
 	if (!valido) {
