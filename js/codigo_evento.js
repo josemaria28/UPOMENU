@@ -103,7 +103,7 @@ function actualizarDesplegable() {
 		var option = document.createElement("option");
 		option.text = platos[i].nombre;
 		option.value = platos[i].id;
-		option.dataset.precio = platos[i].precio;
+		option.dataset.precio = platos[i].precio.toFixed(2);
 
 		primerPlato.appendChild(option);
 	}
@@ -114,7 +114,7 @@ function actualizarDesplegable() {
 		option = document.createElement("option");
 		option.text = platos[i].nombre;
 		option.value = platos[i].id;
-		option.dataset.precio = platos[i].precio;
+		option.dataset.precio = platos[i].precio.toFixed(2);
 
 		segundoPlato.appendChild(option);
 	}
@@ -125,7 +125,7 @@ function actualizarDesplegable() {
 		option = document.createElement("option");
 		option.text = platos[i].nombre;
 		option.value = platos[i].id;
-		option.dataset.precio = platos[i].precio;
+		option.dataset.precio = platos[i].precio.toFixed(2);
 
 		postre.appendChild(option);
 	}
@@ -137,7 +137,7 @@ function actualizarDesplegable() {
 		option = document.createElement("option");
 		option.text = listaBebidas[i].nombre;
 		option.value = listaBebidas[i].nombre;
-		option.dataset.precio = listaBebidas[i].precio;
+		option.dataset.precio = listaBebidas[i].precio.toFixed(2);
 
 		bebidas.appendChild(option);
 	}
@@ -160,7 +160,7 @@ function actualizarPrecio() {
 	}
 
 	var total = document.querySelector("#txtTotal");
-	total.value = precioTotal + " €";
+	total.value = precioTotal.toFixed(2) + " €";
 }
 
 function mostrarPrecio(elemento) {
