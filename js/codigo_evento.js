@@ -65,6 +65,8 @@ function validarFormulario() {
 		mostrarMensajeError(error);
 	}
 	else {
+		var evento = new Evento(nombre, fecha, comensales, duracion)
+		upoMenu.agregarEvento();
 		frmEvento.submit();
 	}
 }
