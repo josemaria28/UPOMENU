@@ -7,8 +7,8 @@ var xml = cargarXML("../XML/menu.xml");
 // Eventos
 
 function inicio() {
-//	datosPrueba();
-//	actualizarDesplegable();
+	datosPrueba();
+	actualizarDesplegable();
 	inicializarEventos();
 }
 
@@ -20,7 +20,7 @@ function validarFormulario() {
 	var error = new Array();
 
 	var nombre = document.querySelector("#txtNombreEvento").value.trim();
-	var exReg = /^[a-zA-ZÁÉÍÓÚñáéíóúÑ0-9]{6,50}$/;
+	var exReg = /^[a-zA-ZÁÉÍÓÚñáéíóúÑ0-9 ]{6,50}$/;
 
 	if (exReg.test(nombre) == false) {
 		valido = false;
@@ -78,9 +78,9 @@ function validarFormulario() {
 	}
 	else {
 
-		agregarSpinner();
 //		var evento = new Evento(nombre, fecha, comensales, duracion)
 //		upoMenu.agregarEvento();
+		agregarSpinner();
 
 	}
 }
@@ -97,14 +97,14 @@ function agregarSpinner() {
 
 
 function mostrarMensajeError(error) {
-	var elemento = document.querySelectorAll(".is-invalid");
+	var desplegable = document.querySelectorAll(".is-invalid");
 
-	for (var i = 0; i < elemento.length; i++) {
+	for (var i = 0; i < desplegable.length; i++) {
 		var div = document.createElement("div");
 		div.classList.add("texto-error");
 		div.textContent = error[i];
 
-		elemento[i].parentElement.appendChild(div);
+		desplegable[i].parentElement.appendChild(div);
 	}
 }
 
@@ -119,6 +119,50 @@ function limpiarErrores() {
 
 	for (var i = 0; i < errores.length; i++) {
 		errores[i].remove();
+	}
+}
+
+function actualizarDesplegable() {
+	var menu = document.querySelector("#txtMenu");
+	var menus = upoMenu.menus;
+
+	for (var i = 0; i < menus.length; i++) {
+		var option = document.createElement("option");
+		option.text = menus[i].nombre;
+		option.value = menus[i].nombre;
+		option.dataset.precio = menus[i].precio.toFixed(2);
+
+		menu.appendChild(option);
+	}
+
+	actualizarPrecio();
+}
+
+function actualizarPrecio() {
+	var desplegable = document.querySelector("select");
+
+	borrarPrecio();
+	mostrarPrecio();
+}
+
+function mostrarPrecio() {
+	var desplegable = document.querySelector("select");
+	var div = document.createElement("div");
+	div.classList.add("input-group-append", "capa-precio");
+	var input = document.createElement("spam");
+	input.classList.add("input-group-text");
+	input.textContent = desplegable.selectedOptions[0].dataset.precio + " €";
+	input.classList.add("text-center")
+	div.appendChild(input);
+	desplegable.after(div);
+	var padre = desplegable.parentElement;
+	padre.classList.add("input-group");
+}
+
+function borrarPrecio() {
+	var capa = document.querySelector(".capa-precio");
+	if (capa != null) {
+		capa.remove();
 	}
 }
 /*
@@ -190,16 +234,16 @@ function actualizarPrecio() {
 	total.value = precioTotal.toFixed(2) + " €";
 }
 
-function mostrarPrecio(elemento) {
+function mostrarPrecio(desplegable) {
 	var div = document.createElement("div");
 	div.classList.add("col-md-1", "capa-precio");
 	var input = document.createElement("input");
 	input.type = "text";
 	input.disabled = true;
-	input.value = elemento.selectedOptions[0].dataset.precio + " €";
+	input.value = desplegable.selectedOptions[0].dataset.precio + " €";
 	input.classList.add("text-center")
 	div.appendChild(input);
-	var padre = elemento.parentElement;
+	var padre = desplegable.parentElement;
 	padre.after(div);
 }
 
@@ -217,11 +261,7 @@ function inicializarEventos() {
 	document.querySelector("#btnAceptarEvento").addEventListener("click", validarFormulario);
 	document.querySelector("#btnIncremento").addEventListener("click", actualizaValor);
 	document.querySelector("#btnDecremento").addEventListener("click", actualizaValor);
-	var desplegables = document.querySelectorAll("select");
-	
-	for (let i = 0; i < desplegables.length; i++) {
-		desplegables[i].addEventListener("change", actualizarPrecio);
-	}
+	document.querySelector("select").addEventListener("change", actualizarPrecio);
 }
 
 // Actualiza el valor de los comensales
@@ -254,53 +294,30 @@ function numeroComa(numero) {
 }
 
 function datosPrueba() {
-	var platos = xml.querySelectorAll("plato");
+	var menus = xml.querySelectorAll("menu");
 
-	for (var i = 0; i < platos.length; i++) {
-		var id = platos[i].querySelector("id").textContent;
-		var nombre = platos[i].querySelector("nombre").textContent;
-		var tipo = platos[i].querySelector("tipo").textContent;
-		var precio = numeroComa(platos[i].querySelector("precio").textContent);
-		var ingredientes = platos[i].querySelectorAll("ingrediente");
-		var arrayIngredientes = new Array();
+	for (var i = 0; i < menus.length; i++) {
+		var nombre = menus[i].querySelector("nombre").textContent;
+		var precio = numeroComa(menus[i].querySelector("precio").textContent);
+		var pPlato = menus[i].querySelector("primerPlato").textContent;
+		var sPlato = menus[i].querySelector("segundoPlato").textContent;
+		var postre = menus[i].querySelector("postre").textContent;
+		var menu = new Menu(nombre, precio, pPlato, sPlato, postre);
+		var bebidas = menus[i].querySelectorAll("bebida");
 
-		for (var j = 0; j < ingredientes.length; j++) {
-			var nombresIngredientes = ingredientes[j].querySelectorAll("nombre");
+		for (var j = 0; j < bebidas.length; j++) {
+			var nombreBebida = bebidas[j].querySelector("nombre").textContent;
+			var precioBebida = numeroComa(bebidas[j].querySelector("precio").textContent);
+			var alcoholico = bebidas[j].querySelector("alcoholico").textContent;
+			var azucarado = bebidas[j].querySelector("azucarado").textContent;
+			var gaseoso = bebidas[j].querySelector("gaseoso").textContent;
 
-			for (var s = 0; s < nombresIngredientes.length; s++) {
-				arrayIngredientes.push(nombresIngredientes[s].textContent);
-			}
+			var bebida = new Bebida(nombreBebida, precioBebida, "si" == alcoholico, "si" == gaseoso, "si" == azucarado);
+			menu.altaBebida(bebida);
 		}
-		upoMenu.añadirPlato(new Plato(id, nombre, tipo, precio));
-		upoMenu.añadirIngredientesPlato(arrayIngredientes, id);
-	}
-/*
-	var bebidas = xml.querySelectorAll("bebida");
 
-	for (var i = 0; i < bebidas.length; i++) {
-		var nombre = bebidas[i].nombre;
-		var precio = bebidas[i].precio;
-		var alcoholico = bebidas[i].alcoholico;
-		var gaseoso = bebidas[i].gaseoso;
-		var azucarado = bebidas[i].azucarado;
-
-		upoMenu.agregarBebida(new Bebida(nombre, precio, alcoholico, gaseoso, azucarado));
+		upoMenu.agregarMenu(menu);
 	}
-/*
-	upoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
-	upoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
-	upoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
-	upoMenu.añadirPlato(new Plato(4, "helado", "postre", 1.5));
-	upoMenu.añadirPlato(new Plato(5, "plátano", "postre", 0.75));
-	upoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
-	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
-*/
-	upoMenu.agregarBebida(new Bebida("Coca-Cola", 0.75, false, true, true));
-	upoMenu.agregarBebida(new Bebida("Fanta", 0.5, false, true, true));
-	upoMenu.agregarBebida(new Bebida("Barceló", 6, true, false, false));
-	upoMenu.agregarBebida(new Bebida("7 up", 0.65, false, true, true));
-	upoMenu.agregarBebida(new Bebida("Camaleón", 0.75, false, true, true));
-	upoMenu.agregarBebida(new Bebida("Te", 0.95, false, true, false));
 }
 
 function cargarXML(fichero) {

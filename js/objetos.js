@@ -7,6 +7,7 @@ class UpoMenu{
 		this.ingredientes = new Array();
 		this.bebidas = new Array();
 		this.eventos = new Array();
+		this.menus = new Array();
     }
     mostrarPlatos(){ // Platos
         console.log(".......Platos........");
@@ -152,10 +153,26 @@ class UpoMenu{
 		}
 		return false;
 	}
-	// Buscar un evento
+	// Buscar un menu
 	_buscarEvento(nombre) {
 		for (var i = 0; i < this.eventos.length; i++) {
 			if (nombre == this.eventos[i].nombre) {
+				return true;
+			}
+		}
+		return false;
+	}
+	agregarMenu(menu) {
+		if (!this._buscarMenu(menu.nombre)) {
+			this.menus.push(menu);
+			return true;
+		}
+		return false;
+	}
+	// Buscar un menu
+	_buscarMenu(nombre) {
+		for (var i = 0; i < this.menus.length; i++) {
+			if (nombre == this.menus[i].nombre) {
 				return true;
 			}
 		}
@@ -206,7 +223,7 @@ class Menu {
 	}
 
 	altaBebida(bebida) {
-		this.listaPlatos.push(bebida);
+		this.listaBebidas.push(bebida);
 	}
 }
 

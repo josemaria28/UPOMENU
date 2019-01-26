@@ -11,11 +11,70 @@ function inicio() {
 }
 
 function inicializarEventos() {
+	document.querySelector("#btnAceptarMenu").addEventListener("click", validarFormulario);
 	var desplegables = document.querySelectorAll("select");
 	
 	for (let i = 0; i < desplegables.length; i++) {
 		desplegables[i].addEventListener("change", actualizarPrecio);
 	}
+}
+
+function validarFormulario() {
+	limpiarErrores();
+	var valido = true;
+	var error;
+
+	var nombre = document.querySelector("#txtNombreMenu").value.trim();
+	var exReg = /^[a-zA-ZÁÉÍÓÚñáéíóúÑ0-9 ]{6,30}$/;
+
+	if (!exReg.test(nombre)) {
+		valido = false;
+
+		document.querySelector("#txtNombreMenu").classList.add("is-invalid");
+		error = "El nombre debe contener caracteres alfanumérico de entre 6 y 30 caracteres";
+	}
+	else {
+		document.querySelector("#txtNombreMenu").classList.add("is-valid");
+	}
+
+	if (!valido) {
+		document.querySelector(".is-invalid").focus();
+		mostrarMensajeError(error);
+	}
+	else {
+		agregarSpinner();
+	}
+}
+
+function limpiarErrores() {
+	var error = document.querySelector(".is-invalid");
+	if (error != null) {
+		error.classList.remove("is-invalid");
+	}
+
+	error = document.querySelector(".texto-error");
+	if (error != null) {
+		error.remove();
+	}
+}
+
+function agregarSpinner() {
+	var boton = document.querySelector("#btnAceptarMenu");
+	boton.textContent = "Guardando... ";
+	var span = document.createElement("span");
+	span.classList.add("spinner-border", "spinner-border-sm");
+	boton.appendChild(span);
+	setTimeout(function() {frmMenu.submit();}, 3000);
+}
+
+function mostrarMensajeError(error) {
+	var desplegable = document.querySelector(".is-invalid");
+
+	var div = document.createElement("div");
+	div.classList.add("texto-error");
+	div.textContent = error;
+
+	desplegable.parentElement.appendChild(div);
 }
 
 // Actualiza los options del select
@@ -91,15 +150,17 @@ function actualizarPrecio() {
 // Agrega un input type="text" con el precio del plato
 function mostrarPrecio(elemento) {
 	var div = document.createElement("div");
-	div.classList.add("col-md-1", "capa-precio");
-	var input = document.createElement("input");
-	input.type = "text";
-	input.disabled = true;
-	input.value = elemento.selectedOptions[0].dataset.precio + " €";
+	div.classList.add("input-group-append", "capa-precio");
+	var input = document.createElement("spam");
+	input.classList.add("input-group-text");
+//	input.type = "text";
+//	input.disabled = true;
+	input.textContent = elemento.selectedOptions[0].dataset.precio + " €";
 	input.classList.add("text-center")
 	div.appendChild(input);
+	elemento.after(div);
 	var padre = elemento.parentElement;
-	padre.after(div);
+	padre.classList.add("input-group");
 }
 
 // Borra el input type="text" que contiene el precio del plato
@@ -141,6 +202,19 @@ function datosPrueba() {
 		upoMenu.añadirPlato(new Plato(id, nombre, tipo, precio));
 		upoMenu.añadirIngredientesPlato(arrayIngredientes, id);
 	}
+
+	var bebidas = xml.querySelectorAll("bebida");
+
+	for (var j = 0; j < bebidas.length; j++) {
+		var nombreBebida = bebidas[j].querySelector("nombre").textContent;
+		var precioBebida = numeroComa(bebidas[j].querySelector("precio").textContent);
+		var alcoholico = bebidas[j].querySelector("alcoholico").textContent;
+		var azucarado = bebidas[j].querySelector("azucarado").textContent;
+		var gaseoso = bebidas[j].querySelector("gaseoso").textContent;
+
+		var bebida = new Bebida(nombreBebida, precioBebida, "si" == alcoholico, "si" == gaseoso, "si" == azucarado);
+		upoMenu.agregarBebida(bebida);
+	}
 /*
 	var bebidas = xml.querySelectorAll("bebida");
 
@@ -161,13 +235,14 @@ function datosPrueba() {
 	upoMenu.añadirPlato(new Plato(5, "plátano", "postre", 0.75));
 	upoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
 	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
-*/
+
 	upoMenu.agregarBebida(new Bebida("Coca-Cola", 0.75, false, true, true));
 	upoMenu.agregarBebida(new Bebida("Fanta", 0.5, false, true, true));
 	upoMenu.agregarBebida(new Bebida("Barceló", 6, true, false, false));
 	upoMenu.agregarBebida(new Bebida("7 up", 0.65, false, true, true));
 	upoMenu.agregarBebida(new Bebida("Camaleón", 0.75, false, true, true));
 	upoMenu.agregarBebida(new Bebida("Te", 0.95, false, true, false));
+*/
 }
 
 function cargarXML(fichero) {
