@@ -128,7 +128,9 @@ function validarCliente(oEvento)
     }
     else
     {
-        registrarCliente();
+        var oCliente = new oCliente(nombre,nTelefono,correo,dni);
+        oUpoMenu.altaCliente(oCliente);
+        alert("Has sido registrado correctamente");
     }
 
 }
@@ -142,12 +144,4 @@ function limpiarErrores()
     formulario.txtTlf.classList.remove("error");
     formulario.txtEmail.classList.remove("error");
     formulario.txtPassword.classList.remove("error");
-}
-
-function registrarCliente()
-{
-    var oCliente = new oCliente(oEvento.nombre,oEvento.apellidos,oEvento.correo,oEvento.dni);
-    oUpoMenu.altaCliente(oCliente);
-    alert("Has sido registrado correctamente");
-
 }
