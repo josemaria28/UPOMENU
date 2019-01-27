@@ -94,6 +94,8 @@
 
 		function enviarMensaje()
 		{
+			limpiarErrores();
+    		solonumeros(oE);
 			//Antes de enviar el mensaje validamos que se hayan rellenado todos los campos correctamente,
 			//no tendrán expresiones regulares ya que puede ser libre el texto a escribir
 			var nombreContacto = formularioContacto.txtNombre.value.trim();
@@ -141,6 +143,20 @@
 				alert("Gracias por contactar con nosotros");
 				formularioContacto.reset();
 			}
+		}
+
+		function solonumeros(e){
+			var key = window.event ? e.which : e.keyCode;
+			if (key < 48 || key > 57) {
+  			e.preventDefault();
+			}
+		}
+		function limpiarErrores()
+		{
+			formularioContacto.txtNombre.classList.remove("error");
+			formularioContacto.txtTelefono.classList.remove("error");
+			formularioContacto.txtEmail.classList.remove("error");
+			formularioContacto.txtMsg.classList.remove("error");
 		}
 	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
