@@ -77,9 +77,10 @@ function validarFormulario() {
 		mostrarMensajeError(error);
 	}
 	else {
+		var menu = upoMenu._buscarMenu(document.querySelector("#txtMenu").value);
 
-//		var evento = new Evento(nombre, fecha, comensales, duracion)
-//		upoMenu.agregarEvento();
+		var evento = new Evento(nombre, fecha, comensales, duracion, menu);
+		upoMenu.agregarEvento(evento);
 		agregarSpinner();
 
 	}

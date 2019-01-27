@@ -153,7 +153,7 @@ class UpoMenu{
 		}
 		return false;
 	}
-	// Buscar un menu
+	// Buscar un evento
 	_buscarEvento(nombre) {
 		for (var i = 0; i < this.eventos.length; i++) {
 			if (nombre == this.eventos[i].nombre) {

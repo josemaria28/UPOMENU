@@ -42,6 +42,12 @@ function validarFormulario() {
 		mostrarMensajeError(error);
 	}
 	else {
+		var pPlato = document.querySelector("#txtPrimerPlato").value;
+		var sPlato = document.querySelector("#txtsegundpPlato").value;
+		var postre = document.querySelector("#txtPostre").value;
+
+		var menu = new Menu(nombre, precio, pPlato, sPlato, postre);
+		upoMenu.agregarMenu(menu);
 		agregarSpinner();
 	}
 }
