@@ -51,6 +51,7 @@
     background-color: #0062cc;
     border: none;
     cursor: pointer;
+    margin: 0 auto;
 }
 textarea{
     width: 100%;
