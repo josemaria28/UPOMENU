@@ -131,6 +131,7 @@ function validarCliente(oEvento)
         var oCliente = new Cliente(nombre,nTelefono,correo,dni);
         oUpoMenu.altaCliente(oCliente);
         alert("Has sido registrado correctamente");
+        formulario.reset();
     }
 
 }
