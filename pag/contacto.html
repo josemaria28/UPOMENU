@@ -96,7 +96,7 @@
 		function enviarMensaje()
 		{
 			
-			limpiarErrores();
+			limpiarCampos();
     		solonumeros(oE);
 			//Antes de enviar el mensaje validamos que se hayan rellenado todos los campos correctamente,
 			//no tendrán expresiones regulares ya que puede ser libre el texto a escribir
@@ -154,7 +154,7 @@
   			e.preventDefault();
 			}
 		}
-		function limpiarErrores()
+		function limpiarCampos()
 		{
 			formularioContacto.txtNombre.classList.remove("error");
 			formularioContacto.txtTelefono.classList.remove("error");
