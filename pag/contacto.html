@@ -71,7 +71,7 @@
 						<input type="text" name="txtNombre" class="form-control" placeholder="Tu nombre *" value=""  />
 					</div>
 					<div class="form-group">
-						<input type="text" name="txtEmail" class="form-control" placeholder="Tu email *" value=""  />
+						<input type="email" name="txtEmail" class="form-control" placeholder="Tu email *" value=""  />
 					</div>
 					<div class="form-group">
 						<input type="text" name="txtTelefono" class="form-control" placeholder="Tu número de teléfono *" value=""  />
@@ -94,8 +94,53 @@
 
 		function enviarMensaje()
 		{
-			alert("Gracias por contactar con nosotros");
-			formularioContacto.reset();
+			//Antes de enviar el mensaje validamos que se hayan rellenado todos los campos correctamente,
+			//no tendrán expresiones regulares ya que puede ser libre el texto a escribir
+			var nombreContacto = formularioContacto.txtNombre.value.trim();
+			var emailContacto = formularioContacto.txtEmail.value.trim();
+			var telefonoContacto = formularioContacto.txtTelefono.value.trim();
+			var mensajeContacto = formularioContacto.txtMsg.value.trim();
+			var bRelleno = true;
+			var sMensaje = "";
+
+			if(nombreContacto == "")
+			{
+				bRelleno = false;
+				formularioContacto.txtNombre.focus();
+				formularioContacto.txtNombre.classList.add("error");
+				
+			}
+
+			if(emailContacto == "")
+			{
+				bRelleno = false;
+				formularioContacto.txtEmail.focus();
+				formularioContacto.txtEmail.classList.add("error");
+			}
+
+			if(telefonoContacto == "")
+			{
+				bRelleno = false;
+				formularioContacto.txtTelefono.focus();
+				formularioContacto.txtTelefono.classList.add("error");
+			}
+			
+			if(mensajeContacto == "")
+			{
+				bRelleno = false;
+				formularioContacto.txtMsg.focus();
+				formularioContacto.txtMsg.classList.add("error");
+			}
+
+			if(bRelleno == false)
+			{
+				alert("Debe rellenar todos los campos");
+			}
+			else
+			{
+				alert("Gracias por contactar con nosotros");
+				formularioContacto.reset();
+			}
 		}
 	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
