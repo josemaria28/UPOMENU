@@ -95,3 +95,6 @@ textarea{
 .negrita{
     color: white;
 }
+.error{
+    background-color: yellow;
+  }
