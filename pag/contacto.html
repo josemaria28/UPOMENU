@@ -91,13 +91,10 @@
 	<script>
 		var formularioContacto = document.getElementById("formContacto");
 		formularioContacto.btnContact.addEventListener("click",enviarMensaje);
-		formularioContacto.txtTelefono.addEventListener("keypress",solonumeros);
+		formularioContacto.txtTelefono.addEventListener("keypress",solonumeros,false);
 
 		function enviarMensaje(oEvento)
 		{
-			
-			limpiarCampos();
-    		solonumeros(oE);
 			//Antes de enviar el mensaje validamos que se hayan rellenado todos los campos correctamente,
 			//no tendrán expresiones regulares ya que puede ser libre el texto a escribir
 			var nombreContacto = formularioContacto.txtNombre.value.trim();
@@ -107,6 +104,10 @@
 			var bRelleno = true;
 			var sMensaje = "";
 			var oE = oEvento || window.event;
+			
+			limpiarCampos();
+    		solonumeros(oE);
+			
 
 			if(nombreContacto == "")
 			{
