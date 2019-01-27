@@ -116,7 +116,9 @@ class UpoMenu{
             i++;
         }
         return oCliente;
-    }
+	}
+	
+
     altaCliente(oCliente)
     {
         var bInsertado = false;
@@ -180,14 +182,15 @@ class UpoMenu{
 	}
 }
 
-//Cliente, necesita nombre,teléfono,email y un número identificador(suponemos que es el dni)
+//Cliente, necesita nombre,teléfono,email y un número identificador(suponemos que es el dni), y una contraseña para entrar en el sistema
 class Cliente{
-    constructor(sNombre,iTelefono,sEmail,sDni)
+    constructor(sNombre,iTelefono,sEmail,sDni,sPassword)
     {
         this.nombre = sNombre;
         this.telefono = parseInt(iTelefono);
         this.email = sEmail;
-        this.dni = sDni;
+		this.dni = sDni;
+		this.password = sPassword;
     }
 }
 

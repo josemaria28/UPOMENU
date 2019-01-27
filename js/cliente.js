@@ -2,6 +2,7 @@ window.addEventListener("load",inicio,false);
 var oUpoMenu = new UpoMenu();
 
 var formulario = document.getElementById("frmRegistroCliente");
+var formIS = document.getElementById("formularioIS");
 
 function inicio()
 {
@@ -9,6 +10,8 @@ function inicio()
     formulario.btnRegistro.addEventListener("click",validarCliente);
     //Función para que el número de telefono sean sólo números
     formulario.txtTlf.addEventListener("keypress",solonumeros,false);
+    //Iniciar sesión (tiene que estar registrado previamente);
+    formIS.IS.addEventListener("click",iniciarSesion);
 }
 
 function solonumeros(e){
@@ -145,4 +148,12 @@ function limpiarErrores()
     formulario.txtTlf.classList.remove("error");
     formulario.txtEmail.classList.remove("error");
     formulario.txtPassword.classList.remove("error");
+}
+
+function iniciarSesion()
+{
+    var correoIntroducido = formIS.emailInput.value.trim();
+    var passIntroducido = formIS.passwordInput.value.trim();
+
+
 }
