@@ -91,9 +91,11 @@
 	<script>
 		var formularioContacto = document.getElementById("formContacto");
 		formularioContacto.btnContact.addEventListener("click",enviarMensaje);
+		formularioContacto.txtTelefono.addEventListener("keypress",solonumeros);
 
 		function enviarMensaje()
 		{
+			
 			limpiarErrores();
     		solonumeros(oE);
 			//Antes de enviar el mensaje validamos que se hayan rellenado todos los campos correctamente,
@@ -104,6 +106,7 @@
 			var mensajeContacto = formularioContacto.txtMsg.value.trim();
 			var bRelleno = true;
 			var sMensaje = "";
+			var oE = oEvento || window.event;
 
 			if(nombreContacto == "")
 			{
