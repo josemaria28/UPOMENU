@@ -21,16 +21,7 @@ function cargarDatos(){
 			oUpoMenu.añadirIngrediente(sNombreIngrediente);
 			oUpoMenu.añadirIngredientesAlergeno(aAlergenos, sNombreIngrediente.nombre);
 		}
-        
-/*
-	oUpoMenu.añadirIngrediente(new Ingrediente("p"));
-	oUpoMenu.añadirIngrediente(new Ingrediente("m"));
-
-	 var cad = "maria,laura,juan,mariano";
-	var arrayIngredientes = cad.split(",");
-	oUpoMenu.añadirIngredientesAlergeno(arrayIngredientes, "p");
-    // console.log(arrayIngredientes);*/
-
+	
 	oUpoMenu.mostrarIngredientes();
 }
 
@@ -86,15 +77,12 @@ function añadirIngrediente(){
         // Mostrar errores
         alert(sError);
     } else {
-    	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
-    	// Añadir ingrdiente
     	var arrayIngredientesAlergenos = sAlergeno.split(",");
     	var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente));
 
     	if (oIngrediente) {
     		oUpoMenu.añadirIngredientesAlergeno(arrayIngredientesAlergenos, sIngrediente);
     		alert("Ingrediente añadido.");
-    		// frmAltaIngrediente.submit();
     		limpiarCamposPlato();
     		//crearSelectMultipleDeIngredientesPorPlato();
     	}else {
@@ -103,14 +91,7 @@ function añadirIngrediente(){
     }
     oUpoMenu.mostrarIngredientes();
 }
-// Añadir alergenos a Ingrediente
-/*function añadirMASAlergenos(){
-	if (oUpoMenu._buscarIngrediente(frmAltaIngrediente.txtNombreIngrediente.value.trim())){
-		var arrayIngredientesAlergenos = sAlergeno.split(",");
-		oUpoMenu.añadirIngredientesAlergeno(arrayIngredientesAlergenos, sIngrediente);
 
-	}
-}*/
 
 // Limpiamos todos los Errores
 function limpiarErrores() {
