@@ -58,7 +58,7 @@ function mostrarMenus() {
 	var menus = xml.querySelectorAll("menu");
 	var nMenus = xml.querySelectorAll("menu").length;
 	console.log("Número de menus: "+nMenus);
-	var nFilas = nMenus / 4;
+	var nFilas = nMenus / 3;
 	console.log("Número de filas: "+nFilas);
 	var container = document.querySelector(".menus");
 	
@@ -96,7 +96,7 @@ function mostrarMenus() {
 		var fila = document.createElement("div");
 		fila.classList.add("card-deck");
 
-		while (contador < 4 && menus[j] != undefined) {
+		while (contador < 3 && menus[j] != undefined) {
 			var card = document.createElement("div");
 			card.classList.add("card");
 			var img = document.createElement("img");

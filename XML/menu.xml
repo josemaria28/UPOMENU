@@ -77,9 +77,9 @@
 		<primerPlato>1</primerPlato>
 		<segundoPlato>2</segundoPlato>
 		<postre>4</postre>
-		<bebidas>
-			Coca-cola
-		</bebidas>
+		<bebidaMenu>
+			Coca-Cola
+		</bebidaMenu>
 	</menu>
 	<menu>
 		<nombre>Menu especial</nombre>
@@ -87,9 +87,29 @@
 		<primerPlato>3</primerPlato>
 		<segundoPlato>5</segundoPlato>
 		<postre>4</postre>
-		<bebidas>
-			Coca-cola
-		</bebidas>
+		<bebidaMenu>
+			Coca-Cola
+		</bebidaMenu>
+	</menu>
+	<menu>
+		<nombre>Menu del dia</nombre>
+		<precio>32,25</precio>
+		<primerPlato>1</primerPlato>
+		<segundoPlato>2</segundoPlato>
+		<postre>4</postre>
+		<bebidaMenu>
+			Coca-Cola
+		</bebidaMenu>
+	</menu>
+	<menu>
+		<nombre>Menu especial</nombre>
+		<precio>36,25</precio>
+		<primerPlato>3</primerPlato>
+		<segundoPlato>5</segundoPlato>
+		<postre>4</postre>
+		<bebidaMenu>
+			Coca-Cola
+		</bebidaMenu>
 	</menu>
 	<bebida>
 		<nombre>Coca-Cola</nombre>

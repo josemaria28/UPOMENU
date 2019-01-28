@@ -304,20 +304,22 @@ function datosPrueba() {
 		var sPlato = menus[i].querySelector("segundoPlato").textContent;
 		var postre = menus[i].querySelector("postre").textContent;
 		var menu = new Menu(nombre, precio, pPlato, sPlato, postre);
-		var bebidas = menus[i].querySelectorAll("bebida");
+		var nombreBebida = menus[i].querySelector("bebidaMenu");
+		
+		menu.altaBebida(nombreBebida);
+		upoMenu.agregarMenu(menu);
 
-		for (var j = 0; j < bebidas.length; j++) {
-			var nombreBebida = bebidas[j].querySelector("nombre").textContent;
-			var precioBebida = numeroComa(bebidas[j].querySelector("precio").textContent);
-			var alcoholico = bebidas[j].querySelector("alcoholico").textContent;
-			var azucarado = bebidas[j].querySelector("azucarado").textContent;
-			var gaseoso = bebidas[j].querySelector("gaseoso").textContent;
+/*		for (var j = 0; j < bebidas.length; j++) {
+		
+			var nombreBebida = bebidas.querySelector("nombre").textContent;
+			var precioBebida = numeroComa(bebidas.querySelector("precio").textContent);
+			var alcoholico = bebidas.querySelector("alcoholico").textContent;
+			var azucarado = bebidas.querySelector("azucarado").textContent;
+			var gaseoso = bebidas.querySelector("gaseoso").textContent;
 
 			var bebida = new Bebida(nombreBebida, precioBebida, "si" == alcoholico, "si" == gaseoso, "si" == azucarado);
-			menu.altaBebida(bebida);
 		}
-
-		upoMenu.agregarMenu(menu);
+*/			
 	}
 }
 
