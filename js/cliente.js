@@ -132,9 +132,18 @@ function validarCliente(oEvento)
     else
     {
         var oCliente = new Cliente(nombre,nTelefono,correo,dni);
-        alert(oUpoMenu.altaCliente(oCliente));
-        alert("Has sido registrado correctamente");
-        formulario.reset();
+        var bInsertado = oUpoMenu.altaCliente(oCliente);
+        if(bInsertado)
+        {
+            alert("Has sido registrado correctamente");
+            formulario.reset();
+        }
+        else
+        {
+            alert("No ha podido registrarse. Lo sentimos");
+            formulario.reset();
+        }
+        
     }
 
 }
