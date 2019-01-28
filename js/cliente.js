@@ -132,9 +132,17 @@ function validarCliente(oEvento)
     else
     {
         var oCliente = new Cliente(nombre,nTelefono,correo,dni);
-        oUpoMenu.altaCliente(oCliente);
-        alert("Has sido registrado correctamente");
-        formulario.reset();
+        var bInsertado = oUpoMenu.altaCliente(oCliente);
+        if(bInsertado)
+        {
+            alert("Has sido registrado correctamente");
+            formulario.reset();
+        }
+        else
+        {
+            alert("No ha podido registrarse. Lo sentimos \n Revise todos los campos de nuevo");
+        }
+        
     }
 
 }
@@ -157,6 +165,7 @@ function iniciarSesion()
     var bAcceso = false;
 
     bAcceso = oUpoMenu.validarCredenciales(correoIntroducido,passIntroducido);
+    alert(bAcceso);
 
     if(bAcceso == true)
     {
