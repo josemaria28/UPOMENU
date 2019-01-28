@@ -14,23 +14,22 @@ function cargarDatos(){
 			var oAlergenos = oIngrediente[i].querySelectorAll("alergeno");
 			var aAlergenos = new Array();
 			// Recorremos todos los alergenos de cada ingrediente
-			alert(oAlergenos.length);
 			for (var a = 0; a < oAlergenos.length; a++) {
 				aAlergenos.push(oAlergenos[a].textContent);
 			}
 			var sNombreIngrediente = new Ingrediente(oNombre);
 			oUpoMenu.añadirIngrediente(sNombreIngrediente);
-			oUpoMenu.añadirIngredientesAlergeno(aAlergenos, sNombreIngrediente);
+			oUpoMenu.añadirIngredientesAlergeno(aAlergenos, sNombreIngrediente.nombre);
 		}
         
-
+/*
 	oUpoMenu.añadirIngrediente(new Ingrediente("p"));
 	oUpoMenu.añadirIngrediente(new Ingrediente("m"));
 
 	 var cad = "maria,laura,juan,mariano";
 	var arrayIngredientes = cad.split(",");
 	oUpoMenu.añadirIngredientesAlergeno(arrayIngredientes, "p");
-    // console.log(arrayIngredientes);
+    // console.log(arrayIngredientes);*/
 
 	oUpoMenu.mostrarIngredientes();
 }
@@ -90,13 +89,14 @@ function añadirIngrediente(){
     	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente, sAlergeno));
     	// Añadir ingrdiente
     	var arrayIngredientesAlergenos = sAlergeno.split(",");
-    	//var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente));
-    	if (oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente))) {
+    	var oIngrediente = oUpoMenu.añadirIngrediente(new Ingrediente(sIngrediente));
+
+    	if (oIngrediente) {
     		oUpoMenu.añadirIngredientesAlergeno(arrayIngredientesAlergenos, sIngrediente);
     		alert("Ingrediente añadido.");
     		// frmAltaIngrediente.submit();
     		limpiarCamposPlato();
-    		crearSelectMultipleDeIngredientesPorPlato();
+    		//crearSelectMultipleDeIngredientesPorPlato();
     	}else {
     		alert("Ese ingrediente ya existe.");
     	}
@@ -152,14 +152,14 @@ function limpiarCamposPlato(){
 	limpiar("txtNombreIngrediente");
 	limpiar("txtAlergenoIngrediente");
 }
-function crearSelectMultipleDeIngredientesPorPlato(){
+/*function crearSelectMultipleDeIngredientesPorPlato(){
 	// Seleccionamos el ultimo hijo del dormulario
 	var nodoDiv = document.querySelector("#frmAltaPlato").lastChild;
 	var selectIngredientes = document.createElement("SELECT").multiple = true;
 
-	/*var parrafo = document.createElement("p");
+	var parrafo = document.createElement("p");
 	var contenido = document.createTextNode("Hola Mundo!");
 	parrafo.appendChild(contenido);
-	document.body.appendChild(parrafo);*/
+	document.body.appendChild(parrafo);
 
-}
+}*/
