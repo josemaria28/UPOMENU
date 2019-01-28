@@ -170,7 +170,7 @@ function iniciarSesion()
 
     bAcceso = oUpoMenu.validarCredenciales(correoIntroducido,passIntroducido);
     alert(bAcceso);
-    
+
     if(bAcceso == true)
     {
         alert("Bienvenido");
