@@ -142,7 +142,7 @@ class UpoMenu{
 	_buscarBebida(nombre) {
     	for (var i = 0; i < this.bebidas.length; i++) {
     		if (this.bebidas[i].nombre == nombre) {
-				return true;
+				return this.bebidas[i];
     		}
     	}
     	return false;
