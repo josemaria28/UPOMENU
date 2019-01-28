@@ -8,6 +8,7 @@ function inicio() {
 	datosPrueba();
 	actualizarDesplegable();
 	inicializarEventos();
+	mostrarMenus();
 }
 
 function inicializarEventos() {
@@ -49,6 +50,74 @@ function validarFormulario() {
 		var menu = new Menu(nombre, precio, pPlato, sPlato, postre);
 		upoMenu.agregarMenu(menu);
 		agregarSpinner();
+	}
+}
+
+function mostrarMenus() {
+	var menus = xml.querySelectorAll("menu");
+	var nMenus = xml.querySelectorAll("menu").length;
+	console.log("Número de menus: "+nMenus);
+	var nFilas = nMenus / 4;
+	console.log("Número de filas: "+nFilas);
+	var container = document.querySelector(".menus");
+	
+	nFilas = Math.ceil(nFilas);
+	console.log("Número de filas: "+nFilas);
+/*
+	var fila = document.createElement("div");
+	fila.classList.add("card-deck");
+
+	for (var i = 0; i < nMenus; i++) {
+		var card = document.createElement("div");
+		card.classList.add("card");
+		var img = document.createElement("img");
+		img.classList.add("card-img-top");
+		img.setAttribute("src", "../img/menu.jpg");
+
+		var div = document.createElement("div");
+		div.classList.add("card-img-overlay");
+
+		var titulo = document.createElement("h4");
+		titulo.classList.add("card-title");
+		titulo.textContent = menus[i].querySelector("nombre").textContent;
+
+		div.appendChild(titulo);
+		card.appendChild(img);
+		card.appendChild(div);
+		fila.appendChild(card);
+	}
+	container.appendChild(fila);
+*/
+
+	var j = 0;
+	var contador = 0;
+	for (var i = 0; i < nFilas; i++) {
+		var fila = document.createElement("div");
+		fila.classList.add("card-deck");
+
+		while (contador < 4 && menus[j] != undefined) {
+			var card = document.createElement("div");
+			card.classList.add("card");
+			var img = document.createElement("img");
+			img.classList.add("card-img-top");
+			img.setAttribute("src", "../img/menu.jpg");
+
+			var div = document.createElement("div");
+			div.classList.add("card-img-overlay");
+
+			var titulo = document.createElement("h4");
+			titulo.classList.add("card-title");
+			titulo.textContent = menus[j].querySelector("nombre").textContent;
+
+			div.appendChild(titulo);
+			card.appendChild(img);
+			card.appendChild(div);
+			fila.appendChild(card);
+			j++;
+			contador++;
+		}
+		contador = 0;
+		container.appendChild(fila);
 	}
 }
 
