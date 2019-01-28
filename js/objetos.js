@@ -135,7 +135,11 @@ class UpoMenu{
 			{
 				bAcceso = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				//sessionStorage.setItem("usuarioActivo",this.listaClientes[i].email,this.listaClientes[i].password);
+=======
+				sessionStorage.setItem("usuarioActivo",this.listaClientes[i].email,this.listaClientes[i].password);
+>>>>>>> 7cd1a9b6c46739e8572cc846629b67a11c3415c6
 =======
 				sessionStorage.setItem("usuarioActivo",this.listaClientes[i].email,this.listaClientes[i].password);
 >>>>>>> 7cd1a9b6c46739e8572cc846629b67a11c3415c6
