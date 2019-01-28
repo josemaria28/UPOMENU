@@ -64,77 +64,52 @@ function mostrarMenus() {
 	
 	nFilas = Math.ceil(nFilas);
 	console.log("Número de filas: "+nFilas);
-/*
-	var fila = document.createElement("div");
-	fila.classList.add("card-deck");
-
-	for (var i = 0; i < nMenus; i++) {
-		var card = document.createElement("div");
-		card.classList.add("card");
-		var img = document.createElement("img");
-		img.classList.add("card-img-top");
-		img.setAttribute("src", "../img/menu.jpg");
-
-		var div = document.createElement("div");
-		div.classList.add("card-img-overlay");
-
-		var titulo = document.createElement("h4");
-		titulo.classList.add("card-title");
-		titulo.textContent = menus[i].querySelector("nombre").textContent;
-
-		div.appendChild(titulo);
-		card.appendChild(img);
-		card.appendChild(div);
-		fila.appendChild(card);
-	}
-	container.appendChild(fila);
-*/
-
+	
 	var j = 0;
 	var contador = 0;
 	for (var i = 0; i < nFilas; i++) {
 		var fila = document.createElement("div");
 		fila.classList.add("card-deck");
-
+		
 		while (contador < 3 && menus[j] != undefined) {
 			var card = document.createElement("div");
 			card.classList.add("card");
 			var img = document.createElement("img");
 			img.classList.add("card-img-top");
 			img.setAttribute("src", "../img/menu3.jpg");
-
+			
 			var div = document.createElement("div");
 			div.classList.add("card-img-overlay");
-
+			
 			var pPlato = upoMenu._buscarPlato(menus[j].querySelector("primerPlato").textContent).nombre;
 			var pPrimerPlato = document.createElement("p");
 			pPrimerPlato.classList.add("card-text", "color-menu");
 			pPrimerPlato.textContent = "Primer plato: "+pPlato;
-
+			
 			var sPlato = upoMenu._buscarPlato(menus[j].querySelector("segundoPlato").textContent).nombre;
 			var pSegundoPlato = document.createElement("p");
 			pSegundoPlato.classList.add("card-text", "color-menu");
 			pSegundoPlato.textContent = "Segundo plato: "+sPlato;
-
+			
 			var postre = upoMenu._buscarPlato(menus[j].querySelector("postre").textContent).nombre;
 			var pPostre = document.createElement("p");
 			pPostre.classList.add("card-text", "color-menu");
 			pPostre.textContent = "Postre plato: "+postre;
-
+			
 			var bebida = menus[j].querySelector("bebidaMenu").textContent;
 			var pBebida = document.createElement("p");
 			pBebida.classList.add("card-text", "color-menu");
 			pBebida.textContent = "Bebida: "+bebida;
-
+			
 			var precio = menus[j].querySelector("precio").textContent;
 			var pPrecio = document.createElement("p");
 			pPrecio.classList.add("card-text", "color-menu");
 			pPrecio.textContent = "Precio: "+precio+" €";
-
+			
 			var titulo = document.createElement("h4");
 			titulo.classList.add("card-title", "color-menu");
 			titulo.textContent = menus[j].querySelector("nombre").textContent;
-
+			
 			div.appendChild(titulo);
 			div.appendChild(pPrimerPlato);
 			div.appendChild(pSegundoPlato);
@@ -150,6 +125,31 @@ function mostrarMenus() {
 		contador = 0;
 		container.appendChild(fila);
 	}
+	/*
+		var fila = document.createElement("div");
+		fila.classList.add("card-deck");
+	
+		for (var i = 0; i < nMenus; i++) {
+			var card = document.createElement("div");
+			card.classList.add("card");
+			var img = document.createElement("img");
+			img.classList.add("card-img-top");
+			img.setAttribute("src", "../img/menu.jpg");
+	
+			var div = document.createElement("div");
+			div.classList.add("card-img-overlay");
+	
+			var titulo = document.createElement("h4");
+			titulo.classList.add("card-title");
+			titulo.textContent = menus[i].querySelector("nombre").textContent;
+	
+			div.appendChild(titulo);
+			card.appendChild(img);
+			card.appendChild(div);
+			fila.appendChild(card);
+		}
+		container.appendChild(fila);
+	*/
 }
 
 function limpiarErrores() {
