@@ -44,8 +44,9 @@ function validarFormulario() {
 	}
 	else {
 		var pPlato = document.querySelector("#txtPrimerPlato").value;
-		var sPlato = document.querySelector("#txtsegundpPlato").value;
+		var sPlato = document.querySelector("#txtSegundoPlato").value;
 		var postre = document.querySelector("#txtPostre").value;
+		var precio = document.querySelector("#txtTotal").value;
 
 		var menu = new Menu(nombre, precio, pPlato, sPlato, postre);
 		upoMenu.agregarMenu(menu);
@@ -105,11 +106,34 @@ function mostrarMenus() {
 			var div = document.createElement("div");
 			div.classList.add("card-img-overlay");
 
+			var pPlato = upoMenu._buscarPlato(menus[j].querySelector("primerPlato").textContent).nombre;
+			var pPrimerPlato = document.createElement("p");
+			pPrimerPlato.classList.add("card-text");
+			pPrimerPlato.textContent = "Primer plato: "+pPlato;
+
+			var sPlato = upoMenu._buscarPlato(menus[j].querySelector("segundoPlato").textContent).nombre;
+			var pSegundoPlato = document.createElement("p");
+			pSegundoPlato.classList.add("card-text");
+			pSegundoPlato.textContent = "Segundo plato: "+sPlato;
+
+			var postre = upoMenu._buscarPlato(menus[j].querySelector("postre").textContent).nombre;
+			var pPostre = document.createElement("p");
+			pPostre.classList.add("card-text");
+			pPostre.textContent = "Postre plato: "+postre;
+			
+/*			var postre = upoMenu._buscarPlato(menus[j].querySelector("postre").textContent).nombre;
+			var pPostre = document.createElement("p");
+			pPostre.classList.add("card-text");
+			pPostre.textContent = "Postre plato: "+postre;
+*/
 			var titulo = document.createElement("h4");
 			titulo.classList.add("card-title");
 			titulo.textContent = menus[j].querySelector("nombre").textContent;
 
 			div.appendChild(titulo);
+			div.appendChild(pPrimerPlato);
+			div.appendChild(pSegundoPlato);
+			div.appendChild(pPostre);
 			card.appendChild(img);
 			card.appendChild(div);
 			fila.appendChild(card);

@@ -78,13 +78,7 @@
 		<segundoPlato>2</segundoPlato>
 		<postre>4</postre>
 		<bebidas>
-			<bebida>
-				<nombre>Coca-Cola</nombre>
-				<precio>0,75</precio>
-				<alcoholico>no</alcoholico>
-				<azucarado>si</azucarado>
-				<gaseoso>si</gaseoso>
-			</bebida>
+			Coca-cola
 		</bebidas>
 	</menu>
 	<menu>
@@ -94,16 +88,9 @@
 		<segundoPlato>5</segundoPlato>
 		<postre>4</postre>
 		<bebidas>
-			<bebida>
-				<nombre>Coca-Cola</nombre>
-				<precio>0,75</precio>
-				<alcoholico>no</alcoholico>
-				<azucarado>si</azucarado>
-				<gaseoso>si</gaseoso>
-			</bebida>
+			Coca-cola
 		</bebidas>
 	</menu>
-
 	<bebida>
 		<nombre>Coca-Cola</nombre>
 		<precio>0,75</precio>
