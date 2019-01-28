@@ -3,6 +3,11 @@ var oUpoMenu = new UpoMenu();
 
 var formulario = document.getElementById("frmRegistroCliente");
 var formIS = document.getElementById("formularioIS");
+datosIniciales();
+function datosIniciales(){
+    oUpoMenu.altaCliente(new Cliente("josemaria",619938534,"jose@gmail.com","12345678A","Jose@1234567890"));
+    oUpoMenu.mostrarClientes();
+}
 
 function inicio()
 {
@@ -11,7 +16,7 @@ function inicio()
     //Función para que el número de telefono sean sólo números
     formulario.txtTlf.addEventListener("keypress",solonumeros,false);
     //Iniciar sesión (tiene que estar registrado previamente);
-    formIS.IS.addEventListener("click",iniciarSesion);
+    formularioIS.IS.addEventListener("click",iniciarSesion);
 }
 
 function solonumeros(e){
@@ -117,18 +122,21 @@ function validarCliente(oEvento)
 		formulario.txtPassword.classList.add("error");
         sError+= "\n-La contraseña debe contener alguna letra minúscula ,mayúscula,  número, un caracter especial (@,#,$)";
         sError+= "\n tener entre 8 y 15 caracteres y no puede admitir espacios en blanco";
-	}
+    }
+    //comprobamos que las dos claves son iguales
 	if(clave !== clave2)
 	{
 		bValido = false;
 		formulario.txtPassword2.classList.add("error");
 		sError+= "\n-Las dos contraseñas deben coincidir";
     }
-    
+    //Si hay algún error, lo mostramos para que sea corregido
     if(bValido == false)
     {
         alert(sError);
     }
+    //si no hay errores, creamos un cliente con los parámetros establecidos en el constructor,
+    //lo añadimos a la lista y reseteamos el formulario
     else
     {
         var oCliente = new Cliente(nombre,nTelefono,correo,dni);
@@ -158,10 +166,12 @@ function limpiarErrores()
     formulario.txtPassword.classList.remove("error");
 }
 
+//Con esta función iniciamos sesión con el correo y contraseña que previamente hayamos registrado
 function iniciarSesion()
 {
-    var correoIntroducido = formIS.emailInput.value.trim();
-    var passIntroducido = formIS.passwordInput.value.trim();
+    var correoIntroducido = formularioIS.emailInput.value.trim();
+    var passIntroducido = formularioIS.passwordInput.value.trim();
+    alert(correoIntroducido+" // "+passIntroducido);
     var bAcceso = false;
 
     bAcceso = oUpoMenu.validarCredenciales(correoIntroducido,passIntroducido);

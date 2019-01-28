@@ -9,6 +9,13 @@ class UpoMenu{
 		this.eventos = new Array();
 		this.menus = new Array();
     }
+    mostrarClientes(){ // Platos
+        console.log(".......Clientes........");
+        for (var i = 0; i < this.listaClientes.length; i++) {
+            console.log(this.listaClientes[i]);
+        }
+        
+    }
     mostrarPlatos(){ // Platos
         console.log(".......Platos........");
         for (var i = 0; i < this.platos.length; i++) {
@@ -124,10 +131,14 @@ class UpoMenu{
 
 		for(var i=0;i<this.listaClientes.length;i++)
 		{
-			if(correo == this.listaClientes[i].correo && contraseña == this.listaClientes[i].password)
+			if(correo == this.listaClientes[i].email && contraseña == this.listaClientes[i].password)
 			{
 				bAcceso = true;
-				sessionStorage.setItem("usuarioActivo",this.listaClientes[i].correo,this.listaClientes[i].password);
+<<<<<<< HEAD
+				//sessionStorage.setItem("usuarioActivo",this.listaClientes[i].email,this.listaClientes[i].password);
+=======
+				sessionStorage.setItem("usuarioActivo",this.listaClientes[i].email,this.listaClientes[i].password);
+>>>>>>> 7cd1a9b6c46739e8572cc846629b67a11c3415c6
 			}
 		}
 		return bAcceso;
