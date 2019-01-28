@@ -101,38 +101,38 @@ function mostrarMenus() {
 			card.classList.add("card");
 			var img = document.createElement("img");
 			img.classList.add("card-img-top");
-			img.setAttribute("src", "../img/menu.jpg");
+			img.setAttribute("src", "../img/menu3.jpg");
 
 			var div = document.createElement("div");
 			div.classList.add("card-img-overlay");
 
 			var pPlato = upoMenu._buscarPlato(menus[j].querySelector("primerPlato").textContent).nombre;
 			var pPrimerPlato = document.createElement("p");
-			pPrimerPlato.classList.add("card-text");
+			pPrimerPlato.classList.add("card-text", "color-menu");
 			pPrimerPlato.textContent = "Primer plato: "+pPlato;
 
 			var sPlato = upoMenu._buscarPlato(menus[j].querySelector("segundoPlato").textContent).nombre;
 			var pSegundoPlato = document.createElement("p");
-			pSegundoPlato.classList.add("card-text");
+			pSegundoPlato.classList.add("card-text", "color-menu");
 			pSegundoPlato.textContent = "Segundo plato: "+sPlato;
 
 			var postre = upoMenu._buscarPlato(menus[j].querySelector("postre").textContent).nombre;
 			var pPostre = document.createElement("p");
-			pPostre.classList.add("card-text");
+			pPostre.classList.add("card-text", "color-menu");
 			pPostre.textContent = "Postre plato: "+postre;
 
 			var bebida = menus[j].querySelector("bebidaMenu").textContent;
 			var pBebida = document.createElement("p");
-			pBebida.classList.add("card-text");
+			pBebida.classList.add("card-text", "color-menu");
 			pBebida.textContent = "Bebida: "+bebida;
 
 			var precio = menus[j].querySelector("precio").textContent;
 			var pPrecio = document.createElement("p");
-			pPrecio.classList.add("card-text");
+			pPrecio.classList.add("card-text", "color-menu");
 			pPrecio.textContent = "Precio: "+precio+" €";
 
 			var titulo = document.createElement("h4");
-			titulo.classList.add("card-title");
+			titulo.classList.add("card-title", "color-menu");
 			titulo.textContent = menus[j].querySelector("nombre").textContent;
 
 			div.appendChild(titulo);

@@ -112,6 +112,9 @@ section{
     text-align: center;
     margin: 10px;
 }
+.color-menu {
+	color: rgb(114, 91, 40);
+}
 .mtop {
 	margin-top: 10%;
 }
