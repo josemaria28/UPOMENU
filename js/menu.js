@@ -57,13 +57,10 @@ function validarFormulario() {
 function mostrarMenus() {
 	var menus = xml.querySelectorAll("menu");
 	var nMenus = xml.querySelectorAll("menu").length;
-	console.log("Número de menus: "+nMenus);
 	var nFilas = nMenus / 3;
-	console.log("Número de filas: "+nFilas);
 	var container = document.querySelector(".menus");
 	
 	nFilas = Math.ceil(nFilas);
-	console.log("Número de filas: "+nFilas);
 	
 	var j = 0;
 	var contador = 0;
