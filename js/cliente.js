@@ -144,6 +144,7 @@ function validarCliente(oEvento)
         if(bInsertado)
         {
             alert("Has sido registrado correctamente");
+            oUpoMenu.mostrarClientes();
             formulario.reset();
         }
         else
@@ -180,7 +181,7 @@ function iniciarSesion()
     if(bAcceso == true)
     {
         alert("Bienvenido");
-        oUpoMenu.mostrarClientes();
+        
     }
     else
     {
