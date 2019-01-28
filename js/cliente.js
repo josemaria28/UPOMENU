@@ -180,6 +180,7 @@ function iniciarSesion()
     if(bAcceso == true)
     {
         alert("Bienvenido");
+        oUpoMenu.mostrarClientes();
     }
     else
     {
