@@ -193,6 +193,6 @@ function crearSelectMultipleDeIngredientesPorPlato(){
 	var contenido = document.createTextNode("Este es el parrafo...");
 	selectIngredientes.appendChild(contenido);
 	
-	nodoDiv.appendChild(selectIngredientes);
+	//nodoDiv.appendChild(selectIngredientes);
 
 }
