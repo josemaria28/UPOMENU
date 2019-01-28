@@ -129,7 +129,7 @@ function mostrarMenus() {
 			var precio = menus[j].querySelector("precio").textContent;
 			var pPrecio = document.createElement("p");
 			pPrecio.classList.add("card-text");
-			pPrecio.textContent = "Precio: "+precio;
+			pPrecio.textContent = "Precio: "+precio+" €";
 
 			var titulo = document.createElement("h4");
 			titulo.classList.add("card-title");
