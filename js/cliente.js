@@ -172,15 +172,14 @@ function iniciarSesion()
 {
     var correoIntroducido = formularioIS.emailInput.value.trim();
     var passIntroducido = formularioIS.passwordInput.value.trim();
-    alert(correoIntroducido+" // "+passIntroducido);
     var bAcceso = false;
 
     bAcceso = oUpoMenu.validarCredenciales(correoIntroducido,passIntroducido);
-    alert(bAcceso);
 
     if(bAcceso == true)
     {
         alert("Bienvenido");
+        document.querySelector("#L1").remove;
         
     }
     else
