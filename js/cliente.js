@@ -117,18 +117,21 @@ function validarCliente(oEvento)
 		formulario.txtPassword.classList.add("error");
         sError+= "\n-La contraseña debe contener alguna letra minúscula ,mayúscula,  número, un caracter especial (@,#,$)";
         sError+= "\n tener entre 8 y 15 caracteres y no puede admitir espacios en blanco";
-	}
+    }
+    //comprobamos que las dos claves son iguales
 	if(clave !== clave2)
 	{
 		bValido = false;
 		formulario.txtPassword2.classList.add("error");
 		sError+= "\n-Las dos contraseñas deben coincidir";
     }
-    
+    //Si hay algún error, lo mostramos para que sea corregido
     if(bValido == false)
     {
         alert(sError);
     }
+    //si no hay errores, creamos un cliente con los parámetros establecidos en el constructor,
+    //lo añadimos a la lista y reseteamos el formulario
     else
     {
         var oCliente = new Cliente(nombre,nTelefono,correo,dni);
@@ -158,6 +161,7 @@ function limpiarErrores()
     formulario.txtPassword.classList.remove("error");
 }
 
+//Con esta función iniciamos sesión con el correo y contraseña que previamente hayamos registrado
 function iniciarSesion()
 {
     var correoIntroducido = formIS.emailInput.value.trim();
@@ -166,7 +170,7 @@ function iniciarSesion()
 
     bAcceso = oUpoMenu.validarCredenciales(correoIntroducido,passIntroducido);
     alert(bAcceso);
-
+    
     if(bAcceso == true)
     {
         alert("Bienvenido");
