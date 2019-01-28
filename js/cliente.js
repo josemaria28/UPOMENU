@@ -140,8 +140,7 @@ function validarCliente(oEvento)
         }
         else
         {
-            alert("No ha podido registrarse. Lo sentimos");
-            formulario.reset();
+            alert("No ha podido registrarse. Lo sentimos \n Revise todos los campos de nuevo");
         }
         
     }
