@@ -184,7 +184,7 @@ function iniciarSesion()
     else
     {
         alert("Credenciales incorrectas");
-        formIS.reset();
+        formularioIS.reset();
     }
 
 
