@@ -120,12 +120,17 @@ function mostrarMenus() {
 			var pPostre = document.createElement("p");
 			pPostre.classList.add("card-text");
 			pPostre.textContent = "Postre plato: "+postre;
-			
-/*			var postre = upoMenu._buscarPlato(menus[j].querySelector("postre").textContent).nombre;
-			var pPostre = document.createElement("p");
-			pPostre.classList.add("card-text");
-			pPostre.textContent = "Postre plato: "+postre;
-*/
+
+			var bebida = menus[j].querySelector("bebidaMenu").textContent;
+			var pBebida = document.createElement("p");
+			pBebida.classList.add("card-text");
+			pBebida.textContent = "Bebida: "+bebida;
+
+			var precio = menus[j].querySelector("precio").textContent;
+			var pPrecio = document.createElement("p");
+			pPrecio.classList.add("card-text");
+			pPrecio.textContent = "Precio: "+precio;
+
 			var titulo = document.createElement("h4");
 			titulo.classList.add("card-title");
 			titulo.textContent = menus[j].querySelector("nombre").textContent;
@@ -134,6 +139,8 @@ function mostrarMenus() {
 			div.appendChild(pPrimerPlato);
 			div.appendChild(pSegundoPlato);
 			div.appendChild(pPostre);
+			div.appendChild(pBebida);
+			div.appendChild(pPrecio);
 			card.appendChild(img);
 			card.appendChild(div);
 			fila.appendChild(card);
