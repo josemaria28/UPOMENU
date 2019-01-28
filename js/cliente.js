@@ -139,7 +139,7 @@ function validarCliente(oEvento)
     //lo añadimos a la lista y reseteamos el formulario
     else
     {
-        var oCliente = new Cliente(nombre,nTelefono,correo,dni);
+        var oCliente = new Cliente(nombre,nTelefono,correo,dni,clave);
         var bInsertado = oUpoMenu.altaCliente(oCliente);
         if(bInsertado)
         {
