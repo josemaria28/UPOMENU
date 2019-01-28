@@ -6,17 +6,24 @@ var oXML = loadXMLDoc("../XML/ingredientes.xml");
 cargarDatos();
 function cargarDatos(){
 	// Generar options
-		/*var oIngrediente = oXML.querySelector("ingrediente");
-		var oNombre = oIngrediente.querySelector("nombre");
-		var oAlergeno = oIngrediente.querySelectorAll("alergeno");
-		var oIngredienteMeter = null;
+		// Recogemos todos los ingredientes
+		var oIngrediente = oXML.querySelectorAll("ingrediente");
+		// Recorremos los nombres y los alergenos
+		for (var i = 0; i < oIngrediente.length; i++) {
+			var oNombre = oIngrediente[i].querySelector("nombre").textContent;
+			var oAlergenos = oIngrediente[i].querySelectorAll("alergeno");
+			var aAlergenos = new Array();
+			// Recorremos todos los alergenos de cada ingrediente
+			alert(oAlergenos.length);
+			for (var a = 0; a < oAlergenos.length; a++) {
+				aAlergenos.push(oAlergenos[a].textContent);
+			}
+			var sNombreIngrediente = new Ingrediente(oNombre);
+			oUpoMenu.añadirIngrediente(sNombreIngrediente);
+			oUpoMenu.añadirIngredientesAlergeno(aAlergenos, sNombreIngrediente);
+		}
+        
 
-        for (var i = 0; i < oIngrediente.length; i++) {
-        	oIngredienteMeter = oIngrediente[i].textContent;
-
-
-        }
-*/
 	oUpoMenu.añadirIngrediente(new Ingrediente("p"));
 	oUpoMenu.añadirIngrediente(new Ingrediente("m"));
 
