@@ -124,7 +124,7 @@ class UpoMenu{
 
 		for(var i=0;i<this.listaClientes.length;i++)
 		{
-			if(correo == this.listaClientes[i].correo && contraseña == this.listaClientes.password)
+			if(correo == this.listaClientes[i].correo && contraseña == this.listaClientes[i].password)
 			{
 				bAcceso = true;
 				sessionStorage.setItem("usuarioActivo",this.listaClientes[i].correo,this.listaClientes[i].password);
