@@ -118,6 +118,20 @@ class UpoMenu{
         return oCliente;
 	}
 	
+	validarCredenciales(correo,contraseña)
+	{
+		var bAcceso = false;
+
+		for(var i=0;i<this.listaClientes.length;i++)
+		{
+			if(correo == this.listaClientes[i].correo && contraseña == this.listaClientes.password)
+			{
+				bAcceso = true;
+				sessionStorage.setItem("usuarioActivo",this.listaClientes[i].correo,this.listaClientes[i].password);
+			}
+		}
+		return bAcceso;
+	}
 
     altaCliente(oCliente)
     {

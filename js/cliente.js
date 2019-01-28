@@ -154,6 +154,19 @@ function iniciarSesion()
 {
     var correoIntroducido = formIS.emailInput.value.trim();
     var passIntroducido = formIS.passwordInput.value.trim();
+    var bAcceso = false;
+
+    bAcceso = oUpoMenu.validarCredenciales(correoIntroducido,passIntroducido);
+
+    if(bAcceso == true)
+    {
+        alert("Bienvenido");
+    }
+    else
+    {
+        alert("Credenciales incorrectas");
+        formIS.reset();
+    }
 
 
 }
