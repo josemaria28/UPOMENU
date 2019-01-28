@@ -165,6 +165,7 @@ function iniciarSesion()
     var bAcceso = false;
 
     bAcceso = oUpoMenu.validarCredenciales(correoIntroducido,passIntroducido);
+    alert(bAcceso);
 
     if(bAcceso == true)
     {
