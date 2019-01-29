@@ -29,6 +29,9 @@ class UpoMenu{
             console.log(this.ingredientes[i]);
         }
     }*/
+    dameIngredientes(){
+        return this.ingredientes;
+    }
     // Añadir un plato
 	añadirPlato(oPlato){
     	var pAñadido = false;

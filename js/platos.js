@@ -1,7 +1,16 @@
 var oUpoMenu = new UpoMenu();
 
 document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
+datosIngredientes();
 cargaComboPlatos();
+
+function datosIngredientes(){
+	oUpoMenu.añadirIngrediente(new Ingrediente("hola"));
+	oUpoMenu.añadirIngrediente(new Ingrediente("Maria"));
+	oUpoMenu.añadirIngrediente(new Ingrediente("Juan"));
+	oUpoMenu.añadirIngrediente(new Ingrediente("Rafael"));
+	oUpoMenu.mostrarIngredientes();
+}
 function añadirPlato(){
 // Verificar formulario
 	var bValido = true;
@@ -165,6 +174,22 @@ function cargaComboPlatos(){
 	document.querySelector("#selectIngredientes").appendChild(selectIngredientes);
 
 	// Metemos los Ingredientes
-	
+	cargarElementos("txtIngredientePlato", oUpoMenu.dameIngredientes());
 
+}
+
+function cargarElementos(select, tabla){
+	tabla.sort();
+	addOptions(select, tabla);
+}
+function addOptions(select, tabla) {
+	var contenido = document.getElementById(select);
+
+	document.getElementById(select).textContent = "";
+
+	for (value in tabla) {
+		var option = document.createElement("option");
+		option.text = tabla[value].nombre;
+		contenido.add(option);
+	}
 }
