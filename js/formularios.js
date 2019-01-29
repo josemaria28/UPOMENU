@@ -62,7 +62,7 @@ function verContacto()
 {
     ocultarFormularios();
     document.getElementById("divContacto").style.display="none";
-    document.getElementById("divContacto").reset();
+    formContacto.reset();
 
 
 }
