@@ -150,6 +150,21 @@ function limpiarCamposPlato(){
 	limpiar("txtIngredientePlato");
 }
 function cargaComboPlatos(){
+	// Creamos el label
+	var labelIngrediente = document.createElement("label");
+	labelIngrediente.setAttribute("for", "text");
+	var contenidoLabel = document.createTextNode("Ingredientes:");
+	labelIngrediente.appendChild(contenidoLabel);
+	document.querySelector("#selectIngredientes").appendChild(labelIngrediente);
+
+	// Creamos el Select Multiple
+	var selectIngredientes = document.createElement("select");
+	selectIngredientes.setAttribute("id", "txtIngredientePlato");
+	selectIngredientes.setAttribute("class", "form-control");
+	selectIngredientes.setAttribute("multiple", "");
+	document.querySelector("#selectIngredientes").appendChild(selectIngredientes);
+
+	// Metemos los Ingredientes
 	
-	
+
 }
