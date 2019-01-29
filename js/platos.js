@@ -2,6 +2,7 @@ var oUpoMenu = new UpoMenu();
 
 document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
 datosIngredientes();
+
 cargaComboPlatos();
 
 function datosIngredientes(){
@@ -9,7 +10,7 @@ function datosIngredientes(){
 	oUpoMenu.añadirIngrediente(new Ingrediente("Maria"));
 	oUpoMenu.añadirIngrediente(new Ingrediente("Juan"));
 	oUpoMenu.añadirIngrediente(new Ingrediente("Rafael"));
-	oUpoMenu.mostrarIngredientes();
+	//oUpoMenu.mostrarIngredientes();
 }
 function añadirPlato(){
 // Verificar formulario
@@ -95,9 +96,9 @@ function añadirPlato(){
 	// Validar seleccionar ingredientes
 	var sIngredientes = frmAltaPlato.txtIngredientePlato.value.trim();
 	// Separados por coma,,,,
-	 oExpReg = /[A-Za-z]{0,}\,[A-Za-z]{0,}/g;
+	 //oExpReg = /[A-Za-z]{0,}\,[A-Za-z]{0,}/g;
 
-	if (!oExpReg.test(sIngredientes)) {
+	/*if (!oExpReg.test(sIngredientes)) {
 		if (bValido) {
 			bValido = false;
 			limpiarColor("txtIngredientePlato");
@@ -110,7 +111,7 @@ function añadirPlato(){
 		sError += "Ingrediente no debe de contener números ni caracteres raros.";
 	}else {
 		limpiarColor("txtIngredientePlato");
-	}
+	}*/
 
 
 	if (!bValido) {
@@ -118,7 +119,20 @@ function añadirPlato(){
     } else {
 		
 		//if (oUpoMenu.) {
-			var arrayIngredientesPlato = sIngredientes.split(",");
+			var arrayIngredientesPlato = new Array();
+
+			var elementosSeleccionados = dameSeleccionados(document.querySelector("#txtIngredientePlato"));
+			var tablaIngredientes = oUpoMenu.dameIngredientes();
+
+
+			for (var i = 0; i < elementosSeleccionados.length; i++) {
+				arrayIngredientesPlato[i] = elementosSeleccionados[i].value;
+				//console.log(elementosSeleccionados[i].value);
+			}
+			for (var i = 0; i < tablaIngredientes.length; i++) {
+				console.log(tablaIngredientes[i].nombre);
+			}
+
 	    	var oPlato = oUpoMenu.añadirPlato(new Plato(sId,sNombre,sTipo,fPrecio));
 	    	oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
 	    	alert("Plato añadido.");
@@ -193,3 +207,13 @@ function addOptions(select, tabla) {
 		contenido.add(option);
 	}
 }
+
+function dameSeleccionados(elemento){
+	var auxArr = new Array();
+	for (var i = 0; i < elemento.length; i++) {
+		if (elemento[i].selected)
+			auxArr.push(elemento[i]);
+	}
+	return auxArr;
+}
+
