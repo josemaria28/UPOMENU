@@ -31,6 +31,25 @@ function validarFormulario() {
 		frmAltaBebida.txtPrecio.classList.add("is-invalid");
 		error.push("El precio debe tener el formato correcto");
 	}
+
+	var alcoholico = frmAltaBebida.alcoholico.value.trim();
+
+	if (frmAltaBebida.alcoholico.item(0).checked || frmAltaBebida.alcoholico.item(1).checked) {
+		var elementos = document.querySelectorAll("[name=alcoholico]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-valid");
+		}
+	}
+	else {
+		var elementos = document.querySelectorAll("[name=alcoholico]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-invalid");
+		}
+
+		error.push("Debe indicar si es una bebida alcoholica");
+	}
 }
 
 function limpiarErrores() {
