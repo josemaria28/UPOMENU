@@ -4,7 +4,7 @@ function inicioIndex()
 {
     ocultarFormularios();
     document.getElementById("btnMenu").addEventListener("click",verAltaMenu);
-    document.getElementById("btnEvento").addEventListener("click",verAltaEvento);
+    document.getElementById("btnEventos").addEventListener("click",verAltaEvento);
 }
 
 function ocultarFormularios()
