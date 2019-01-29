@@ -17,17 +17,19 @@ function validarFormulario() {
 		frmAltaBebida.txtNombre.classList.add("is-valid");
 	}
 	else {
+		valido = false;
 		frmAltaBebida.txtNombre.classList.add("is-invalid");
 		error.push("El nombre debe contener caracteres alfanumérico de entre 6 y 50 caracteres");
 	}
 	
 	var precio = frmAltaBebida.txtPrecio.value.trim();
-	exReg = /^(\d|-)?(\d|,)*\.?\d*$/;
-	
+	exReg = /^(\d|-)?(\d|,)*\.?\d*{1+}$/;
+
 	if (exReg.test(precio)) {
 		frmAltaBebida.txtPrecio.classList.add("is-valid");
 	}
 	else {
+		valido = false;
 		frmAltaBebida.txtPrecio.classList.add("is-invalid");
 		error.push("El precio debe tener el formato correcto");
 	}
@@ -42,6 +44,7 @@ function validarFormulario() {
 		}
 	}
 	else {
+		valido = false;
 		var elementos = document.querySelectorAll("[name=alcoholico]");
 
 		for (var i = 0; i < elementos.length; i++) {
@@ -50,6 +53,10 @@ function validarFormulario() {
 
 		error.push("Debe indicar si es una bebida alcoholica");
 	}
+
+	if (!valido) {
+		mostrarMensajeError(error);
+	}
 }
 
 function limpiarErrores() {
@@ -57,5 +64,17 @@ function limpiarErrores() {
 
 	for (var i = 0; i < errores.length; i++) {
 		errores[i].classList.remove("is-invalid");
+	}
+}
+
+function mostrarMensajeError(error) {
+	var desplegable = document.querySelectorAll(".is-invalid");
+
+	for (var i = 0; i < desplegable.length; i++) {
+		var div = document.createElement("div");
+		div.classList.add("texto-error");
+		div.textContent = error[i];
+
+		desplegable[i].parentElement.appendChild(div);
 	}
 }
