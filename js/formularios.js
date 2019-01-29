@@ -9,6 +9,7 @@ function inicioIndex()
     document.getElementById("btnIngredientes").addEventListener("click",verAltaIngredientes);
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
+    document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
 }
 
 function ocultarFormularios()
@@ -19,6 +20,7 @@ function ocultarFormularios()
     document.getElementById("frmAltaIngrediente").style.display="none";
     document.getElementById("frmAltaBebida").style.display="none";
     document.getElementById("divContacto").style.display="none";
+    document.getElementById("divRegistro").style.display="none";
 
 }
 
@@ -63,6 +65,11 @@ function verContacto()
     ocultarFormularios();
     document.getElementById("divContacto").style.display="block";
     formContacto.reset();
+}
 
-
+function verRegistro()
+{
+    ocultarFormularios();
+    document.getElementById("divRegistro").style.display="block";
+    frmRegistroCliente.reset();
 }

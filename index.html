@@ -52,7 +52,7 @@
               <li class="dropdown order-1">
                   <!-- <img src="svg/account-login.svg" width="30px" height="30px" alt="Iniciar sesion" id="logoiniciosesion"> -->
                   <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btnInicioSesion"><span class="enlaceCarrusel">Iniciar Sesión<span class="caret"></span></button>
-                  <p><span class="negrita">¿No tienes cuenta? - </span><a class="enlaceRegistro" href="pag/registro.html">Regístrate</a>
+                  <p><span class="negrita">¿No tienes cuenta? - </span><a id="enlaceRegistrarse" class="enlaceRegistro" href="pag/registro.html">Regístrate</a>
                   <ul class="dropdown-menu dropdown-menu-right mt-2">
                      <li class="px-3 py-2">
                          <form class="form" role="form">
@@ -455,6 +455,46 @@
                     </div>
                   </form>
                 </div>
+
+                <section class="container" id="divRegistro">
+                    <article class="row">
+                            <div id="divInfoRegistro" class="alert alert-info">
+                                <span class="textoRegistro"><strong>Bienvenido a la página de registro de UPOMenu</strong></span>
+                            </div>
+                      <form class="form-horizontal col-md-12" method="POST" id="frmRegistroCliente" name="frmRegistroCliente">
+                        <div class="form-group">
+                          <label for="text">DNI</label>
+                          <input type="text" class="form-control" id="txtDNI" placeholder="DNI" name="txtDNI">
+                        </div>
+                        <div class="form-group">
+                          <label for="text">Nombre:</label>
+                          <input type="text" class="form-control" id="txtNuevoNombre" placeholder="Nombre" name="txtNuevoNombre">
+                        </div>
+                        <div class="form-group">
+                          <label for="text">Apellidos</label>
+                          <input type="text" class="form-control" id="txtApellidos" placeholder="Apellidos" name="txtApellidos">
+                        </div>
+                        <div class="form-group">
+                          <label for="text">Teléfono:</label>
+                          <input type="text" class="form-control" id="txtTlf" placeholder="NºTeléfono" name="txtTlf">
+                                </div>
+                                <div class="form-group">
+                                    <label for="text">Email:</label>
+                                    <input type="email" class="form-control" id="txtEmail" placeholder="Correo electrónico" name="txtEmail">
+                                </div>
+                                <div class="form-group">
+                                    <label for="text">Contraseña:</label>
+                                    <input type="password" class="form-control" id="txtPassword" placeholder="Contraseña" name="txtPassword">
+                                </div>
+                                <div class="form-group">
+                                        <label for="text">Repetir contraseña:</label>
+                                        <input type="password" class="form-control" id="txtPassword2" placeholder="Repita su contrasseña" name="txtPassword2">
+                                    </div>
+                        <input type="button" value="Registrarme" name="btnRegistro" id="btnRegistro" class="btn btn-block btn-primary btn btn-secondary">
+                      </form>
+                    </article>
+                  </section>
+                
   
      
 <script src="js/formularios.js"></script>
