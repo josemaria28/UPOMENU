@@ -20,29 +20,29 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="nav navbar-nav">
             <li class="nav-item active" role="button">
-                <a class="nav-link" role="button">Menus</a>
+                <a class="nav-link" id="btnMenu" role="button">Menus</a>
             </li>
             <li class="nav-item active" role="button">
-              <a class="nav-link" role="button">Eventos</a>
+              <a class="nav-link" id="btnEventos" role="button">Eventos</a>
             </li>
             <li class="nav-item active dropdown" role="button">
                 <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" >Platos</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" role="button">Ingredientes</a>
+                  <a class="dropdown-item" id="btnIngredientes" role="button">Ingredientes</a>
                 </div>
             </li>
             <li class="nav-item active" role="button">
-              <a class="nav-link" role="button">Bebidas</a>
+              <a class="nav-link" id="btnBebidas" role="button">Bebidas</a>
             </li>
             <li class="nav-item active" role="button">
-                <a class="nav-link" role="button">Contacto</a>
+                <a class="nav-link" id="btnContacto" role="button">Contacto</a>
             </li>
             <li class="nav-item active dropdown" role="button">
                 <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">Listados</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" role="button">Listado de Menus</a>
-                  <a class="dropdown-item" role="button">Listado de Platos</a>
-                  <a class="dropdown-item"role="button">Listado de Clientes</a>
+                  <a class="dropdown-item" id="btnListadoMenus" role="button">Listado de Menus</a>
+                  <a class="dropdown-item" id="btnListadoPlatos" role="button">Listado de Platos</a>
+                  <a class="dropdown-item" id="btnListadoClientes" role="button">Listado de Clientes</a>
                 </div>
             </li>   
           </ul>
@@ -120,9 +120,89 @@
             <span class="sr-only">Siguiente</span>
           </a>
         </div>
+
+        <section>
+            <div class="container mtop">
+              <form name="frmMenu" id="frmMenu">
+                <div class="form-group row">
+                  <div class="col-md-2">
+                    <label for="txtNombre">Nombre</label>
+                  </div>
+                  <div class="col-md">
+                    <input type="text" class="form-control" name="txtNombreMenu" id="txtNombreMenu" placeholder="Nombre">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-2">
+                    <label for="txtPrimerPlato">Primer Plato</label>
+                  </div>
+                  <div class="col-md">
+                    <select class="custom-select" name="txtPrimerPlato" id="txtPrimerPlato">
+                      <!--> option </-->
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-2">
+                    <label for="txtSegundoPlato">Segundo Plato</label>
+                  </div>
+                  <div class="col-md">
+                    <select class="custom-select" name="txtSegundoPlato" id="txtSegundoPlato">
+                      <!--> option </-->
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-2">
+                    <label for="txtPostre">Postre</label>
+                  </div>
+                  <div class="col-md">
+                    <select class="custom-select" name="txtPostre" id="txtPostre">
+                      <!--> option </-->
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-2">
+                    <label for="txtBebidas">Bebidas</label>
+                  </div>
+                  <div class="col-md">
+                    <select class="custom-select" name="txtBebidas" id="txtBebidas">
+                      <!--> option </-->
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-1">
+                    <label for="txtTotal">Total</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control" name="txtTotal" id="txtTotal" placeholder="" disabled>
+                  </div>
+                  <div class="col-md-4">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-2">
+                  </div>
+                  <div class="col-md">
+                    <button type="button" name="btnAceptarMenu" id="btnAceptarMenu" class="btn btn-primary btn-block">Aceptar</button>
+                  </div>
+                  <div class="col-md">
+                    <button type="button" name="btnCancelarMenu" id="btnCancelarMenu" class="btn btn-danger btn-block">Cancelar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="container menus">
+              
+            </div>
+          </section>
   
      
-
+<script src="js/formularios.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
