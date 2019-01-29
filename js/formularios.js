@@ -7,7 +7,7 @@ function inicioIndex()
     document.getElementById("btnEventos").addEventListener("click",verAltaEvento);
     document.getElementById("btnPlatos").addEventListener("click",verAltaPlato);
     document.getElementById("btnIngredientes").addEventListener("click",verAltaIngredientes);
-    document.getElementById("frmAltaBebida").addEventListener("click",verAltaBebidas);
+    document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
 }
 
 function ocultarFormularios()
