@@ -23,7 +23,7 @@ function validarFormulario() {
 	}
 	
 	var precio = frmAltaBebida.txtPrecio.value.trim();
-	exReg = /^(\d|-)?(\d|,)*\.?\d*{1+}$/;
+	exReg = /^(\d)?(\d|,)*\.?\d+$/;
 
 	if (exReg.test(precio)) {
 		frmAltaBebida.txtPrecio.classList.add("is-valid");
@@ -64,6 +64,12 @@ function limpiarErrores() {
 
 	for (var i = 0; i < errores.length; i++) {
 		errores[i].classList.remove("is-invalid");
+	}
+
+	errores = document.querySelectorAll(".texto-error");
+
+	for (var i = 0; i < errores.length; i++) {
+		errores[i].remove();
 	}
 }
 
