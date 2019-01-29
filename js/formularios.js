@@ -61,7 +61,7 @@ function verAltaBebidas()
 function verContacto()
 {
     ocultarFormularios();
-    document.getElementById("formContacto").style.display="none";
+    document.getElementById("formContacto").style.display="block";
     formContacto.reset();
 
 
