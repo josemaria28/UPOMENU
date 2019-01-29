@@ -135,6 +135,6 @@ section{
 .error{
     background-color: yellow;
   }
-  #frmAltaPlato,#frmAltaIngrediente{
+  #frmPlato,#frmAltaIngrediente,#frmAltaBebida{
       margin: 15px;
   }
