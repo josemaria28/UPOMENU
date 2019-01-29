@@ -67,7 +67,7 @@
 	</nav>
 	<section class="container">
 		<article class="row">
-			<form class="form-horizontal col-md-12" id="frmAltaPlato" name="frmAltaBebida">
+			<form class="form-horizontal col-md-12" id="frmAltaBebida" name="frmAltaBebida">
 				<div class="form-group">
 					<label for="text">Nombre:</label>
 					<input type="text" class="form-control" id="txtNombre" placeholder="Nombre" name="txtNombre">
@@ -82,20 +82,34 @@
 						<input type="radio" id="alcoholicoSi" name="alcoholico" class="custom-control-input" value="si">
 						<label class="custom-control-label" for="alcoholicoSi">Si</label>
 					</div>
-						<div class="custom-control custom-radio custom-control-inline">
+					<div class="custom-control custom-radio custom-control-inline">
 						<input type="radio" id="alcoholicoNo" name="alcoholico" class="custom-control-input" value="no">
 						<label class="custom-control-label" for="alcoholicoNo">No</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="text">Gaseoso:</label>
-					<input type="text" class="form-control" id="txtGaseoso" placeholder="Gaseoso" name="txtGaseoso">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="gaseosoSi" name="gaseoso" class="custom-control-input" value="si">
+						<label class="custom-control-label" for="gaseosoSi">Si</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="gaseosoNo" name="gaseoso" class="custom-control-input" value="no">
+						<label class="custom-control-label" for="gaseosoNo">No</label>
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="text">Azucarado:</label>
-					<input type="text" class="form-control" id="txtAzucarado" placeholder="Azucarado" name="txtAzucarado">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="azucaradoSi" name="azucarado" class="custom-control-input" value="si">
+						<label class="custom-control-label" for="azucaradoSi">Si</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="azucaradoNo" name="azucarado" class="custom-control-input" value="no">
+						<label class="custom-control-label" for="azucaradoNo">No</label>
+					</div>
 				</div>
-				<input type="button" class="btn btn-primary btn-block btn btn-secondary btnInicioSesion" id="btnAñadirPlatos" name="btnAñadirPlatos" value="Añadir">
+				<input type="button" class="btn btn-block btn-secondary btnInicioSesion" id="btnAñadirBebida" name="btnAñadirBebida" value="Añadir">
 			</form>
 		</article>
 	</section>
