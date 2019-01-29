@@ -3,8 +3,8 @@ var oUpoMenu = new UpoMenu();
 document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
 var oXML = loadXMLDoc("../XML/ingredientes.xml");
 // document.getElementById("añadirMASAlergenos").addEventListener("click",añadirMASAlergenos, false);
-cargarDatos();
-function cargarDatos(){
+cargarIngredientes();
+function cargarIngredientes(){
 	// Generar options
 		// Recogemos todos los ingredientes
 		var oIngrediente = oXML.querySelectorAll("ingrediente");
@@ -21,8 +21,8 @@ function cargarDatos(){
 			oUpoMenu.añadirIngrediente(sNombreIngrediente);
 			oUpoMenu.añadirIngredientesAlergeno(aAlergenos, sNombreIngrediente.nombre);
 		}
-	
-	oUpoMenu.mostrarIngredientes();
+	//ocultar("btnAñadirIngredientes");
+	// oUpoMenu.mostrarIngredientes();
 }
 
 // Añadir Ingrediente
@@ -34,8 +34,7 @@ function añadirIngrediente(){
 
 	// Validar campo nombreIngrediente
 	var sIngrediente = frmAltaIngrediente.txtNombreIngrediente.value.trim();
-	//alert(sIngrediente);
-	// Error de Numeros
+
 	var oExpReg = /[A-Za-z]/g;
 	///-----------------------------
 	if (!oExpReg.test(sIngrediente)) {
@@ -65,7 +64,6 @@ function añadirIngrediente(){
 		frmAltaIngrediente.txtAlergenoIngrediente.classList.add("Error");
 		errorColor("txtAlergenoIngrediente");
 		limpiar("txtAlergenoIngrediente");
-		//frmAltaIngrediente.txtAlergenoIngrediente.focus();
 		
 		sError += "\nPara introducir los alergenos debe separarlos por comas.\n\tEjemplo: Leche,Soja,...";
 	}else {
@@ -84,7 +82,6 @@ function añadirIngrediente(){
     		oUpoMenu.añadirIngredientesAlergeno(arrayIngredientesAlergenos, sIngrediente);
     		alert("Ingrediente añadido.");
     		limpiarCamposPlato();
-    		//crearSelectMultipleDeIngredientesPorPlato();
     	}else {
     		alert("Ese ingrediente ya existe.");
     	}
@@ -114,6 +111,13 @@ function vacio(campo){
 function limpiarColor(campo){
 	return document.getElementById(campo).style.background = 'white';
 }
+// Formulario
+function mostrar(campo){
+	document.getElementById(campo).style.display = "block";
+}
+function ocultar(campo){
+	document.getElementById(campo).style.display = "none";
+}
 
 function loadXMLDoc(filename) {
     if (window.XMLHttpRequest) {
@@ -133,14 +137,3 @@ function limpiarCamposPlato(){
 	limpiar("txtNombreIngrediente");
 	limpiar("txtAlergenoIngrediente");
 }
-/*function crearSelectMultipleDeIngredientesPorPlato(){
-	// Seleccionamos el ultimo hijo del dormulario
-	var nodoDiv = document.querySelector("#frmAltaPlato").lastChild;
-	var selectIngredientes = document.createElement("SELECT").multiple = true;
-
-	var parrafo = document.createElement("p");
-	var contenido = document.createTextNode("Hola Mundo!");
-	parrafo.appendChild(contenido);
-	document.body.appendChild(parrafo);
-
-}*/

@@ -1,22 +1,7 @@
 var oUpoMenu = new UpoMenu();
 
 document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
-
-crearSelectMultipleDeIngredientesPorPlato();
-cargarDatos();
-function cargarDatos(){
-
-	oUpoMenu.añadirPlato(new Plato("a1","Papas","Tapa",parseFloat(3.85),new Array()));
-	oUpoMenu.añadirPlato(new Plato("a2","Setas","Plato",parseFloat(8.85),new Array()));
-
-	var cad = "maria,laura,juan";
-	var arrayIngredientes = cad.split(",");
-	oUpoMenu.añadirIngredientesPlato(arrayIngredientes, "a1");
-
-	oUpoMenu.mostrarPlatos();
-}
-
-
+cargaComboPlatos();
 function añadirPlato(){
 // Verificar formulario
 	var bValido = true;
@@ -129,10 +114,7 @@ function añadirPlato(){
 	    	oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
 	    	alert("Plato añadido.");
 	    	limpiarCamposPlato();
-    		//frmAltaPlato.submit();
     		oUpoMenu.mostrarPlatos();
-    	//}else
-    	//	alert("Ese plato ya e")
     	
     }
 }
@@ -167,32 +149,7 @@ function limpiarCamposPlato(){
 	limpiar("txtPrecioPlato");
 	limpiar("txtIngredientePlato");
 }
-
-
-function crearSelectMultipleDeIngredientesPorPlato(){
-	// Seleccionamos el ultimo hijo del dormulario
-	var nodoDiv = document.querySelector("#frmAltaPlato");//.lastChild;
-	// alert(nodoDiv.value);
-	/*var selectIngredientes = document.createElement("SELECT").multiple = true;
-	var contenidoIngredientes = document.createTextNode("Hola Mundo!");*/
-
-	var iG = ["Maria","Juan","Jose","Lorena"];
-	//////// Creamos el Select ///////////
-	var selectIngredientes = document.createElement("select");
-	// No funciona
-	// selectIngredientes.multiline= true;
-
-	// Añadimos identificadores
-	selectIngredientes.id ="txtIngredientePlato";
-	selectIngredientes.className = "form-control";
-
-	// Añadir el contenido
+function cargaComboPlatos(){
 	
-
-
-	var contenido = document.createTextNode("Este es el parrafo...");
-	selectIngredientes.appendChild(contenido);
 	
-	//nodoDiv.appendChild(selectIngredientes);
-
 }
