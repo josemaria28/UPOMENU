@@ -18,7 +18,7 @@ function ocultarFormularios()
     document.getElementById("frmPlato").style.display="none";
     document.getElementById("frmAltaIngrediente").style.display="none";
     document.getElementById("frmAltaBebida").style.display="none";
-    document.getElementById("formContacto").style.display="none";
+    document.getElementById("divContacto").style.display="none";
 
 }
 
@@ -61,7 +61,7 @@ function verAltaBebidas()
 function verContacto()
 {
     ocultarFormularios();
-    document.getElementById("formContacto").style.display="block";
+    document.getElementById("divContacto").style.display="block";
     formContacto.reset();
 
 
