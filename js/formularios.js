@@ -49,7 +49,7 @@ function verAltaIngredientes()
     frmAltaIngrediente.reset();
 }
 
-function verAltaIngredientes()
+function verAltaBebidas()
 {
     ocultarFormularios();
     document.getElementById("frmAltaBebida").style.display="block";
