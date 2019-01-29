@@ -8,6 +8,7 @@ function inicioIndex()
     document.getElementById("btnPlatos").addEventListener("click",verAltaPlato);
     document.getElementById("btnIngredientes").addEventListener("click",verAltaIngredientes);
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
+    document.getElementById("btnContacto").addEventListener("click",verContacto);
 }
 
 function ocultarFormularios()
@@ -17,6 +18,7 @@ function ocultarFormularios()
     document.getElementById("frmPlato").style.display="none";
     document.getElementById("frmAltaIngrediente").style.display="none";
     document.getElementById("frmAltaBebida").style.display="none";
+    document.getElementById("divContacto").style.display="none";
 
 }
 
@@ -54,4 +56,13 @@ function verAltaBebidas()
     ocultarFormularios();
     document.getElementById("frmAltaBebida").style.display="block";
     frmAltaBebida.reset();
+}
+
+function verContacto()
+{
+    ocultarFormularios();
+    document.getElementById("divContacto").style.display="none";
+    document.getElementById("divContacto").reset();
+
+
 }

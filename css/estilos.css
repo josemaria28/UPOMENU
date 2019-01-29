@@ -88,11 +88,9 @@ border: none;
     color: royalblue;
 }
 
-section{
-    margin-top: 7%;
+.clear {
+    clear:both;
 }
-
-.clear {clear:both;}
 
 .negrita{
     color: white;
