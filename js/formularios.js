@@ -1,5 +1,4 @@
 window.addEventListener("load",inicioIndex,false);
-var oUpoMenu = new UpoMenu();
 
 function inicioIndex()
 {
@@ -406,7 +405,7 @@ function verListadoClientes()
     {
         oCelda.textContent = listaClientes[i].dni;
     }
-
+    
     divListado.appendChild(oTabla);
 
 
