@@ -1,6 +1,10 @@
+var oUpoMenu = new UpoMenu();
+window.addEventListener("load",inicioIndex,false);
+
+var oXML = loadXMLDoc("XML/ingredientes.xml");
 
 //Variables Globales
-var oUpoMenu = new UpoMenu();
+
 var formulario = document.getElementById("frmRegistroCliente");
 var formIS = document.getElementById("formularioIS");
 //Datos iniciales de 1 cliente 
@@ -11,7 +15,6 @@ function datosIniciales(){
 }
 
 //Manejadores de eventos 
-
 function inicioIndex()
 {
     ocultarFormularios();
