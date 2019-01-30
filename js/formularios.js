@@ -27,14 +27,16 @@ function ocultarFormularios()
 function verAltaMenu()
 {
     ocultarFormularios();
-    document.getElementById("frmMenu").style.display="block";
+	document.getElementById("frmMenu").style.display="block";
+	document.querySelector("script+script").setAttribute("src", "js/menu.js");
     frmMenu.reset();
 }
 
 function verAltaEvento()
 {
     ocultarFormularios();
-    document.getElementById("frmEvento").style.display="block";
+	document.getElementById("frmEvento").style.display="block";
+	document.querySelector("script+script").setAttribute("src", "js/evento.js");
     frmEvento.reset();
 
 }
@@ -42,21 +44,24 @@ function verAltaEvento()
 function verAltaPlato()
 {
     ocultarFormularios();
-    document.getElementById("frmPlato").style.display="block";
+	document.getElementById("frmPlato").style.display="block";
+	document.querySelector("script+script").setAttribute("src", "js/platos.js");
     frmAltaPlato.reset();
 }
 
 function verAltaIngredientes()
 {
     ocultarFormularios();
-    document.getElementById("frmAltaIngrediente").style.display="block";
+	document.getElementById("frmAltaIngrediente").style.display="block";
+	document.querySelector("script+script").setAttribute("src", "js/ingredientes.js");
     frmAltaIngrediente.reset();
 }
 
 function verAltaBebidas()
 {
     ocultarFormularios();
-    document.getElementById("frmAltaBebida").style.display="block";
+	document.getElementById("frmAltaBebida").style.display="block";
+	document.querySelector("script+script").setAttribute("src", "js/bebida.js");
     frmAltaBebida.reset();
 }
 

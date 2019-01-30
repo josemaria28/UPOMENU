@@ -9,6 +9,9 @@ font-size: 17px;
 border: none;
 
 }
+a {
+	cursor: pointer;
+}
 
 #btnLogin:hover{
     background-color: green;
