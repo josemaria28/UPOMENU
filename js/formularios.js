@@ -430,6 +430,10 @@ function verListadoClientes()
     for(var i=0;i<listaClientes.length;i++)
     {
         oCelda.textContent = listaClientes[i].dni;
+        oCelda.textContent = listaClientes[i].nombre;
+        oCelda.textContent = listaClientes[i].email;
+        oCelda.textContent = listaClientes[i].telefono;
+        oCelda.textContent = listaClientes[i].password;
     }
     
     divListado.appendChild(oTabla);
