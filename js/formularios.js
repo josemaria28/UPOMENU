@@ -32,6 +32,7 @@ function ocultarFormularios()
 
 function verAltaMenu()
 {
+    ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmMenu");
 	document.querySelector("script+script").setAttribute("src", "js/menu.js");
@@ -40,8 +41,9 @@ function verAltaMenu()
 
 function verAltaEvento()
 {
+    ocultar("carrusel");
     ocultarFormularios();
-	 mostrar("frmEvento");
+	mostrar("frmEvento");
 	document.querySelector("script+script").setAttribute("src", "js/evento.js");
     frmEvento.reset();
 
@@ -67,6 +69,7 @@ function verAltaIngredientes()
 
 function verAltaBebidas()
 {
+    ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaBebida");
 	document.querySelector("script+script").setAttribute("src", "js/bebida.js");
@@ -75,6 +78,7 @@ function verAltaBebidas()
 
 function verContacto()
 {
+    ocultar("carrusel");
     ocultarFormularios();
     mostrar("divContacto");
     formContacto.reset();
@@ -82,6 +86,7 @@ function verContacto()
 
 function verRegistro()
 {
+    ocultar("carrusel");
     ocultarFormularios();
     mostrar("divRegistro");
     frmRegistroCliente.reset();
