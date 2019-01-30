@@ -45,7 +45,7 @@ function inicioIndex()
     //Función para que el número de telefono sean sólo números
     formulario.txtTlf.addEventListener("keypress",solonumeros,false);
     //Iniciar sesión (tiene que estar registrado previamente);
-    formularioIS.IS.addEventListener("click",iniciarSesion);
+    formIS.IS.addEventListener("click",iniciarSesion);
 }
 
 function ocultarFormularios()
