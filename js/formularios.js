@@ -3,6 +3,7 @@ window.addEventListener("load",inicioIndex,false);
 function inicioIndex()
 {
     ocultarFormularios();
+    mostrarClientes();
     document.getElementById("btnMenu").addEventListener("click",verAltaMenu);
     document.getElementById("btnEventos").addEventListener("click",verAltaEvento);
     document.getElementById("btnPlatos").addEventListener("click",verAltaPlato);
