@@ -46,6 +46,9 @@ function inicioIndex()
     formulario.txtTlf.addEventListener("keypress",solonumeros,false);
     //Iniciar sesión (tiene que estar registrado previamente);
     formIS.IS.addEventListener("click",iniciarSesion);
+    mostrarClientes();
+    mostrarPlatos();
+    mostrarIngredientes();
 }
 
 function ocultarFormularios()
