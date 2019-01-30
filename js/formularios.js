@@ -14,20 +14,20 @@ function inicioIndex()
 
 function ocultarFormularios()
 {
-    document.getElementById("frmMenu").style.display="none";
-    document.getElementById("frmEvento").style.display="none";
-    document.getElementById("frmPlato").style.display="none";
-    document.getElementById("frmAltaIngrediente").style.display="none";
-    document.getElementById("frmAltaBebida").style.display="none";
-    document.getElementById("divContacto").style.display="none";
-    document.getElementById("divRegistro").style.display="none";
+    ocultar("frmMenu");
+    ocultar("frmEvento");
+    ocultar("frmPlato");
+    ocultar("frmAltaIngrediente");
+    ocultar("frmAltaBebida");
+    ocultar("divContacto");
+    ocultar("divRegistro");
 
 }
 
 function verAltaMenu()
 {
     ocultarFormularios();
-	document.getElementById("frmMenu").style.display="block";
+	mostrar("frmMenu");
 	document.querySelector("script+script").setAttribute("src", "js/menu.js");
     frmMenu.reset();
 }
@@ -35,7 +35,7 @@ function verAltaMenu()
 function verAltaEvento()
 {
     ocultarFormularios();
-	document.getElementById("frmEvento").style.display="block";
+	 mostrar("frmEvento");
 	document.querySelector("script+script").setAttribute("src", "js/evento.js");
     frmEvento.reset();
 
@@ -43,8 +43,9 @@ function verAltaEvento()
 
 function verAltaPlato()
 {
+    ocultar("carrusel");
     ocultarFormularios();
-	document.getElementById("frmPlato").style.display="block";
+	 mostrar("frmPlato");
 	document.querySelector("script+script").setAttribute("src", "js/platos.js");
     frmAltaPlato.reset();
 }
@@ -52,7 +53,7 @@ function verAltaPlato()
 function verAltaIngredientes()
 {
     ocultarFormularios();
-	document.getElementById("frmAltaIngrediente").style.display="block";
+	mostrar("frmAltaIngrediente");
 	document.querySelector("script+script").setAttribute("src", "js/ingredientes.js");
     frmAltaIngrediente.reset();
 }
@@ -60,7 +61,7 @@ function verAltaIngredientes()
 function verAltaBebidas()
 {
     ocultarFormularios();
-	document.getElementById("frmAltaBebida").style.display="block";
+	mostrar("frmAltaBebida");
 	document.querySelector("script+script").setAttribute("src", "js/bebida.js");
     frmAltaBebida.reset();
 }
@@ -68,13 +69,43 @@ function verAltaBebidas()
 function verContacto()
 {
     ocultarFormularios();
-    document.getElementById("divContacto").style.display="block";
+    mostrar("divContacto");
     formContacto.reset();
 }
 
 function verRegistro()
 {
     ocultarFormularios();
-    document.getElementById("divRegistro").style.display="block";
+    mostrar("divRegistro");
     frmRegistroCliente.reset();
 }
+
+
+// Formulario
+function mostrar(campo){
+    document.getElementById(campo).style.display = "block";
+}
+function ocultar(campo){
+    document.getElementById(campo).style.display = "none";
+}
+// Limpiamos todos los Errores
+/*function limpiarErrores() {
+    frmAltaIngrediente.txtNombreIngrediente.classList.remove("Error");
+}*/
+// Color Error
+function errorColor(campo){
+    return document.getElementById(campo).style.background = 'yellow';
+}
+// Capa limpiar
+function limpiar(capa){
+    return document.getElementById(capa).value = "";
+}
+// Vaciar Campo
+function vacio(campo){
+    return document.getElementById(campo).value = "";
+}
+// Limpar color
+function limpiarColor(campo){
+    return document.getElementById(campo).style.background = 'white';
+}
+
