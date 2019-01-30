@@ -10,6 +10,7 @@ function inicioIndex()
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
+    document.querySelectorAll(".btnCarrusel").addEventListener("click",verAltaPlato);
     // Formulario Platos
     document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
     document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
