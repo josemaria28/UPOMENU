@@ -1,4 +1,5 @@
 window.addEventListener("load",inicioIndex,false);
+var oUpoMenu = new UpoMenu();
 
 function inicioIndex()
 {
@@ -394,7 +395,21 @@ function verListadoClientes()
     oCelda.textContent = "Password";
     oFila.appendChild(oCelda);
 
+    var oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+    oFila = oTBody.insertRow(-1);
+    oCelda = oFila.insertCell(-1);
+
+    var listaClientes = oUpoMenu.listaClientes;
+    for(var i=0;i<listaClientes.length;i++)
+    {
+        oCelda.textContent = listaClientes[i].dni;
+    }
+
     divListado.appendChild(oTabla);
 
 
 }
+
+<script src="objetos.js"></script>
