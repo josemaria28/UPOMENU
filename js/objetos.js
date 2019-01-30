@@ -13,7 +13,7 @@ class UpoMenu{
     //     console.log(".......Clientes........");
     //     for (var i = 0; i < this.listaClientes.length; i++) {
     //         console.log(this.listaClientes[i]);
-        }
+        //}
         
     // }
     mostrarPlatos(){ // Platos
