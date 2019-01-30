@@ -11,7 +11,7 @@ var formIS = document.getElementById("formularioIS");
 datosIniciales();
 function datosIniciales(){
     oUpoMenu.altaCliente(new Cliente("josemaria",619938534,"jose@gmail.com","12345678A","Jose@1234567890"));
-    oUpoMenu.mostrarClientes();
+    //oUpoMenu.mostrarClientes();
 }
 
 //Manejadores de eventos 
@@ -38,6 +38,11 @@ function inicioIndex()
     document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
     
     cargarIngredientes();
+    oUpoMenu.mostrarClientes();
+    oUpoMenu.mostrarPlatos();
+    oUpoMenu.mostrarIngredientes();
+    cargaComboPlatos();
+    
     // Formulario Cliente
 
     //Registrar cliente
@@ -46,9 +51,6 @@ function inicioIndex()
     formulario.txtTlf.addEventListener("keypress",solonumeros,false);
     //Iniciar sesión (tiene que estar registrado previamente);
     formIS.IS.addEventListener("click",iniciarSesion);
-    mostrarClientes();
-    mostrarPlatos();
-    mostrarIngredientes();
 }
 
 function ocultarFormularios()
@@ -136,7 +138,6 @@ function ocultar(campo){
 // Limpiamos todos los Errores
 function limpiarErrores() {
     frmAltaIngrediente.txtNombreIngrediente.classList.remove("Error");
-    frmAltaIngrediente.txtNombreIngrediente.classList.remove("Error");
     frmAltaIngrediente.txtAlergenoIngrediente.classList.remove("Error");
 }
 function limpiarCamposPlato(){
@@ -173,6 +174,52 @@ function loadXMLDoc(filename) {
 
     return xhttp.responseXML;
 }
+// Cargamos el select Multiple
+function cargaComboPlatos(){
+    // Creamos el label
+    var labelIngrediente = document.createElement("label");
+    labelIngrediente.setAttribute("for", "text");
+    var contenidoLabel = document.createTextNode("Ingredientes:");
+    labelIngrediente.appendChild(contenidoLabel);
+    document.querySelector("#selectIngredientes").appendChild(labelIngrediente);
+
+    // Creamos el Select Multiple
+    var selectIngredientes = document.createElement("select");
+    selectIngredientes.setAttribute("id", "txtIngredientePlato");
+    selectIngredientes.setAttribute("class", "form-control");
+    selectIngredientes.setAttribute("multiple", "");
+    document.querySelector("#selectIngredientes").appendChild(selectIngredientes);
+
+    // Metemos los Ingredientes
+    cargarElementos("txtIngredientePlato", oUpoMenu.dameIngredientes());
+
+}
+
+function cargarElementos(select, tabla){
+    tabla.sort();
+    addOptions(select, tabla);
+}
+function addOptions(select, tabla) {
+    var contenido = document.getElementById(select);
+
+    document.getElementById(select).textContent = "";
+
+    for (value in tabla) {
+        var option = document.createElement("option");
+        option.text = tabla[value].nombre;
+        contenido.add(option);
+    }
+}
+
+function dameSeleccionados(elemento){
+    var auxArr = new Array();
+    for (var i = 0; i < elemento.length; i++) {
+        if (elemento[i].selected)
+            auxArr.push(elemento[i]);
+    }
+    return auxArr;
+}
+
 
 // <<<<<<<------  Metodos meter DATOS ---->>>>>>
 function añadirPlato(){
@@ -281,26 +328,25 @@ function añadirPlato(){
         alert(sError);
     } else {
         
-        //if (oUpoMenu.) {
-            var arrayIngredientesPlato = new Array();
+        var arrayIngredientesPlato = new Array();
 
-            var elementosSeleccionados = dameSeleccionados(document.querySelector("#txtIngredientePlato"));
-            var tablaIngredientes = oUpoMenu.dameIngredientes();
+        var elementosSeleccionados = dameSeleccionados(document.querySelector("#txtIngredientePlato"));
+        var tablaIngredientes = oUpoMenu.dameIngredientes();
 
 
-            for (var i = 0; i < elementosSeleccionados.length; i++) {
-                arrayIngredientesPlato[i] = elementosSeleccionados[i].value;
-                //console.log(elementosSeleccionados[i].value);
-            }
-            for (var i = 0; i < tablaIngredientes.length; i++) {
-                console.log(tablaIngredientes[i].nombre);
-            }
+        for (var i = 0; i < elementosSeleccionados.length; i++) {
+            arrayIngredientesPlato[i] = elementosSeleccionados[i].value;
+            //console.log(elementosSeleccionados[i].value);
+        }
+        for (var i = 0; i < tablaIngredientes.length; i++) {
+            console.log(tablaIngredientes[i].nombre);
+        }
 
-            var oPlato = oUpoMenu.añadirPlato(new Plato(sId,sNombre,sTipo,fPrecio));
-            oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
-            alert("Plato añadido.");
-            limpiarCamposPlato();
-            oUpoMenu.mostrarPlatos();
+        var oPlato = oUpoMenu.añadirPlato(new Plato(sId,sNombre,sTipo,fPrecio));
+        oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
+        alert("Plato añadido.");
+        limpiarCamposPlato();
+        oUpoMenu.mostrarPlatos();
         
     }
 }
@@ -321,7 +367,7 @@ function cargarIngredientes(){
             }
             var sNombreIngrediente = new Ingrediente(oNombre);
             oUpoMenu.añadirIngrediente(sNombreIngrediente);
-            oUpoMenu.añadirIngredientesAlergeno(aAlergenos, sNombreIngrediente);
+            oUpoMenu.añadirIngredientesAlergeno(aAlergenos, sNombreIngrediente.nombre);
         }
     //ocultar("btnAñadirIngredientes");
     // oUpoMenu.mostrarIngredientes();
