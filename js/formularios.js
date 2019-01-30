@@ -10,7 +10,11 @@ function inicioIndex()
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
-    document.getElementsByClassName("btnCarrusel").addEventListener("click",verAltaPlato);
+    var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
+    for(var i=0;i<botonesCarrusel.length;i++)
+    {
+        botonesCarrusel[i].addEventListener("click",verAltaPlato);
+    }
     // Formulario Platos
     document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
     document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
