@@ -1,8 +1,4 @@
-var oUpoMenu = new UpoMenu();
-window.addEventListener("load",inicioIndex,false);
-<<<<<<< HEAD
-var oXML = loadXMLDoc("XML/ingredientes.xml");
-=======
+
 //Variables Globales
 var oUpoMenu = new UpoMenu();
 var formulario = document.getElementById("frmRegistroCliente");
@@ -15,7 +11,7 @@ function datosIniciales(){
 }
 
 //Manejadores de eventos 
->>>>>>> 8f0830e26573c9c7d08c19d082ff3480848cebe7
+
 function inicioIndex()
 {
     ocultarFormularios();
