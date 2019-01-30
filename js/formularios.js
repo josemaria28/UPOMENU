@@ -367,6 +367,7 @@ function añadirIngrediente(){
 
 function verListadoClientes()
 {
+    var divListado = document.getElementById("listaClientes");
     var oTabla = document.createElement("table");
     oTabla.border = "1";
 
@@ -393,7 +394,7 @@ function verListadoClientes()
     oCelda.textContent = "Password";
     oFila.appendChild(oCelda);
 
-    document.body.appendChild(oTabla);
+    divListado.appendChild(oTabla);
 
 
 }
