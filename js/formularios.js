@@ -393,5 +393,7 @@ function verListadoClientes()
     oCelda.textContent = "Password";
     oFila.appendChild(oCelda);
 
+    document.body.appendChild(oTabla);
+
 
 }
