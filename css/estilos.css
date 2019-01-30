@@ -136,3 +136,7 @@ a {
 .error{
     background-color: yellow;
   }
+
+  #listaClientes{
+      margin: 0 auto;
+  }
