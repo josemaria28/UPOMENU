@@ -89,6 +89,8 @@ function verAltaPlato()
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmPlato");
+    //cargaComboPlatos();
+    cargarElementos("txtIngredientePlato", oUpoMenu.dameIngredientes());
 	//document.querySelector("script+script").setAttribute("src", "js/platos.js");
     //frmPlato.reset();
 }
@@ -345,6 +347,7 @@ function añadirPlato(){
         var oPlato = oUpoMenu.añadirPlato(new Plato(sId,sNombre,sTipo,fPrecio));
         oUpoMenu.añadirIngredientesPlato(arrayIngredientesPlato, sId);
         alert("Plato añadido.");
+        frmPlato.reset();
         limpiarCamposPlato();
         oUpoMenu.mostrarPlatos();
         
@@ -429,6 +432,7 @@ function añadirIngrediente(){
         if (oIngrediente) {
             oUpoMenu.añadirIngredientesAlergeno(arrayIngredientesAlergenos, sIngrediente);
             alert("Ingrediente añadido.");
+            frmAltaIngrediente.reset();
             limpiarCamposPlato();
         }else {
             alert("Ese ingrediente ya existe.");
