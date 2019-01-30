@@ -1,15 +1,16 @@
 window.addEventListener("load",inicioIndex,false);
+//Variables Globales
 var oUpoMenu = new UpoMenu();
-
 var formulario = document.getElementById("frmRegistroCliente");
 var formIS = document.getElementById("formularioIS");
+//Datos iniciales de 1 cliente 
 datosIniciales();
 function datosIniciales(){
     oUpoMenu.altaCliente(new Cliente("josemaria",619938534,"jose@gmail.com","12345678A","Jose@1234567890"));
     oUpoMenu.mostrarClientes();
 }
 
-
+//Manejadores de eventos 
 function inicioIndex()
 {
     ocultarFormularios();
@@ -36,7 +37,7 @@ function inicioIndex()
     // Formulario Cliente
 
     //Registrar cliente
-    formulario.btnRegistro.addEventListener("click",validarCliente);
+    document.getElementById("btnRegistro").addEventListener("click",validarCliente);
     //Función para que el número de telefono sean sólo números
     formulario.txtTlf.addEventListener("keypress",solonumeros,false);
     //Iniciar sesión (tiene que estar registrado previamente);
