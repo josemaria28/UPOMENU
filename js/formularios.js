@@ -10,7 +10,10 @@ function inicioIndex()
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
+    document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
     var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
+    //Lo que llega de botonesCarrusel es un array de elementos, asi que lo recorremos y le asignamos la misma función, que es 
+    //lo que buscamos
     for(var i=0;i<botonesCarrusel.length;i++)
     {
         botonesCarrusel[i].addEventListener("click",verAltaPlato);
@@ -360,4 +363,35 @@ function añadirIngrediente(){
         }
     }
     oUpoMenu.mostrarIngredientes();
+}
+
+function verListadoClientes()
+{
+    var oTabla = document.createElement("table");
+    oTabla.border = "1";
+
+    // THEAD
+    var oTHead = oTabla.createTHead();
+    var oFila = oTHead.insertRow(-1);
+    var oCelda = document.createElement("TH");
+    oCelda.textContent = "DNI";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Nombre";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Email";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Teléfono";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Password";
+    oFila.appendChild(oCelda);
+
+
 }
