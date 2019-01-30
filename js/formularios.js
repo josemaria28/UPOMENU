@@ -400,6 +400,7 @@ function verListadoClientes()
     oFila = oTBody.insertRow(-1);
     oCelda = oFila.insertCell(-1);
 
+    var oUpoMenu = new UpoMenu();
     var listaClientes = oUpoMenu.listaClientes;
     for(var i=0;i<listaClientes.length;i++)
     {
