@@ -411,4 +411,4 @@ function verListadoClientes()
 
 }
 
-<script src="objetos.js"></script>
+
