@@ -447,11 +447,11 @@ function limpiarErrores()
     formulario.txtPassword.classList.remove("error");
 }
 
-function validarCliente()
+function validarCliente(oEvento)
 {
 	//Primero antes de incluirlo en la lista de cliente debemos verificar el formulario de registro...
     
-   // var oE = oEvento || window.event;
+    var oE = oEvento || window.event;
 	var bValido = true;
 	var sError = "";
 
