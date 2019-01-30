@@ -137,6 +137,8 @@ a {
     background-color: yellow;
   }
 
-  #listaClientes{
+  #listaClientes, #listaClientes table{
       margin: 0 auto;
   }
+
+
