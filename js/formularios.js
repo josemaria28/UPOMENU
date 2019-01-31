@@ -606,7 +606,7 @@ function borrarTablas()
             encabezados[i].remove();
         }
     }
-    if(tablaClientes!=null)
+    else if(tablaClientes!=null)
     {
         for(var i=0;i<tablaClientes.length;i++)
         {
