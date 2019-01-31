@@ -778,7 +778,7 @@ function iniciarSesion()
         var bienvenida = document.createElement("h3");
         bienvenida.style.color="rgba(151, 5, 5, 0.986)";
         bienvenida.style.textAlign="center";
-        var textoBienvenida = document.createTextNode="Bienvenido usuario";
+        var textoBienvenida = document.createTextNode("Bienvenido usuario");
         bienvenida.appendChild(textoBienvenida);
 
         
