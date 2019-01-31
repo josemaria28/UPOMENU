@@ -720,6 +720,14 @@ function enviarMensaje(oEvento)
 				alert("Gracias por contactar con nosotros");
 				formContacto.reset();
 			}
+        }
+        //Limpia los campos del formulario de contacto
+        function limpiarCampos()
+		{
+			formularioContacto.txtNombre.classList.remove("error");
+			formularioContacto.txtTelefono.classList.remove("error");
+			formularioContacto.txtEmail.classList.remove("error");
+			formularioContacto.txtMsg.classList.remove("error");
 		}
 
 
