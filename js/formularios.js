@@ -27,11 +27,8 @@ function inicioIndex()
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
-<<<<<<< HEAD
     document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
     document.getElementById("btnListadoMenus").addEventListener("click",verListadoMenus);
-=======
->>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
     //Lo que llega de botonesCarrusel es un array de elementos, asi que lo recorremos y le asignamos la misma función, que es 
     //lo que buscamos
@@ -100,11 +97,8 @@ function ocultarFormularios()
 function verAltaMenu()
 {
     ocultar("listaClientes");
-<<<<<<< HEAD
     ocultar("listaMenus");
-=======
     ocultar("listaPlatos");
->>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmMenu");
@@ -118,11 +112,8 @@ function verAltaMenu()
 function verAltaEvento()
 {
     ocultar("listaClientes");
-<<<<<<< HEAD
     ocultar("listaMenus");
-=======
     ocultar("listaPlatos");
->>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmEvento");
@@ -135,11 +126,8 @@ function verAltaEvento()
 function verAltaPlato()
 {
     ocultar("listaClientes");
-<<<<<<< HEAD
     ocultar("listaMenus");
-=======
     ocultar("listaPlatos");
->>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmPlato");
@@ -152,11 +140,8 @@ function verAltaPlato()
 function verAltaIngredientes()
 {
     ocultar("listaClientes");
-<<<<<<< HEAD
     ocultar("listaMenus");
-=======
     ocultar("listaPlatos");
->>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaIngrediente");
@@ -167,11 +152,8 @@ function verAltaIngredientes()
 function verAltaBebidas()
 {
     ocultar("listaClientes");
-<<<<<<< HEAD
     ocultar("listaMenus");
-=======
     ocultar("listaPlatos");
->>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaBebida");
@@ -183,11 +165,8 @@ function verAltaBebidas()
 function verContacto()
 {
     ocultar("listaClientes");
-<<<<<<< HEAD
     ocultar("listaMenus");
-=======
     ocultar("listaPlatos");
->>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divContacto");
@@ -197,11 +176,8 @@ function verContacto()
 function verRegistro()
 {
     ocultar("listaClientes");
-<<<<<<< HEAD
     ocultar("listaMenus");
-=======
     ocultar("listaPlatos");
->>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divRegistro");
