@@ -7,6 +7,7 @@ var oXML = loadXMLDoc("XML/ingredientes.xml");
 
 var formulario = document.getElementById("frmRegistroCliente");
 var formIS = document.getElementById("formularioIS");
+
 //Datos iniciales de 1 cliente 
 datosIniciales();
 function datosIniciales(){
@@ -36,7 +37,8 @@ function inicioIndex()
     // Formulario Platos
     document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
     document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
-    
+    document.getElementById("btnListadoClientes").addEventListener("click",verListadoPlatos, false);
+
     cargarIngredientes();
     oUpoMenu.mostrarClientes();
     oUpoMenu.mostrarPlatos();
@@ -466,6 +468,67 @@ function añadirIngrediente(){
     }
     oUpoMenu.mostrarIngredientes();
 }
+
+// Listado Platos
+function verListadoPlatos(){
+    //////////////////////////////////////////////////////////////////////
+    var divListado = document.getElementById("listaClientes");
+    //////////////////////////////////////////////////////////////////////
+    var oTabla = document.createElement("table");
+    oTabla.border = "1";
+
+    // THEAD
+    var oTHead = oTabla.createTHead();
+    var oFila = oTHead.insertRow(-1);
+    var oCelda = document.createElement("TH");
+    oCelda.textContent = "ID";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Nombre";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "TTipo";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Precio";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Ingredientes";
+    oFila.appendChild(oCelda);
+
+    var oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+    oFila = oTBody.insertRow(-1);
+    oCelda = oFila.insertCell(-1);
+
+    var platos = oUpoMenu.platos;
+    for(var i=0;i< platos.length;i++)
+    {
+        oCelda.textContent = platos[i].id;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = platos[i].nombre;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = platos[i].tipo;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = platos[i].precio;
+        // Tabla Ingredientes
+        // oCelda = oFila.insertCell(-1);
+        // oCelda.textContent = platos[i].password;
+    }
+    
+    divListado.appendChild(oTabla);
+
+
+}
+
+
+
+
 
 function verListadoClientes()
 {
