@@ -28,6 +28,7 @@ function inicioIndex()
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
     document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
+    document.getElementById("btnListadoMenus").addEventListener("click",verListadoMenus);
     var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
     //Lo que llega de botonesCarrusel es un array de elementos, asi que lo recorremos y le asignamos la misma función, que es 
     //lo que buscamos
@@ -92,30 +93,34 @@ function ocultarFormularios()
 function verAltaMenu()
 {
     ocultar("listaClientes");
+    ocultar("listaMenus");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmMenu");
 	//	document.querySelector("script+script").setAttribute("src", "js/menu.js");
     frmMenu.reset();
-	actualizarDesplegable();
-	inicializarEventos();
+	actualizarDesplegableMenu();
+	inicializarEventosMenu();
 	mostrarMenus();
 }
 
 function verAltaEvento()
 {
     ocultar("listaClientes");
+    ocultar("listaMenus");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmEvento");
-	document.querySelector("script+script").setAttribute("src", "js/evento.js");
-    frmEvento.reset();
+	frmEvento.reset();
+	inicializarEventosEvento();
+	actualizarDesplegableEvento();
 
 }
 
 function verAltaPlato()
 {
     ocultar("listaClientes");
+    ocultar("listaMenus");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmPlato");
@@ -128,6 +133,7 @@ function verAltaPlato()
 function verAltaIngredientes()
 {
     ocultar("listaClientes");
+    ocultar("listaMenus");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaIngrediente");
@@ -138,16 +144,19 @@ function verAltaIngredientes()
 function verAltaBebidas()
 {
     ocultar("listaClientes");
+    ocultar("listaMenus");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaBebida");
-	document.querySelector("script+script").setAttribute("src", "js/bebida.js");
-    frmAltaBebida.reset();
+//	document.querySelector("script+script").setAttribute("src", "js/bebida.js");
+	frmAltaBebida.reset();
+	frmAltaBebida.btnAñadirBebida.addEventListener("click", validarFormularioBebidas);
 }
 
 function verContacto()
 {
     ocultar("listaClientes");
+    ocultar("listaMenus");
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divContacto");
@@ -157,6 +166,7 @@ function verContacto()
 function verRegistro()
 {
     ocultar("listaClientes");
+    ocultar("listaMenus");
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divRegistro");
@@ -461,6 +471,7 @@ function verListadoPlatos(){
     mostrar("listaPlatos");
     ocultar("carrusel");
     ocultar("listaClientes");
+    ocultar("listaMenus");
     ocultarFormularios();
     //borrarTablasPlatos();
 
@@ -848,6 +859,79 @@ function enviarMensaje(oEvento)
 		}
 
 
+
+function verListadoMenus() {
+	mostrar("listaMenus");
+	ocultar("carrusel");
+	ocultar("listaPlatos");
+	borrarTablas();
+
+	var divListado = document.getElementById("listaMenus");
+	divListado.className="container";
+	var encabezado = document.createElement("h2");
+	encabezado.style.textAlign="center";
+	var tituloEncabezado = document.createTextNode("Listado de Menus de UpoMenu");
+	encabezado.appendChild(tituloEncabezado);
+	var oTabla = document.createElement("table");
+	//oTabla.border = "1";
+	oTabla.className="table table-hover";
+
+	// THEAD
+	var oTHead = oTabla.createTHead();
+	var oFila = oTHead.insertRow(-1);
+	var oCelda = document.createElement("TH");
+
+	oCelda = document.createElement("TH");
+	oCelda.textContent = "Nombre";
+	oFila.appendChild(oCelda);
+
+	oCelda = document.createElement("TH");
+	oCelda.textContent = "Precio";
+	oFila.appendChild(oCelda);
+
+	oCelda = document.createElement("TH");
+	oCelda.textContent = "Primer plato";
+	oFila.appendChild(oCelda);
+
+	oCelda = document.createElement("TH");
+	oCelda.textContent = "Segundo plato";
+	oFila.appendChild(oCelda);
+	
+	oCelda = document.createElement("TH");
+	oCelda.textContent = "Postre";
+	oFila.appendChild(oCelda);
+	
+	oCelda = document.createElement("TH");
+	oCelda.textContent = "Bebida";
+	oFila.appendChild(oCelda);
+
+	var oTBody = document.createElement("TBODY");
+	oTabla.appendChild(oTBody);
+
+	oFila = oTBody.insertRow(-1);
+	oCelda = oFila.insertCell(-1);
+
+	var listaMenus = oUpoMenu.menus;
+	for (var i = 0; i < listaMenus.length; i++) {
+		oCelda.textContent = listaMenus[i].nombre;
+		oCelda = oFila.insertCell(-1);
+		oCelda.textContent = listaMenus[i].precio;
+		oCelda = oFila.insertCell(-1);
+		oCelda.textContent = oUpoMenu._buscarPlato(listaMenus[i].primerPlato).nombre;
+		oCelda = oFila.insertCell(-1);
+		oCelda.textContent = oUpoMenu._buscarPlato(listaMenus[i].segundoPlato).nombre;
+		oCelda = oFila.insertCell(-1);
+		oCelda.textContent = oUpoMenu._buscarPlato(listaMenus[i].postre).nombre;
+		oCelda = oFila.insertCell(-1);
+		oCelda.textContent = oUpoMenu._buscarBebida(listaMenus[i].bebida.textContent.trim()).nombre;
+		oCelda = oFila.insertCell(-1);
+		oFila = oTBody.insertRow(-1);
+		oCelda = oFila.insertCell(-1);
+	}
+	divListado.appendChild(encabezado);
+	divListado.appendChild(oTabla);
+}
+
 // -------------------------------------
 // ------------ CODIGO MENU ------------
 // -------------------------------------
@@ -856,21 +940,21 @@ window.addEventListener("load", inicio);
 
 function inicio() {
 	datosPrueba();
-	actualizarDesplegable();
-	inicializarEventos();
+	actualizarDesplegableMenu();
+	inicializarEventosMenu();
 	mostrarMenus();
 }
 */
-function inicializarEventos() {
-	document.querySelector("#btnAceptarMenu").addEventListener("click", validarFormulario);
+function inicializarEventosMenu() {
+	document.querySelector("#btnAceptarMenu").addEventListener("click", validarFormularioMenu);
 	var desplegables = document.querySelectorAll("select");
 	
 	for (let i = 0; i < desplegables.length; i++) {
-		desplegables[i].addEventListener("change", actualizarPrecio);
+		desplegables[i].addEventListener("change", actualizarPrecioMenu);
 	}
 }
 
-function validarFormulario() {
+function validarFormularioMenu() {
 	limpiarErrores();
 	var valido = true;
 	var error;
@@ -890,14 +974,12 @@ function validarFormulario() {
 
 	if (!valido) {
 		document.querySelector(".is-invalid").focus();
-		mostrarMensajeError(error);
+		mostrarMensajeErrorMenu(error);
 	}
 	else {
-		
-
 //		var menu = new Menu(nombre, precio, pPlato, sPlato, postre, bebida);
-		agregarSpinner();
-		setTimeout(function (menu) {
+		agregarSpinnerMenu();
+		setTimeout(function () {
 			var pPlato = document.querySelector("#txtPrimerPlato").value;
 			var sPlato = document.querySelector("#txtSegundoPlato").value;
 			var postre = document.querySelector("#txtPostre").value;
@@ -925,7 +1007,7 @@ function borrarMenus() {
 
 function mostrarMenus() {
 	borrarMenus();
-	var menus = oXMLmenu.querySelectorAll("menu");
+/*	var menus = oXMLmenu.querySelectorAll("menu");
 	var nMenus = oXMLmenu.querySelectorAll("menu").length;
 	var nFilas = nMenus / 3;
 	var container = document.querySelector(".menus");
@@ -992,14 +1074,14 @@ function mostrarMenus() {
 		contador = 0;
 		container.appendChild(fila);
 	}
-
+*/
 	cargarDatosModelo();
 }
 
 function cargarDatosModelo() {
 
 	var menus = oUpoMenu.menus;
-	var nMenus = document.querySelectorAll(".card").length;
+	var nMenus = 3;
 	var nFilas = nMenus / 3;
 	var container = document.querySelector(".menus");
 	
@@ -1008,14 +1090,14 @@ function cargarDatosModelo() {
 	var j = 0;
 	var contador = 0;
 	for (var i = 0; i < nFilas; i++) {
-		var fila;
-		fila = document.querySelector("div.card-deck");
+//		var fila;
+//		fila = document.querySelector("div.card-deck");
 
-		if (fila == undefined || fila == null || nMenus == 3) {
-			fila = document.createElement("div");
+//		if (fila == undefined || fila == null || nMenus == 3) {
+			var fila = document.createElement("div");
 			fila.classList.add("card-deck");
-		}
-		
+//		}
+
 		while (contador < 3 && menus[j] != undefined) {
 			var card = document.createElement("div");
 			card.classList.add("card");
@@ -1094,7 +1176,7 @@ function limpiarCampos() {
 	mostrarMenus();
 }
 
-function agregarSpinner() {
+function agregarSpinnerMenu() {
 	var boton = document.querySelector("#btnAceptarMenu");
 	boton.textContent = "Guardando... ";
 	var span = document.createElement("span");
@@ -1103,7 +1185,7 @@ function agregarSpinner() {
 	setTimeout(limpiarCampos, 3000);
 }
 
-function mostrarMensajeError(error) {
+function mostrarMensajeErrorMenu(error) {
 	var desplegable = document.querySelector(".is-invalid");
 
 	var div = document.createElement("div");
@@ -1113,7 +1195,7 @@ function mostrarMensajeError(error) {
 	desplegable.parentElement.appendChild(div);
 }
 
-function borrarDesplegables() {
+function borrarDesplegablesMenus() {
 	var select = document.querySelector("#txtPrimerPlato");
 
 	for (var i = select.options.length - 1; i >= 0; i--) {
@@ -1141,8 +1223,8 @@ function borrarDesplegables() {
 }
 
 // Actualiza los options del select
-function actualizarDesplegable() {
-	borrarDesplegables();
+function actualizarDesplegableMenu() {
+	borrarDesplegablesMenus();
 	var primerPlato = document.querySelector("#txtPrimerPlato");
 	var platos = oUpoMenu.platos;
 
@@ -1189,20 +1271,20 @@ function actualizarDesplegable() {
 		bebidas.appendChild(option);
 	}
 
-	actualizarPrecio();
+	actualizarPrecioMenu();
 }
 
 // Actualiza el input type="text" con el precio del plato cuando cambia el option
-function actualizarPrecio() {
+function actualizarPrecioMenu() {
 	var desplegables = document.querySelectorAll("select.frm-menu");
 
 	
 	var precioTotal = 0;
-	borrarPrecio();
+	borrarPrecioMenu();
 
 	for (var i = 0; i < desplegables.length; i++) {
 		var precio = desplegables[i].selectedOptions[0].dataset.precio;
-		mostrarPrecio(desplegables[i]);
+		mostrarPrecioMenu(desplegables[i]);
 
 		precioTotal += parseFloat(precio);
 	}
@@ -1212,7 +1294,7 @@ function actualizarPrecio() {
 }
 
 // Agrega un input type="text" con el precio del plato
-function mostrarPrecio(elemento) {
+function mostrarPrecioMenu(elemento) {
 	var div = document.createElement("div");
 	div.classList.add("input-group-append", "capa-precio");
 	var input = document.createElement("spam");
@@ -1228,7 +1310,7 @@ function mostrarPrecio(elemento) {
 }
 
 // Borra el input type="text" que contiene el precio del plato
-function borrarPrecio() {
+function borrarPrecioMenu() {
 	var capas = document.querySelectorAll(".capa-precio");
 
 	if (capas.length > 0) {
@@ -1279,45 +1361,393 @@ function datosPrueba() {
 		var bebida = new Bebida(nombreBebida, precioBebida, "si" == alcoholico, "si" == gaseoso, "si" == azucarado);
 		oUpoMenu.agregarBebida(bebida);
 	}
-/*
-	var bebidas = oXML.querySelectorAll("bebida");
 
-	for (var i = 0; i < bebidas.length; i++) {
-		var nombre = bebidas[i].nombre;
-		var precio = bebidas[i].precio;
-		var alcoholico = bebidas[i].alcoholico;
-		var gaseoso = bebidas[i].gaseoso;
-		var azucarado = bebidas[i].azucarado;
+	var menus = oXMLmenu.querySelectorAll("menu");
 
-		oUpoMenu.agregarBebida(new Bebida(nombre, precio, alcoholico, gaseoso, azucarado));
+	for (var i = 0; i < menus.length; i++) {
+		var nombre = menus[i].querySelector("nombre").textContent;
+		var precio = numeroComa(menus[i].querySelector("precio").textContent);
+		var pPlato = menus[i].querySelector("primerPlato").textContent;
+		var sPlato = menus[i].querySelector("segundoPlato").textContent;
+		var postre = menus[i].querySelector("postre").textContent;
+		var nombreBebida = menus[i].querySelector("bebidaMenu");
+		var menu = new Menu(nombre, precio, pPlato, sPlato, postre, nombreBebida);
+
+		oUpoMenu.agregarMenu(menu);
 	}
-/*
-	oUpoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
-	oUpoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
-	oUpoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
-	oUpoMenu.añadirPlato(new Plato(4, "helado", "postre", 1.5));
-	oUpoMenu.añadirPlato(new Plato(5, "plátano", "postre", 0.75));
-	oUpoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
-	oUpoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
-
-	oUpoMenu.agregarBebida(new Bebida("Coca-Cola", 0.75, false, true, true));
-	oUpoMenu.agregarBebida(new Bebida("Fanta", 0.5, false, true, true));
-	oUpoMenu.agregarBebida(new Bebida("Barceló", 6, true, false, false));
-	oUpoMenu.agregarBebida(new Bebida("7 up", 0.65, false, true, true));
-	oUpoMenu.agregarBebida(new Bebida("Camaleón", 0.75, false, true, true));
-	oUpoMenu.agregarBebida(new Bebida("Te", 0.95, false, true, false));
-*/
 }
 
-function cargarXML(fichero) {
-	if (window.XMLHttpRequest) {
-		xhttp = new XMLHttpRequest();
-	} else { // code for IE5 and IE6
-		xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+// --------------------------------------
+// ----------- ALTA EVENTO --------------
+// --------------------------------------
+
+function validarFormularioEvento() {
+	limpiarErroresEvento();
+
+	var valido = true;
+	var error = new Array();
+
+	var nombre = document.querySelector("#txtNombreEvento").value.trim();
+	var exReg = /^[a-zA-ZÁÉÍÓÚñáéíóúÑ0-9 ]{6,50}$/;
+
+	if (exReg.test(nombre) == false) {
+		valido = false;
+
+		document.querySelector("#txtNombreEvento").classList.add("is-invalid");
+		error.push("El nombre debe contener caracteres alfanumérico de entre 6 y 50 caracteres");
+	}
+	else {
+		document.querySelector("#txtNombreEvento").classList.add("is-valid");
 	}
 
-	xhttp.open("GET", fichero, false);
-	xhttp.send();
+	var fecha = document.querySelector("#txtFecha").value;
+//	exreg = /^[0-9]{4}([\-/.])(0?[1-9]|1[1-2])([\-/.])(3[01]|[12][0-9]|0?[1-9])$/;
 
-	return xhttp.responseXML;
+	if (fecha == "") {
+		valido = false;
+
+		document.querySelector("#txtFecha").classList.add("is-invalid");
+		
+		error.push("Debe seleccionar una fecha");
+	}
+	else {
+		document.querySelector("#txtFecha").classList.add("is-valid");
+	}
+
+	var comensales = document.querySelector("#txtComensales").value.trim();
+	exReg = /^[0-9]{1,3}$/;
+
+	if (!exReg.test(comensales)) {
+		valido = false;
+
+		document.querySelector("#txtComensales").classList.add("is-invalid");
+		error.push("Comensales debe ser un número");
+	}
+	else {
+		document.querySelector("#txtComensales").classList.add("is-valid");
+	}
+
+	var duracion = document.querySelector("#txtDuracion").value.trim();
+	exReg = /(\W|^)([mM]añana|[tT]arde|[nN]oche)(\W|$)/;
+
+	if (!exReg.test(duracion)) {
+		valido = false;
+
+		document.querySelector("#txtDuracion").classList.add("is-invalid");
+		error.push("Debe escribir Mañana, Tarde o Noche");
+	}
+	else {
+		document.querySelector("#txtDuracion").classList.add("is-valid");
+	}
+
+	if (!valido) {
+		document.querySelector(".is-invalid").focus();
+		mostrarMensajeErrorEvento(error);
+	}
+	else {
+		agregarSpinnerEvento();
+		setTimeout(function () {
+			var menu = oUpoMenu._buscarMenu(document.querySelector("#txtMenu").value);
+
+			var evento = new Evento(nombre, fecha, comensales, duracion, menu);
+			oUpoMenu.agregarEvento(evento);
+
+			if (oUpoMenu.agregarEvento(new Evento(nombre, fecha, comensales, duracion, menu))) {
+				alert("Evento agregado");
+				mostrarMenus();
+			}
+			else {
+				alert("Evento duplicado");
+			}
+
+		}, 3000);
+	}
+}
+
+function agregarSpinnerEvento() {
+	var boton = document.querySelector("#btnAceptarEvento");
+	boton.textContent = "Guardando... ";
+	var span = document.createElement("span");
+	span.classList.add("spinner-border", "spinner-border-sm");
+	boton.appendChild(span);
+	setTimeout(function() {frmEvento.submit();}, 3000);
+}
+
+
+
+function mostrarMensajeErrorEvento(error) {
+	var desplegable = document.querySelectorAll(".is-invalid");
+
+	for (var i = 0; i < desplegable.length; i++) {
+		var div = document.createElement("div");
+		div.classList.add("texto-error");
+		div.textContent = error[i];
+
+		desplegable[i].parentElement.appendChild(div);
+	}
+}
+
+function limpiarErroresEvento() {
+	var errores = document.querySelectorAll(".is-invalid");
+
+	for (var i = 0; i < errores.length; i++) {
+		errores[i].classList.remove("is-invalid");
+	}
+
+	errores = document.querySelectorAll(".texto-error");
+
+	for (var i = 0; i < errores.length; i++) {
+		errores[i].remove();
+	}
+}
+
+function borrarDesplegableEvento() {
+	var select = document.querySelector("#txtMenu");
+
+	for (var i = select.options.length - 1; i >= 0; i--) {
+		select.remove(i);
+	}
+	
+}
+
+function borrarDesplegableEvento() {
+	var select = document.querySelector("#txtMenu");
+
+	for (var i = select.options.length - 1; i >= 0; i--) {
+		select.remove(i);
+	}
+}
+
+function actualizarDesplegableEvento() {
+	borrarDesplegableEvento();
+	var menu = document.querySelector("#txtMenu");
+	var menus = oUpoMenu.menus;
+
+	for (var i = 0; i < menus.length; i++) {
+		var option = document.createElement("option");
+		option.text = menus[i].nombre;
+		option.value = menus[i].nombre;
+		option.dataset.precio = menus[i].precio;
+
+		menu.appendChild(option);
+	}
+
+	actualizarPrecioEvento();
+}
+
+function actualizarPrecioEvento() {
+	var desplegable = document.querySelector("#txtMenu");
+
+	borrarPrecioEvento();
+	mostrarPrecioEvento();
+}
+
+function mostrarPrecioEvento() {
+	var desplegable = document.querySelector("#txtMenu");
+	var div = document.createElement("div");
+	div.classList.add("input-group-append", "capa-precio-evento");
+	var input = document.createElement("spam");
+	input.classList.add("input-group-text");
+	input.textContent = desplegable.selectedOptions[0].dataset.precio + " €";
+	input.classList.add("text-center")
+	div.appendChild(input);
+	desplegable.after(div);
+	var padre = desplegable.parentElement;
+	padre.classList.add("input-group");
+}
+
+function borrarPrecioEvento() {
+	var capa = document.querySelector(".capa-precio-evento");
+	if (capa != null) {
+		capa.remove();
+	}
+}
+
+function inicializarEventosEvento() {
+	document.querySelector("#btnAceptarEvento").addEventListener("click", validarFormularioEvento);
+	document.querySelector("#btnIncremento").addEventListener("click", actualizaValor);
+	document.querySelector("#btnDecremento").addEventListener("click", actualizaValor);
+	document.querySelector("select").addEventListener("change", actualizarPrecioEvento);
+}
+
+// Actualiza el valor de los comensales
+function actualizaValor(e) {
+
+	var comensales = document.querySelector("#txtComensales");
+	var valor = parseInt(comensales.value);
+
+	if (valor >= 0) {
+		if (e.target.id == "btnIncremento") {
+			valor++;
+
+			comensales.value = valor;
+		}
+		else if (valor > 0) {
+			valor--;
+
+			comensales.value = valor;
+		}
+	}
+}
+
+// de formato de float a numero
+function numeroComa(numero) {
+	numero.toString();
+	numero = numero.replace(",", ".");
+	return parseFloat(numero);
+}
+
+
+
+// ----------------------------------------
+// ------------ ALTA BEBIDAS --------------
+// ----------------------------------------
+
+function validarFormularioBebidas() {
+	limpiarErroresBebidas();
+	
+	var valido = true;
+	var error = new Array();
+
+	var nombre = frmAltaBebida.txtNombre.value.trim();
+	var exReg = /^[a-zA-ZÁÉÍÓÚñáéíóúÑ0-9 ]{6,50}$/;
+
+	if (exReg.test(nombre)) {
+		frmAltaBebida.txtNombre.classList.add("is-valid");
+	}
+	else {
+		valido = false;
+		frmAltaBebida.txtNombre.classList.add("is-invalid");
+		mostrarMensajeErrorBebidas(frmAltaBebida.txtNombre, "El nombre debe contener caracteres alfanumérico de entre 6 y 50 caracteres");
+	}
+	
+	var precio = frmAltaBebida.txtPrecio.value.trim();
+	exReg = /^(\d)?(\d|,)*\.?\d+$/;
+
+	if (exReg.test(precio)) {
+		frmAltaBebida.txtPrecio.classList.add("is-valid");
+	}
+	else {
+		valido = false;
+		frmAltaBebida.txtPrecio.classList.add("is-invalid");
+		mostrarMensajeErrorBebidas(frmAltaBebida.txtPrecio, "El precio debe tener el formato correcto");
+	}
+
+	var alcoholico = frmAltaBebida.alcoholico.value.trim();
+
+	if (frmAltaBebida.alcoholico.item(0).checked || frmAltaBebida.alcoholico.item(1).checked) {
+		var elementos = document.querySelectorAll("[name=alcoholico]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-valid");
+		}
+	}
+	else {
+		valido = false;
+		var elementos = document.querySelectorAll("[name=alcoholico]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-invalid");
+		}
+
+		mostrarMensajeErrorBebidas(frmAltaBebida.alcoholicoSi, "Debe indicar si es una bebida alcoholica");
+	}
+
+	var gaseoso = frmAltaBebida.gaseoso.value.trim();
+
+	if (frmAltaBebida.gaseoso.item(0).checked || frmAltaBebida.gaseoso.item(1).checked) {
+		var elementos = document.querySelectorAll("[name=gaseoso]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-valid");
+		}
+	}
+	else {
+		valido = false;
+		var elementos = document.querySelectorAll("[name=gaseoso]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-invalid");
+		}
+
+		mostrarMensajeErrorBebidas(frmAltaBebida.gaseosoSi, "Debe indicar si es una bebida gaseosa");
+	}
+
+	var azucarado = frmAltaBebida.azucarado.value.trim();
+
+	if (frmAltaBebida.azucarado.item(0).checked || frmAltaBebida.azucarado.item(1).checked) {
+		var elementos = document.querySelectorAll("[name=azucarado]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-valid");
+		}
+	}
+	else {
+		valido = false;
+		var elementos = document.querySelectorAll("[name=azucarado]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-invalid");
+		}
+
+		mostrarMensajeErrorBebidas(frmAltaBebida.azucaradoSi, "Debe indicar si es una bebida azucarada");
+	}
+
+	if (valido) {
+		var bebida;
+		if (bebida = new Bebida(nombre, precio, alcoholico == "si", gaseoso == "si", azucarado == "si")) {
+			oUpoMenu.agregarBebida(bebida);
+			alert("Bebida agregada");
+			limpiarCamposBebida();
+		}
+		else {
+			alert("Bebida duplicada");
+		}
+
+	}
+}
+
+function limpiarCamposBebida() {
+	var nombre = document.querySelector("#txtNombre");
+	nombre.classList.remove("is-valid");
+	nombre.value = "";
+	
+	var precio = document.querySelector("#txtPrecio");
+	precio.classList.remove("is-valid");
+	precio.value = "";
+
+	var alcoholico = document.querySelectorAll("[name=alcoholico]");
+	alcoholico[0].classList.remove("is-valid");
+	alcoholico[1].classList.remove("is-valid");
+
+	var gaseoso = document.querySelectorAll("[name=gaseoso]");
+	gaseoso[0].classList.remove("is-valid");
+	gaseoso[1].classList.remove("is-valid");
+
+	var azucarado = document.querySelectorAll("[name=azucarado]");
+	azucarado[0].classList.remove("is-valid");
+	azucarado[1].classList.remove("is-valid");
+}
+
+function limpiarErroresBebidas() {
+	var errores = document.querySelectorAll(".is-invalid");
+
+	for (var i = 0; i < errores.length; i++) {
+		errores[i].classList.remove("is-invalid");
+	}
+
+	errores = document.querySelectorAll(".texto-error");
+
+	for (var i = 0; i < errores.length; i++) {
+		errores[i].remove();
+	}
+}
+
+function mostrarMensajeErrorBebidas(elemento, error) {
+	var div = document.createElement("div");
+	div.classList.add("texto-error");
+	div.textContent = error;
+
+	elemento.parentElement.parentElement.appendChild(div);
 }
