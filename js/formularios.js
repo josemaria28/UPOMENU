@@ -27,7 +27,6 @@ function inicioIndex()
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
-    document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
     var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
     //Lo que llega de botonesCarrusel es un array de elementos, asi que lo recorremos y le asignamos la misma función, que es 
     //lo que buscamos
@@ -38,7 +37,11 @@ function inicioIndex()
     // Formulario Platos
     document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
     document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
+
+    //Listados
     document.getElementById("btnListadoPlatos").addEventListener("click",verListadoPlatos, false);
+    document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
+    document.getElementById("btnListadoMenus").addEventListener("click",verListadoMenus);
 
     cargarIngredientes();
     oUpoMenu.mostrarClientes();
@@ -603,8 +606,81 @@ function verListadoClientes()
     }
     divListado.appendChild(encabezado);
     divListado.appendChild(oTabla);
+}
 
+function verListadoMenus()
+{
+    mostrar("listaMenus");
+    ocultar("carrusel");
+    ocultar("listaClientes")
+    ocultar("listaPlatos");
+    ocultarFormularios();
+    borrarEncabezados();
+    borrarTablas();
 
+    var divListado = document.getElementById("listaMenus");
+    divListado.className="container";
+    var encabezado = document.createElement("h2");
+    encabezado.style.textAlign="center";
+    encabezado.style.color=" rgba(151, 5, 5, 0.986)";
+    var tituloEncabezado = document.createTextNode("Listado de Menus de UpoMenu");
+    encabezado.appendChild(tituloEncabezado);
+    var oTabla = document.createElement("table");
+    //oTabla.border = "1";
+    oTabla.className="table table-hover";
+
+    // THEAD
+    var oTHead = oTabla.createTHead();
+    var oFila = oTHead.insertRow(-1);
+    var oCelda = document.createElement("TH");
+    oCelda.textContent = "Nombre";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Precio";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Primer Plato";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Segundo Plato";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Postre";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Bebida";
+    oFila.appendChild(oCelda);
+
+    var oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+    oFila = oTBody.insertRow(-1);
+    oCelda = oFila.insertCell(-1);
+
+    var listaMenus = oUpoMenu.menus;
+    for(var i=0;i<listaMenus.length;i++)
+    {
+        oCelda.textContent = listaMenus[i].nombre;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].precio;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].primerPlato;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].segundoPlato;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].postre;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].bebida;
+        oFila = oTBody.insertRow(-1);
+        oCelda = oFila.insertCell(-1);
+    }
+    divListado.appendChild(encabezado);
+    divListado.appendChild(oTabla);
 
 }
 function borrarEncabezados()
