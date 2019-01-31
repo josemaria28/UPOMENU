@@ -606,6 +606,7 @@ function verListadoClientes()
     divListado.appendChild(oTabla);
 
 
+
 }
 /*
 function borrarEncabezados()
