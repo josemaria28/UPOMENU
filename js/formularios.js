@@ -27,19 +27,26 @@ function inicioIndex()
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
+<<<<<<< HEAD
     document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
     document.getElementById("btnListadoMenus").addEventListener("click",verListadoMenus);
+=======
+>>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
     //Lo que llega de botonesCarrusel es un array de elementos, asi que lo recorremos y le asignamos la misma función, que es 
     //lo que buscamos
     for(var i=0;i<botonesCarrusel.length;i++)
     {
-        botonesCarrusel[i].addEventListener("click",verAltaPlato);
+        botonesCarrusel[i].addEventListener("click",verListadoPlatos);
     }
     // Formulario Platos
     document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
     document.getElementById("btnAñadirIngredientes").addEventListener("click",añadirIngrediente, false);
+
+    //Listados
     document.getElementById("btnListadoPlatos").addEventListener("click",verListadoPlatos, false);
+    document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
+    document.getElementById("btnListadoMenus").addEventListener("click",verListadoMenus);
 
     cargarIngredientes();
     oUpoMenu.mostrarClientes();
@@ -93,7 +100,11 @@ function ocultarFormularios()
 function verAltaMenu()
 {
     ocultar("listaClientes");
+<<<<<<< HEAD
     ocultar("listaMenus");
+=======
+    ocultar("listaPlatos");
+>>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmMenu");
@@ -107,7 +118,11 @@ function verAltaMenu()
 function verAltaEvento()
 {
     ocultar("listaClientes");
+<<<<<<< HEAD
     ocultar("listaMenus");
+=======
+    ocultar("listaPlatos");
+>>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmEvento");
@@ -120,7 +135,11 @@ function verAltaEvento()
 function verAltaPlato()
 {
     ocultar("listaClientes");
+<<<<<<< HEAD
     ocultar("listaMenus");
+=======
+    ocultar("listaPlatos");
+>>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmPlato");
@@ -133,7 +152,11 @@ function verAltaPlato()
 function verAltaIngredientes()
 {
     ocultar("listaClientes");
+<<<<<<< HEAD
     ocultar("listaMenus");
+=======
+    ocultar("listaPlatos");
+>>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaIngrediente");
@@ -144,7 +167,11 @@ function verAltaIngredientes()
 function verAltaBebidas()
 {
     ocultar("listaClientes");
+<<<<<<< HEAD
     ocultar("listaMenus");
+=======
+    ocultar("listaPlatos");
+>>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaBebida");
@@ -156,7 +183,11 @@ function verAltaBebidas()
 function verContacto()
 {
     ocultar("listaClientes");
+<<<<<<< HEAD
     ocultar("listaMenus");
+=======
+    ocultar("listaPlatos");
+>>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divContacto");
@@ -166,7 +197,11 @@ function verContacto()
 function verRegistro()
 {
     ocultar("listaClientes");
+<<<<<<< HEAD
     ocultar("listaMenus");
+=======
+    ocultar("listaPlatos");
+>>>>>>> 9bb0c1d7b038cabbd14b66d1fda95ba52df1924b
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divRegistro");
@@ -468,16 +503,19 @@ function añadirIngrediente(){
 
 // Listado Platos
 function verListadoPlatos(){
+    borrarEncabezados();
+    borrarTablas();
     mostrar("listaPlatos");
     ocultar("carrusel");
     ocultar("listaClientes");
     ocultar("listaMenus");
     ocultarFormularios();
-    //borrarTablasPlatos();
-
+    borrarEncabezados();
+    
     var divListado = document.getElementById("listaPlatos");
     divListado.className="container";
     var encabezado = document.createElement("h2");
+    encabezado.setAttribute("id", "encabezadoH2");
     encabezado.style.textAlign="center";
     encabezado.style.color=" rgba(151, 5, 5, 0.986)";
     var tituloEncabezado = document.createTextNode("Listado de Platos de UpoMenu");
@@ -531,7 +569,7 @@ function verListadoPlatos(){
     divListado.appendChild(oTabla);
 
 
-    
+    //console.log(document.getElementById("encabezadoH2").remove())
 }
 
 
@@ -544,6 +582,7 @@ function verListadoClientes()
     ocultar("carrusel");
     ocultar("listaPlatos");
     ocultarFormularios();
+    borrarEncabezados();
     borrarTablas();
 
     var divListado = document.getElementById("listaClientes");
@@ -603,11 +642,94 @@ function verListadoClientes()
     }
     divListado.appendChild(encabezado);
     divListado.appendChild(oTabla);
-
-
-
 }
 
+function verListadoMenus()
+{
+    mostrar("listaMenus");
+    ocultar("carrusel");
+    ocultar("listaClientes")
+    ocultar("listaPlatos");
+    ocultarFormularios();
+    borrarEncabezados();
+    borrarTablas();
+
+    var divListado = document.getElementById("listaMenus");
+    divListado.className="container";
+    var encabezado = document.createElement("h2");
+    encabezado.style.textAlign="center";
+    encabezado.style.color=" rgba(151, 5, 5, 0.986)";
+    var tituloEncabezado = document.createTextNode("Listado de Menus de UpoMenu");
+    encabezado.appendChild(tituloEncabezado);
+    var oTabla = document.createElement("table");
+    //oTabla.border = "1";
+    oTabla.className="table table-hover";
+
+    // THEAD
+    var oTHead = oTabla.createTHead();
+    var oFila = oTHead.insertRow(-1);
+    var oCelda = document.createElement("TH");
+    oCelda.textContent = "Nombre";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Precio";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Primer Plato";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Segundo Plato";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Postre";
+    oFila.appendChild(oCelda);
+
+    oCelda = document.createElement("TH");
+    oCelda.textContent = "Bebida";
+    oFila.appendChild(oCelda);
+
+    var oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+    oFila = oTBody.insertRow(-1);
+    oCelda = oFila.insertCell(-1);
+
+    var listaMenus = oUpoMenu.menus;
+    for(var i=0;i<listaMenus.length;i++)
+    {
+        oCelda.textContent = listaMenus[i].nombre;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].precio;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].primerPlato;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].segundoPlato;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].postre;
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = listaMenus[i].bebida;
+        oFila = oTBody.insertRow(-1);
+        oCelda = oFila.insertCell(-1);
+    }
+    divListado.appendChild(encabezado);
+    divListado.appendChild(oTabla);
+
+}
+function borrarEncabezados()
+{
+    var encabezados = document.querySelectorAll("h2");
+    if(encabezados!=null)
+    {
+        for(var i=0;i<encabezados.length;i++)
+        {
+            encabezados[i].remove();
+        }
+    }
+}
 function borrarTablas()
 {
     var tablaClientes = document.querySelectorAll("table");
