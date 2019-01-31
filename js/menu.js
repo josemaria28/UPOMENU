@@ -1,8 +1,8 @@
 window.addEventListener("load", inicio);
 
-var upoMenu = new UpoMenu();
-//var xml = cargarXML("https://github.com/ilde123/UPOMENU/blob/master/XML/menu.xml");
-var xml = cargarXML("../XML/menu.xml");
+var oUpoMenu = new UpoMenu();
+//var oXML = cargarXML("https://github.com/ilde123/UPOMENU/blob/master/XML/menu.oXML");
+var oXML = cargarXML("../XML/menu.oXML");
 
 function inicio() {
 	datosPrueba();
@@ -49,14 +49,14 @@ function validarFormulario() {
 		var precio = document.querySelector("#txtTotal").value;
 
 		var menu = new Menu(nombre, precio, pPlato, sPlato, postre);
-		upoMenu.agregarMenu(menu);
+		oUpoMenu.agregarMenu(menu);
 		agregarSpinner();
 	}
 }
 
 function mostrarMenus() {
-	var menus = xml.querySelectorAll("menu");
-	var nMenus = xml.querySelectorAll("menu").length;
+	var menus = oXML.querySelectorAll("menu");
+	var nMenus = oXML.querySelectorAll("menu").length;
 	var nFilas = nMenus / 3;
 	var container = document.querySelector(".menus");
 	
@@ -78,17 +78,17 @@ function mostrarMenus() {
 			var div = document.createElement("div");
 			div.classList.add("card-img-overlay");
 			
-			var pPlato = upoMenu._buscarPlato(menus[j].querySelector("primerPlato").textContent).nombre;
+			var pPlato = oUpoMenu._buscarPlato(menus[j].querySelector("primerPlato").textContent).nombre;
 			var pPrimerPlato = document.createElement("p");
 			pPrimerPlato.classList.add("card-text", "color-menu");
 			pPrimerPlato.textContent = "Primer plato: "+pPlato;
 			
-			var sPlato = upoMenu._buscarPlato(menus[j].querySelector("segundoPlato").textContent).nombre;
+			var sPlato = oUpoMenu._buscarPlato(menus[j].querySelector("segundoPlato").textContent).nombre;
 			var pSegundoPlato = document.createElement("p");
 			pSegundoPlato.classList.add("card-text", "color-menu");
 			pSegundoPlato.textContent = "Segundo plato: "+sPlato;
 			
-			var postre = upoMenu._buscarPlato(menus[j].querySelector("postre").textContent).nombre;
+			var postre = oUpoMenu._buscarPlato(menus[j].querySelector("postre").textContent).nombre;
 			var pPostre = document.createElement("p");
 			pPostre.classList.add("card-text", "color-menu");
 			pPostre.textContent = "Postre plato: "+postre;
@@ -183,7 +183,7 @@ function mostrarMensajeError(error) {
 // Actualiza los options del select
 function actualizarDesplegable() {
 	var primerPlato = document.querySelector("#txtPrimerPlato");
-	var platos = upoMenu.platos;
+	var platos = oUpoMenu.platos;
 
 	for (var i = 0; i < platos.length; i++) {
 		var option = document.createElement("option");
@@ -217,7 +217,7 @@ function actualizarDesplegable() {
 	}
 
 	var bebidas = document.querySelector("#txtBebidas");
-	var listaBebidas = upoMenu.bebidas;
+	var listaBebidas = oUpoMenu.bebidas;
 
 	for (var i = 0; i < listaBebidas.length; i++) {
 		option = document.createElement("option");
@@ -285,7 +285,7 @@ function numeroComa(numero) {
 }
 
 function datosPrueba() {
-	var platos = xml.querySelectorAll("plato");
+	var platos = oXML.querySelectorAll("plato");
 
 	for (var i = 0; i < platos.length; i++) {
 		var id = platos[i].querySelector("id").textContent;
@@ -302,11 +302,11 @@ function datosPrueba() {
 				arrayIngredientes.push(nombresIngredientes[s].textContent);
 			}
 		}
-		upoMenu.añadirPlato(new Plato(id, nombre, tipo, precio));
-		upoMenu.añadirIngredientesPlato(arrayIngredientes, id);
+		oUpoMenu.añadirPlato(new Plato(id, nombre, tipo, precio));
+		oUpoMenu.añadirIngredientesPlato(arrayIngredientes, id);
 	}
 
-	var bebidas = xml.querySelectorAll("bebida");
+	var bebidas = oXML.querySelectorAll("bebida");
 
 	for (var j = 0; j < bebidas.length; j++) {
 		var nombreBebida = bebidas[j].querySelector("nombre").textContent;
@@ -316,10 +316,10 @@ function datosPrueba() {
 		var gaseoso = bebidas[j].querySelector("gaseoso").textContent;
 
 		var bebida = new Bebida(nombreBebida, precioBebida, "si" == alcoholico, "si" == gaseoso, "si" == azucarado);
-		upoMenu.agregarBebida(bebida);
+		oUpoMenu.agregarBebida(bebida);
 	}
 /*
-	var bebidas = xml.querySelectorAll("bebida");
+	var bebidas = oXML.querySelectorAll("bebida");
 
 	for (var i = 0; i < bebidas.length; i++) {
 		var nombre = bebidas[i].nombre;
@@ -328,23 +328,23 @@ function datosPrueba() {
 		var gaseoso = bebidas[i].gaseoso;
 		var azucarado = bebidas[i].azucarado;
 
-		upoMenu.agregarBebida(new Bebida(nombre, precio, alcoholico, gaseoso, azucarado));
+		oUpoMenu.agregarBebida(new Bebida(nombre, precio, alcoholico, gaseoso, azucarado));
 	}
 /*
-	upoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
-	upoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
-	upoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
-	upoMenu.añadirPlato(new Plato(4, "helado", "postre", 1.5));
-	upoMenu.añadirPlato(new Plato(5, "plátano", "postre", 0.75));
-	upoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
-	upoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
+	oUpoMenu.añadirPlato(new Plato(1, "patatas", "primer", 3.5));
+	oUpoMenu.añadirPlato(new Plato(2, "albondigas", "primer", 4.7));
+	oUpoMenu.añadirPlato(new Plato(3, "ensalada", "segundo", 2.5));
+	oUpoMenu.añadirPlato(new Plato(4, "helado", "postre", 1.5));
+	oUpoMenu.añadirPlato(new Plato(5, "plátano", "postre", 0.75));
+	oUpoMenu.añadirPlato(new Plato(6, "filete", "primer", 3.5));
+	oUpoMenu.añadirPlato(new Plato(7, "pescado", "segundo", 2.5));
 
-	upoMenu.agregarBebida(new Bebida("Coca-Cola", 0.75, false, true, true));
-	upoMenu.agregarBebida(new Bebida("Fanta", 0.5, false, true, true));
-	upoMenu.agregarBebida(new Bebida("Barceló", 6, true, false, false));
-	upoMenu.agregarBebida(new Bebida("7 up", 0.65, false, true, true));
-	upoMenu.agregarBebida(new Bebida("Camaleón", 0.75, false, true, true));
-	upoMenu.agregarBebida(new Bebida("Te", 0.95, false, true, false));
+	oUpoMenu.agregarBebida(new Bebida("Coca-Cola", 0.75, false, true, true));
+	oUpoMenu.agregarBebida(new Bebida("Fanta", 0.5, false, true, true));
+	oUpoMenu.agregarBebida(new Bebida("Barceló", 6, true, false, false));
+	oUpoMenu.agregarBebida(new Bebida("7 up", 0.65, false, true, true));
+	oUpoMenu.agregarBebida(new Bebida("Camaleón", 0.75, false, true, true));
+	oUpoMenu.agregarBebida(new Bebida("Te", 0.95, false, true, false));
 */
 }
 

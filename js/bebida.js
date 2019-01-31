@@ -54,6 +54,8 @@ function validarFormulario() {
 		mostrarMensajeError(frmAltaBebida.alcoholicoSi, "Debe indicar si es una bebida alcoholica");
 	}
 
+	var gaseoso = frmAltaBebida.gaseoso.value.trim();
+
 	if (frmAltaBebida.gaseoso.item(0).checked || frmAltaBebida.gaseoso.item(1).checked) {
 		var elementos = document.querySelectorAll("[name=gaseoso]");
 
@@ -71,6 +73,8 @@ function validarFormulario() {
 
 		mostrarMensajeError(frmAltaBebida.gaseosoSi, "Debe indicar si es una bebida gaseosa");
 	}
+
+	var azucarado = frmAltaBebida.azucarado.value.trim();
 
 	if (frmAltaBebida.azucarado.item(0).checked || frmAltaBebida.azucarado.item(1).checked) {
 		var elementos = document.querySelectorAll("[name=azucarado]");
@@ -90,8 +94,10 @@ function validarFormulario() {
 		mostrarMensajeError(frmAltaBebida.azucaradoSi, "Debe indicar si es una bebida azucarada");
 	}
 
-	if (!valido) {
-		
+	if (valido) {
+		var bebida = new Bebida(nombre, precio, alcoholico == "si", gaseoso == "si", azucarado == "si");
+
+		oUpoMenu.agregarBebida(bebida);
 	}
 }
 

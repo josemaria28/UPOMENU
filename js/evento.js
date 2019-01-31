@@ -1,8 +1,8 @@
 window.addEventListener("load", inicio);
 
 var upoMenu = new UpoMenu();
-//var xml = cargarXML("https://github.com/ilde123/UPOMENU/blob/master/XML/menu.xml");
-var xml = cargarXML("../XML/menu.xml");
+//var oXML = cargarXML("https://github.com/ilde123/UPOMENU/blob/master/XML/menu.oXML");
+var oXML = cargarXML("../XML/menu.oXML");
 
 // Eventos
 
@@ -295,7 +295,7 @@ function numeroComa(numero) {
 }
 
 function datosPrueba() {
-	var menus = xml.querySelectorAll("menu");
+	var menus = oXML.querySelectorAll("menu");
 
 	for (var i = 0; i < menus.length; i++) {
 		var nombre = menus[i].querySelector("nombre").textContent;
