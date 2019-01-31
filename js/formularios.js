@@ -92,6 +92,7 @@ function ocultarFormularios()
 function verAltaMenu()
 {
     ocultar("listaClientes");
+    ocultar("listaPlatos");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmMenu");
