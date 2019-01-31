@@ -47,7 +47,7 @@ function inicioIndex()
 
     //Registrar cliente
     document.getElementById("btnRegistro").addEventListener("click",validarCliente);
-    //Función para que el número de telefono sean sólo números
+    //Función para que el número de telefono sean sólo números, no permite borrar
     formulario.txtTlf.addEventListener('keypress', (event) => {
         const e = event;
       
@@ -462,6 +462,7 @@ function añadirIngrediente(){
 
 function verListadoClientes()
 {
+    borrarListadoCliente();
     var divListado = document.getElementById("listaClientes");
     var oTabla = document.createElement("table");
     oTabla.border = "1";
@@ -512,6 +513,15 @@ function verListadoClientes()
     divListado.appendChild(oTabla);
 
 
+}
+
+function borrarListadoCliente()
+{
+    var tablaCreada = document.querySelector("table");
+    if(!tablaCreada==null)
+    {
+        tablaCreada.removeChild;
+    }
 }
 
 
