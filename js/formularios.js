@@ -519,7 +519,7 @@ function verListadoClientes()
 
 function borrarTablas()
 {
-    var tablaClientes = document.querySelector("table");
+    var tablaClientes = document.querySelectorAll("table");
     if(tablaClientes!=null)
     {
         for(var i=0;i<tablaClientes.length;i++)
