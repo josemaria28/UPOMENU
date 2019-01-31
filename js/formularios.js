@@ -622,7 +622,7 @@ function verListadoClientes()
 
 function verListadoMenus()
 {
-    mostrar("listaMenus");
+	mostrar("listaMenus");
     ocultar("carrusel");
     ocultar("listaClientes")
     ocultar("listaPlatos");
@@ -638,10 +638,8 @@ function verListadoMenus()
     var tituloEncabezado = document.createTextNode("Listado de Menus de UpoMenu");
     encabezado.appendChild(tituloEncabezado);
     var oTabla = document.createElement("table");
-    //oTabla.border = "1";
     oTabla.className="table table-hover";
 
-    // THEAD
     var oTHead = oTabla.createTHead();
     var oFila = oTHead.insertRow(-1);
     var oCelda = document.createElement("TH");
