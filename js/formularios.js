@@ -1042,10 +1042,11 @@ function cargarDatosModelo() {
 	var j = 0;
 	var contador = 0;
 	for (var i = 0; i < nFilas; i++) {
-		var fila = document.querySelector("div.card-deck");
+		var fila;
+		fila = document.querySelector("div.card-deck");
 
-		if (fila == undefined || fila == null) {
-			var fila = document.createElement("div");
+		if (fila == undefined || fila == null || nMenus == 3) {
+			fila = document.createElement("div");
 			fila.classList.add("card-deck");
 		}
 		
