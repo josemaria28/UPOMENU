@@ -469,6 +469,7 @@ function añadirIngrediente(){
 
 function verListadoClientes()
 {
+    mostrar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
     borrarTablas();
