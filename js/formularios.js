@@ -724,10 +724,10 @@ function enviarMensaje(oEvento)
         //Limpia los campos del formulario de contacto
         function limpiarCampos()
 		{
-			formularioContacto.txtNombre.classList.remove("error");
-			formularioContacto.txtTelefono.classList.remove("error");
-			formularioContacto.txtEmail.classList.remove("error");
-			formularioContacto.txtMsg.classList.remove("error");
+			formContacto.txtNombre.classList.remove("error");
+			formContacto.txtTelefono.classList.remove("error");
+			formContacto.txtEmail.classList.remove("error");
+			formContacto.txtMsg.classList.remove("error");
 		}
 
 
