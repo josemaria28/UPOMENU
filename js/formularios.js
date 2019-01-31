@@ -1014,31 +1014,6 @@ function mostrarMenus() {
 		contador = 0;
 		container.appendChild(fila);
 	}
-	/*
-		var fila = document.createElement("div");
-		fila.classList.add("card-deck");
-	
-		for (var i = 0; i < nMenus; i++) {
-			var card = document.createElement("div");
-			card.classList.add("card");
-			var img = document.createElement("img");
-			img.classList.add("card-img-top");
-			img.setAttribute("src", "../img/menu.jpg");
-	
-			var div = document.createElement("div");
-			div.classList.add("card-img-overlay");
-	
-			var titulo = document.createElement("h4");
-			titulo.classList.add("card-title");
-			titulo.textContent = menus[i].querySelector("nombre").textContent;
-	
-			div.appendChild(titulo);
-			card.appendChild(img);
-			card.appendChild(div);
-			fila.appendChild(card);
-		}
-		container.appendChild(fila);
-	*/
 }
 
 function limpiarErrores() {
@@ -1053,13 +1028,26 @@ function limpiarErrores() {
 	}
 }
 
+function limpiarCampos() {
+	var boton = document.querySelector("#btnAceptarMenu");
+	boton.textContent = "Aceptar";
+
+	document.querySelector("#txtNombreMenu").classList.remove("is-valid")
+
+/*	var elementos = document.querySelector(".is-valid");
+
+	for (var i = 0; i < elementos.length; i++) {
+		elementos[i].classList.remove("is-valid");
+	}*/
+}
+
 function agregarSpinner() {
 	var boton = document.querySelector("#btnAceptarMenu");
 	boton.textContent = "Guardando... ";
 	var span = document.createElement("span");
 	span.classList.add("spinner-border", "spinner-border-sm");
 	boton.appendChild(span);
-	setTimeout(function() {frmMenu.reset();}, 3000);
+	setTimeout(limpiarCampos, 3000);
 }
 
 function mostrarMensajeError(error) {
