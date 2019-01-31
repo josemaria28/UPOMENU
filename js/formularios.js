@@ -535,6 +535,7 @@ function verListadoClientes()
     mostrar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
+    borrarEncabezados();
     borrarTablas();
     var divListado = document.getElementById("listaClientes");
     var encabezado = document.createElement("h2");
@@ -595,18 +596,22 @@ function verListadoClientes()
 
 }
 
-function borrarTablas()
+function borrarEncabezados()
 {
-    var tablaClientes = document.querySelectorAll("table");
     var encabezados = document.querySelectorAll("h2");
-    /*if(encabezados!=null)
+    if(encabezados!=null)
     {
         for(var j=0;j<encabezados.length;j++)
         {
             encabezados[i].remove();
         }
     }
-    */
+    
+}
+
+function borrarTablas()
+{
+    var tablaClientes = document.querySelectorAll("table");
     if(tablaClientes!=null)
     {
         for(var i=0;i<tablaClientes.length;i++)
