@@ -778,7 +778,8 @@ function iniciarSesion()
         var bienvenida = document.createElement("h3");
         bienvenida.style.color="rgba(151, 5, 5, 0.986)";
         bienvenida.style.textAlign="center";
-        var textoBienvenida = document.createTextNode("Bienvenido usuario");
+        var textoBienvenida = document.createTextNode("Bienvenido usuario"); //Intentad poner en vez de usuario, el nombre de la persona 
+                                                                               //que inicia sesión
         bienvenida.appendChild(textoBienvenida);
         var ubicacion = document.getElementById("collapsibleNavbar");
         ubicacion.appendChild(bienvenida);
