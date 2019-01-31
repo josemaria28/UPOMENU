@@ -25,6 +25,7 @@ function inicioIndex()
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
+    document.getElementById("btnContact").addEventListener("click",enviarMensaje);
     document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
     var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
     //Lo que llega de botonesCarrusel es un array de elementos, asi que lo recorremos y le asignamos la misma función, que es 
@@ -725,6 +726,63 @@ function iniciarSesion()
 
 
 }
+
+//Validación de mensaje de contacto
+function enviarMensaje(oEvento)
+		{
+			//Antes de enviar el mensaje validamos que se hayan rellenado todos los campos correctamente,
+			//no tendrán expresiones regulares ya que puede ser libre el texto a escribir
+			var nombreContacto = formularioContacto.txtNombre.value.trim();
+			var emailContacto = formularioContacto.txtEmail.value.trim();
+			var telefonoContacto = formularioContacto.txtTelefono.value.trim();
+			var mensajeContacto = formularioContacto.txtMsg.value.trim();
+			var bRelleno = true;
+			var sMensaje = "";
+			var oE = oEvento || window.event;
+			
+			limpiarCampos();
+    		solonumeros(oE);
+			
+
+			if(nombreContacto == "")
+			{
+				bRelleno = false;
+				formularioContacto.txtNombre.focus();
+				formularioContacto.txtNombre.classList.add("error");
+				
+			}
+
+			if(emailContacto == "")
+			{
+				bRelleno = false;
+				formularioContacto.txtEmail.focus();
+				formularioContacto.txtEmail.classList.add("error");
+			}
+
+			if(telefonoContacto == "")
+			{
+				bRelleno = false;
+				formularioContacto.txtTelefono.focus();
+				formularioContacto.txtTelefono.classList.add("error");
+			}
+			
+			if(mensajeContacto == "")
+			{
+				bRelleno = false;
+				formularioContacto.txtMsg.focus();
+				formularioContacto.txtMsg.classList.add("error");
+			}
+
+			if(bRelleno == false)
+			{
+				alert("Debe rellenar todos los campos");
+			}
+			else
+			{
+				alert("Gracias por contactar con nosotros");
+				formularioContacto.reset();
+			}
+		}
 
 
 
