@@ -541,6 +541,7 @@ function verListadoClientes()
     ocultar("carrusel");
     ocultar("listaPlatos");
     ocultarFormularios();
+    borrarEncabezados();
     borrarTablas();
 
     var divListado = document.getElementById("listaClientes");
@@ -604,7 +605,17 @@ function verListadoClientes()
 
 
 }
-
+function borrarEncabezados()
+{
+    var encabezados = document.querySelectorAll("h2");
+    if(encabezados!=null)
+    {
+        for(var i=0;i<encabezados.length;i++)
+        {
+            encabezados[i].remove();
+        }
+    }
+}
 function borrarTablas()
 {
     var tablaClientes = document.querySelectorAll("table");
