@@ -474,6 +474,8 @@ function verListadoClientes()
     ocultarFormularios();
     borrarTablas();
     var divListado = document.getElementById("listaClientes");
+    var encabezado = document.createElement("h2");
+    encabezado.textContent = "Listado de Clientes de UpoMenu";
     var oTabla = document.createElement("table");
     oTabla.border = "1";
 
