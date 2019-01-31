@@ -33,7 +33,7 @@ function inicioIndex()
     //lo que buscamos
     for(var i=0;i<botonesCarrusel.length;i++)
     {
-        botonesCarrusel[i].addEventListener("click",verAltaPlato);
+        botonesCarrusel[i].addEventListener("click",verListadoPlatos);
     }
     // Formulario Platos
     document.getElementById("btnAñadirPlatos").addEventListener("click",añadirPlato, false);
@@ -105,6 +105,7 @@ function verAltaMenu()
 function verAltaEvento()
 {
     ocultar("listaClientes");
+    ocultar("listaPlatos");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmEvento");
@@ -116,6 +117,7 @@ function verAltaEvento()
 function verAltaPlato()
 {
     ocultar("listaClientes");
+    ocultar("listaPlatos");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmPlato");
@@ -128,6 +130,7 @@ function verAltaPlato()
 function verAltaIngredientes()
 {
     ocultar("listaClientes");
+    ocultar("listaPlatos");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaIngrediente");
@@ -138,6 +141,7 @@ function verAltaIngredientes()
 function verAltaBebidas()
 {
     ocultar("listaClientes");
+    ocultar("listaPlatos");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaBebida");
@@ -148,6 +152,7 @@ function verAltaBebidas()
 function verContacto()
 {
     ocultar("listaClientes");
+    ocultar("listaPlatos");
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divContacto");
@@ -157,6 +162,7 @@ function verContacto()
 function verRegistro()
 {
     ocultar("listaClientes");
+    ocultar("listaPlatos");
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divRegistro");
@@ -458,15 +464,16 @@ function añadirIngrediente(){
 
 // Listado Platos
 function verListadoPlatos(){
+    borrarTablas();
     mostrar("listaPlatos");
     ocultar("carrusel");
     ocultar("listaClientes");
     ocultarFormularios();
-    //borrarTablasPlatos();
-
+    
     var divListado = document.getElementById("listaPlatos");
     divListado.className="container";
     var encabezado = document.createElement("h2");
+    encabezado.setAttribute("id", "encabezadoH2");
     encabezado.style.textAlign="center";
     encabezado.style.color=" rgba(151, 5, 5, 0.986)";
     var tituloEncabezado = document.createTextNode("Listado de Platos de UpoMenu");
@@ -520,7 +527,7 @@ function verListadoPlatos(){
     divListado.appendChild(oTabla);
 
 
-    
+    //console.log(document.getElementById("encabezadoH2").remove())
 }
 
 
