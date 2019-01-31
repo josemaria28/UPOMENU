@@ -535,7 +535,7 @@ function verListadoClientes()
     mostrar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
-    borrarEncabezados();
+   //borrarEncabezados();
     borrarTablas();
     var divListado = document.getElementById("listaClientes");
     var encabezado = document.createElement("h2");
@@ -595,7 +595,7 @@ function verListadoClientes()
 
 
 }
-
+/*
 function borrarEncabezados()
 {
     var encabezados = document.querySelectorAll("h2");
@@ -608,7 +608,7 @@ function borrarEncabezados()
     }
     
 }
-
+*/
 function borrarTablas()
 {
     var tablaClientes = document.querySelectorAll("table");
