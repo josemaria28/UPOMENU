@@ -48,7 +48,7 @@ function inicioIndex()
     //Registrar cliente
     document.getElementById("btnRegistro").addEventListener("click",validarCliente);
     //Función para que el número de telefono sean sólo números
-    document.formulario.txtTlf.addEventListener('keypress', (event) => {
+    formulario.txtTlf.addEventListener('keypress', (event) => {
         const e = event;
       
            if (isNaN(parseFloat(e.key))){
