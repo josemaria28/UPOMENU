@@ -48,14 +48,28 @@ function inicioIndex()
     //Registrar cliente
     document.getElementById("btnRegistro").addEventListener("click",validarCliente);
     //Función para que el número de telefono sean sólo números
-    formulario.txtTlf.addEventListener("keypress",solonumeros,false);
+    document.formulario.txtTlf.addEventListener('keypress', (event) => {
+        const e = event;
+      
+           if (isNaN(parseFloat(e.key))){
+               e.returnValue = false;
+                e.preventDefault();
+              }
+      });
     //Iniciar sesión (tiene que estar registrado previamente);
     formIS.IS.addEventListener("click",iniciarSesion);
 
     //Formulario de contacto
     //Valida que todos los campos estén rellenos antes de enviar el formulario
     document.getElementById("btnContact").addEventListener("click",enviarMensaje);
-    document.formContacto.txtTelefono.addEventListener("keypress",solonumeros);
+    document.formContacto.txtTelefono.addEventListener('keypress', (event) => {
+        const e = event;
+      
+           if (isNaN(parseFloat(e.key))){
+               e.returnValue = false;
+                e.preventDefault();
+              }
+      });
 }
 
 function ocultarFormularios()
@@ -500,13 +514,6 @@ function verListadoClientes()
 
 }
 
-function solonumeros(e){
-	var e = e || window.event;
-    if ((e.keyCode < 48) || (e.keyCode > 57)){
-        e.returnValue = false;
-    e.preventDefault();
-    }
-}
 
 function limpiarErrores()
 {
@@ -528,7 +535,6 @@ function validarCliente(oEvento)
 
 	
 	limpiarErrores();
-    solonumeros(e);
     
     //Validar DNI
 
@@ -684,7 +690,6 @@ function enviarMensaje(oEvento)
 			var oE = oEvento || window.event;
 			
 			limpiarCampos();
-    		solonumeros(e);
 			
 
 			if(nombreContacto == "")
