@@ -864,12 +864,14 @@ function verListadoMenus() {
 	mostrar("listaMenus");
 	ocultar("carrusel");
 	ocultar("listaPlatos");
+	ocultarFormularios();
 	borrarTablas();
 
 	var divListado = document.getElementById("listaMenus");
 	divListado.className="container";
 	var encabezado = document.createElement("h2");
 	encabezado.style.textAlign="center";
+	encabezado.style.color=" rgba(151, 5, 5, 0.986)";
 	var tituloEncabezado = document.createTextNode("Listado de Menus de UpoMenu");
 	encabezado.appendChild(tituloEncabezado);
 	var oTabla = document.createElement("table");
