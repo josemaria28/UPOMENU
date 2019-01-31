@@ -1032,7 +1032,8 @@ function limpiarCampos() {
 	var boton = document.querySelector("#btnAceptarMenu");
 	boton.textContent = "Aceptar";
 
-	document.querySelector("#txtNombreMenu").classList.remove("is-valid")
+	document.querySelector("#txtNombreMenu").classList.remove("is-valid");
+	document.querySelector("#txtNombreMenu").value = "";
 
 /*	var elementos = document.querySelector(".is-valid");
 
