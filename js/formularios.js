@@ -462,6 +462,7 @@ function añadirIngrediente(){
 
 function verListadoClientes()
 {
+    ocultarFormularios();
     borrarTablas();
     var divListado = document.getElementById("listaClientes");
     var oTabla = document.createElement("table");
