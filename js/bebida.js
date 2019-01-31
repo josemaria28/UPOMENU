@@ -1,10 +1,10 @@
 window.addEventListener("load", inicio);
 
 function inicio() {
-	frmAltaBebida.btnAñadirBebida.addEventListener("click", validarFormulario);
+	frmAltaBebida.btnAñadirBebida.addEventListener("click", validarFormularioBebidas);
 }
 
-function validarFormulario() {
+function validarFormularioBebidas() {
 	limpiarErrores();
 	
 	var valido = true;
