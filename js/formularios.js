@@ -774,6 +774,7 @@ function iniciarSesion()
         alert("Bienvenido");
         formulario.reset();
         document.querySelector("#dropdownMenu1").remove();
+        document.querySelector("#liReg").remove();
         
     }
     else
