@@ -10,11 +10,11 @@ var formulario = document.getElementById("frmRegistroCliente");
 var formIS = document.getElementById("formularioIS");
 
 //Datos iniciales de 1 cliente 
-datosIniciales();
+/*datosIniciales();
 function datosIniciales(){
     oUpoMenu.altaCliente(new Cliente("josemaria",619938534,"jose@gmail.com","12345678A","Jose@1234567890"));
     //oUpoMenu.mostrarClientes();
-}
+}*/
 
 //Manejadores de eventos 
 function inicioIndex()
