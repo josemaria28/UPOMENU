@@ -509,6 +509,7 @@ function verListadoClientes()
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = listaClientes[i].password;
         oFila = oTBody.insertRow(-1);
+        oCelda = oFila.insertCell(-1);
     }
     
     divListado.appendChild(oTabla);
