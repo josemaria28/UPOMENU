@@ -1207,7 +1207,7 @@ function limpiarErrores() {
 	}
 }
 
-function limpiarCampos() {
+function limpiarCamposMenu() {
 	var boton = document.querySelector("#btnAceptarMenu");
 	boton.textContent = "Aceptar";
 
@@ -1223,7 +1223,7 @@ function agregarSpinnerMenu() {
 	var span = document.createElement("span");
 	span.classList.add("spinner-border", "spinner-border-sm");
 	boton.appendChild(span);
-	setTimeout(limpiarCampos, 3000);
+	setTimeout(limpiarCamposMenu, 3000);
 }
 
 function mostrarMensajeErrorMenu(error) {
@@ -1273,7 +1273,7 @@ function actualizarDesplegableMenu() {
 		var option = document.createElement("option");
 		option.text = platos[i].nombre;
 		option.value = platos[i].id;
-		option.dataset.precio = platos[i].precio.toFixed(2);
+		option.dataset.precio = platos[i].precio;
 
 		primerPlato.appendChild(option);
 	}
@@ -1284,7 +1284,7 @@ function actualizarDesplegableMenu() {
 		option = document.createElement("option");
 		option.text = platos[i].nombre;
 		option.value = platos[i].id;
-		option.dataset.precio = platos[i].precio.toFixed(2);
+		option.dataset.precio = platos[i].precio;
 
 		segundoPlato.appendChild(option);
 	}
@@ -1295,7 +1295,7 @@ function actualizarDesplegableMenu() {
 		option = document.createElement("option");
 		option.text = platos[i].nombre;
 		option.value = platos[i].id;
-		option.dataset.precio = platos[i].precio.toFixed(2);
+		option.dataset.precio = platos[i].precio;
 
 		postre.appendChild(option);
 	}
@@ -1307,7 +1307,7 @@ function actualizarDesplegableMenu() {
 		option = document.createElement("option");
 		option.text = listaBebidas[i].nombre;
 		option.value = listaBebidas[i].nombre;
-		option.dataset.precio = listaBebidas[i].precio.toFixed(2);
+		option.dataset.precio = listaBebidas[i].precio;
 
 		bebidas.appendChild(option);
 	}
