@@ -780,6 +780,8 @@ function iniciarSesion()
         bienvenida.style.textAlign="center";
         var textoBienvenida = document.createTextNode("Bienvenido usuario");
         bienvenida.appendChild(textoBienvenida);
+        var ubicacion = document.getElementById("collapsibleNavbar");
+        ubicacion.appendChild(bienvenida);
 
         
     }
