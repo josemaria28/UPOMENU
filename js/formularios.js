@@ -520,12 +520,13 @@ function verListadoClientes()
 function borrarTablas()
 {
     var tablaClientes = document.querySelector("table");
-
-    for(var i=0;i<tablaClientes.length;i++)
+    if(tablaClientes!=null)
     {
-        tablaClientes[i].remove();
+        for(var i=0;i<tablaClientes.length;i++)
+        {
+            tablaClientes[i].remove();
+        }
     }
-
 }
 
 
