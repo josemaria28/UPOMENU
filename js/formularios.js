@@ -772,7 +772,8 @@ function iniciarSesion()
     if(bAcceso == true)
     {
         alert("Bienvenido");
-        document.querySelector("#L1").remove;
+        formulario.reset();
+        document.querySelector("#L1").remove();
         
     }
     else
