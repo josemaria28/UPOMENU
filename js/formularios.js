@@ -86,6 +86,7 @@ function ocultarFormularios()
 
 function verAltaMenu()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmMenu");
@@ -95,6 +96,7 @@ function verAltaMenu()
 
 function verAltaEvento()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmEvento");
@@ -105,6 +107,7 @@ function verAltaEvento()
 
 function verAltaPlato()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmPlato");
@@ -116,6 +119,7 @@ function verAltaPlato()
 
 function verAltaIngredientes()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaIngrediente");
@@ -125,6 +129,7 @@ function verAltaIngredientes()
 
 function verAltaBebidas()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaBebida");
@@ -134,6 +139,7 @@ function verAltaBebidas()
 
 function verContacto()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divContacto");
@@ -142,6 +148,7 @@ function verContacto()
 
 function verRegistro()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divRegistro");
