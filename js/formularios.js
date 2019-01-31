@@ -599,14 +599,15 @@ function borrarTablas()
 {
     var tablaClientes = document.querySelectorAll("table");
     var encabezados = document.querySelectorAll("h2");
-    if(encabezados!=null)
+    /*if(encabezados!=null)
     {
         for(var j=0;j<encabezados.length;j++)
         {
             encabezados[i].remove();
         }
     }
-    else if(tablaClientes!=null)
+    */
+    if(tablaClientes!=null)
     {
         for(var i=0;i<tablaClientes.length;i++)
         {
