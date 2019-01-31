@@ -500,7 +500,7 @@ function verListadoClientes()
 
 }
 
-function solonumeros(){
+function solonumeros(e){
 	var e = e || window.event;
     if ((e.keyCode < 48) || (e.keyCode > 57)){
         e.returnValue = false;
@@ -528,7 +528,7 @@ function validarCliente(oEvento)
 
 	
 	limpiarErrores();
-    solonumeros();
+    solonumeros(e);
     
     //Validar DNI
 
@@ -684,7 +684,7 @@ function enviarMensaje(oEvento)
 			var oE = oEvento || window.event;
 			
 			limpiarCampos();
-    		solonumeros();
+    		solonumeros(e);
 			
 
 			if(nombreContacto == "")
