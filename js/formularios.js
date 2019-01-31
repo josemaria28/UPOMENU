@@ -517,10 +517,10 @@ function verListadoClientes()
 
 function borrarListadoCliente()
 {
-    var tablaCreada = document.querySelector("table");
-    if(!tablaCreada==null)
+    var divTablaCliente = document.getElementById("listaClientes");
+    if(!divTablaCliente==null)
     {
-        tablaCreada.removeChild;
+        divTablaCliente.removeChild;
     }
 }
 
