@@ -19,7 +19,7 @@ function validarFormulario() {
 	else {
 		valido = false;
 		frmAltaBebida.txtNombre.classList.add("is-invalid");
-		error.push("El nombre debe contener caracteres alfanumérico de entre 6 y 50 caracteres");
+		mostrarMensajeError(frmAltaBebida.txtNombre, "El nombre debe contener caracteres alfanumérico de entre 6 y 50 caracteres");
 	}
 	
 	var precio = frmAltaBebida.txtPrecio.value.trim();
@@ -31,7 +31,7 @@ function validarFormulario() {
 	else {
 		valido = false;
 		frmAltaBebida.txtPrecio.classList.add("is-invalid");
-		error.push("El precio debe tener el formato correcto");
+		mostrarMensajeError(frmAltaBebida.txtPrecio, "El precio debe tener el formato correcto");
 	}
 
 	var alcoholico = frmAltaBebida.alcoholico.value.trim();
@@ -51,11 +51,47 @@ function validarFormulario() {
 			elementos[i].classList.add("is-invalid");
 		}
 
-		error.push("Debe indicar si es una bebida alcoholica");
+		mostrarMensajeError(frmAltaBebida.alcoholicoSi, "Debe indicar si es una bebida alcoholica");
+	}
+
+	if (frmAltaBebida.gaseoso.item(0).checked || frmAltaBebida.gaseoso.item(1).checked) {
+		var elementos = document.querySelectorAll("[name=gaseoso]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-valid");
+		}
+	}
+	else {
+		valido = false;
+		var elementos = document.querySelectorAll("[name=gaseoso]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-invalid");
+		}
+
+		mostrarMensajeError(frmAltaBebida.gaseosoSi, "Debe indicar si es una bebida gaseosa");
+	}
+
+	if (frmAltaBebida.azucarado.item(0).checked || frmAltaBebida.azucarado.item(1).checked) {
+		var elementos = document.querySelectorAll("[name=azucarado]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-valid");
+		}
+	}
+	else {
+		valido = false;
+		var elementos = document.querySelectorAll("[name=azucarado]");
+
+		for (var i = 0; i < elementos.length; i++) {
+			elementos[i].classList.add("is-invalid");
+		}
+
+		mostrarMensajeError(frmAltaBebida.azucaradoSi, "Debe indicar si es una bebida azucarada");
 	}
 
 	if (!valido) {
-		mostrarMensajeError(error);
+		
 	}
 }
 
@@ -73,14 +109,10 @@ function limpiarErrores() {
 	}
 }
 
-function mostrarMensajeError(error) {
-	var desplegable = document.querySelectorAll(".is-invalid");
+function mostrarMensajeError(elemento, error) {
+	var div = document.createElement("div");
+	div.classList.add("texto-error");
+	div.textContent = error;
 
-	for (var i = 0; i < desplegable.length; i++) {
-		var div = document.createElement("div");
-		div.classList.add("texto-error");
-		div.textContent = error[i];
-
-		desplegable[i].parentElement.appendChild(div);
-	}
+	elemento.parentElement.parentElement.appendChild(div);
 }
