@@ -341,24 +341,6 @@ function añadirPlato(){
     }
     // Validar seleccionar ingredientes
     var sIngredientes = frmAltaPlato.txtIngredientePlato.value.trim();
-    // Separados por coma,,,,
-     //oExpReg = /[A-Za-z]{0,}\,[A-Za-z]{0,}/g;
-
-    /*if (!oExpReg.test(sIngredientes)) {
-        if (bValido) {
-            bValido = false;
-            limpiarColor("txtIngredientePlato");
-            limpiar("txtIngredientePlato");
-            frmAltaPlato.txtIngredientePlato.focus();
-        }
-        frmAltaPlato.txtIngredientePlato.classList.add("Error");
-        errorColor("txtIngredientePlato");
-        
-        sError += "Ingrediente no debe de contener números ni caracteres raros.";
-    }else {
-        limpiarColor("txtIngredientePlato");
-    }*/
-
 
     if (!bValido) {
         alert(sError);
@@ -389,7 +371,6 @@ function añadirPlato(){
 }
 
 function cargarIngredientes(){
-    //var oXML = loadXMLDoc("XML/ingredientes.xml");
     // Generar options
         // Recogemos todos los ingredientes
         var oIngrediente = oXML.querySelectorAll("ingrediente");
@@ -479,19 +460,22 @@ function añadirIngrediente(){
 function verListadoPlatos(){
     mostrar("listaPlatos");
     ocultar("carrusel");
+    ocultar("listaClientes");
     ocultarFormularios();
-    borrarTablasPlatos();
-
-    var crearTabla = document.createElement("DIV");
+    //borrarTablasPlatos();
 
     var divListado = document.getElementById("listaPlatos");
+    divListado.className="container";
     var encabezado = document.createElement("h2");
     encabezado.style.textAlign="center";
     encabezado.style.color=" rgba(151, 5, 5, 0.986)";
     var tituloEncabezado = document.createTextNode("Listado de Platos de UpoMenu");
     encabezado.appendChild(tituloEncabezado);
     var oTabla = document.createElement("table");
-    oTabla.border = "1";
+    //oTabla.border = "1";
+    //oTabla.style.width = '50%';
+    oTabla.style.textAlign="center";
+    oTabla.className="table table-hover";
 
     // THEAD
     var oTHead = oTabla.createTHead();
@@ -512,9 +496,6 @@ function verListadoPlatos(){
     oCelda.textContent = "Precio";
     oFila.appendChild(oCelda);
 
-    //oCelda = document.createElement("TH");
-    //oCelda.textContent = "Password";
-    //oFila.appendChild(oCelda);
 
     var oTBody = document.createElement("TBODY");
     oTabla.appendChild(oTBody);
@@ -529,11 +510,9 @@ function verListadoPlatos(){
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = listaPlatos[i].nombre;
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = listaPlatos[i].email;
+        oCelda.textContent = listaPlatos[i].tipo;
         oCelda = oFila.insertCell(-1);
-        oCelda.textContent = listaPlatos[i].telefono;
-        oCelda = oFila.insertCell(-1);
-        oCelda.textContent = listaPlatos[i].password;
+        oCelda.textContent = listaPlatos[i].precio+"€";
         oFila = oTBody.insertRow(-1);
         oCelda = oFila.insertCell(-1);
     }
@@ -552,17 +531,20 @@ function verListadoClientes()
 {
     mostrar("listaClientes");
     ocultar("carrusel");
+    ocultar("listaPlatos");
     ocultarFormularios();
-   //borrarEncabezados();
     borrarTablas();
+
     var divListado = document.getElementById("listaClientes");
+    divListado.className="container";
     var encabezado = document.createElement("h2");
     encabezado.style.textAlign="center";
     encabezado.style.color=" rgba(151, 5, 5, 0.986)";
     var tituloEncabezado = document.createTextNode("Listado de Clientes de UpoMenu");
     encabezado.appendChild(tituloEncabezado);
     var oTabla = document.createElement("table");
-    oTabla.border = "1";
+    //oTabla.border = "1";
+    oTabla.className="table table-hover";
 
     // THEAD
     var oTHead = oTabla.createTHead();
@@ -614,23 +596,7 @@ function verListadoClientes()
 
 
 }
-/*
-function borrarEncabezados()
-{
-    var encabezados = document.querySelectorAll("h2");
-    if(encabezados!=null)
-    {
-        for(var j=0;j<encabezados.length;j++)
-        {
-            encabezados[i].remove();
-        }
-    }
-    
-}
-*/
-function borrarTablasPlatos(){
-    document.querySelectorAll("table").remove();
-}
+
 function borrarTablas()
 {
     var tablaClientes = document.querySelectorAll("table");
