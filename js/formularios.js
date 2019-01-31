@@ -49,10 +49,29 @@ function inicioIndex()
 
     //Registrar cliente
     document.getElementById("btnRegistro").addEventListener("click",validarCliente);
-    //Función para que el número de telefono sean sólo números
-    formulario.txtTlf.addEventListener("keypress",solonumeros,false);
+    //Función para que el número de telefono sean sólo números, no permite borrar
+    formulario.txtTlf.addEventListener('keypress', (event) => {
+        const e = event;
+      
+           if (isNaN(parseFloat(e.key))){
+               e.returnValue = false;
+                e.preventDefault();
+              }
+      });
     //Iniciar sesión (tiene que estar registrado previamente);
     formIS.IS.addEventListener("click",iniciarSesion);
+
+    //Formulario de contacto
+    //Valida que todos los campos estén rellenos antes de enviar el formulario
+    document.getElementById("btnContact").addEventListener("click",enviarMensaje);
+    document.formContacto.txtTelefono.addEventListener('keypress', (event) => {
+        const e = event;
+      
+           if (isNaN(parseFloat(e.key))){
+               e.returnValue = false;
+                e.preventDefault();
+              }
+      });
 }
 
 function ocultarFormularios()
@@ -69,6 +88,7 @@ function ocultarFormularios()
 
 function verAltaMenu()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmMenu");
@@ -78,6 +98,7 @@ function verAltaMenu()
 
 function verAltaEvento()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmEvento");
@@ -88,6 +109,7 @@ function verAltaEvento()
 
 function verAltaPlato()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmPlato");
@@ -99,6 +121,7 @@ function verAltaPlato()
 
 function verAltaIngredientes()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaIngrediente");
@@ -108,6 +131,7 @@ function verAltaIngredientes()
 
 function verAltaBebidas()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
 	mostrar("frmAltaBebida");
@@ -117,6 +141,7 @@ function verAltaBebidas()
 
 function verContacto()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divContacto");
@@ -125,6 +150,7 @@ function verContacto()
 
 function verRegistro()
 {
+    ocultar("listaClientes");
     ocultar("carrusel");
     ocultarFormularios();
     mostrar("divRegistro");
@@ -506,6 +532,10 @@ function verListadoPlatos(){
 
 function verListadoClientes()
 {
+    mostrar("listaClientes");
+    ocultar("carrusel");
+    ocultarFormularios();
+    borrarTablas();
     var divListado = document.getElementById("listaClientes");
     var oTabla = document.createElement("table");
     oTabla.border = "1";
@@ -551,6 +581,8 @@ function verListadoClientes()
         oCelda.textContent = listaClientes[i].telefono;
         oCelda = oFila.insertCell(-1);
         oCelda.textContent = listaClientes[i].password;
+        oFila = oTBody.insertRow(-1);
+        oCelda = oFila.insertCell(-1);
     }
     
     divListado.appendChild(oTabla);
@@ -558,12 +590,18 @@ function verListadoClientes()
 
 }
 
-function solonumeros(e){
-	var key = window.event ? e.which : e.keyCode;
-	if (key < 48 || key > 57) {
-  		e.preventDefault();
-	}
+function borrarTablas()
+{
+    var tablaClientes = document.querySelectorAll("table");
+    if(tablaClientes!=null)
+    {
+        for(var i=0;i<tablaClientes.length;i++)
+        {
+            tablaClientes[i].remove();
+        }
+    }
 }
+
 
 function limpiarErrores()
 {
@@ -585,7 +623,6 @@ function validarCliente(oEvento)
 
 	
 	limpiarErrores();
-    solonumeros(oE);
     
     //Validar DNI
 
@@ -726,6 +763,70 @@ function iniciarSesion()
 
 
 }
+
+//Validación de mensaje de contacto
+function enviarMensaje(oEvento)
+		{
+			//Antes de enviar el mensaje validamos que se hayan rellenado todos los campos correctamente,
+			//no tendrán expresiones regulares ya que puede ser libre el texto a escribir
+			var nombreContacto = formContacto.txtNombre.value.trim();
+			var emailContacto = formContacto.txtEmail.value.trim();
+			var telefonoContacto = formContacto.txtTelefono.value.trim();
+			var mensajeContacto = formContacto.txtMsg.value.trim();
+			var bRelleno = true;
+			var sMensaje = "";
+			var oE = oEvento || window.event;
+			
+			limpiarCampos();
+			
+
+			if(nombreContacto == "")
+			{
+				bRelleno = false;
+				formContacto.txtNombre.focus();
+				formContacto.txtNombre.classList.add("error");
+				
+			}
+
+			if(emailContacto == "")
+			{
+				bRelleno = false;
+				formContacto.txtEmail.focus();
+				formContacto.txtEmail.classList.add("error");
+			}
+
+			if(telefonoContacto == "")
+			{
+				bRelleno = false;
+				formContacto.txtTelefono.focus();
+				formContacto.txtTelefono.classList.add("error");
+			}
+			
+			if(mensajeContacto == "")
+			{
+				bRelleno = false;
+				formContacto.txtMsg.focus();
+				formContacto.txtMsg.classList.add("error");
+			}
+
+			if(bRelleno == false)
+			{
+				alert("Debe rellenar todos los campos");
+			}
+			else
+			{
+				alert("Gracias por contactar con nosotros");
+				formContacto.reset();
+			}
+        }
+        //Limpia los campos del formulario de contacto
+        function limpiarCampos()
+		{
+			formContacto.txtNombre.classList.remove("error");
+			formContacto.txtTelefono.classList.remove("error");
+			formContacto.txtEmail.classList.remove("error");
+			formContacto.txtMsg.classList.remove("error");
+		}
 
 
 
