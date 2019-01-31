@@ -7,6 +7,7 @@ var oXML = loadXMLDoc("XML/ingredientes.xml");
 
 var formulario = document.getElementById("frmRegistroCliente");
 var formIS = document.getElementById("formularioIS");
+
 //Datos iniciales de 1 cliente 
 datosIniciales();
 function datosIniciales(){
@@ -479,8 +480,8 @@ function verListadoPlatos(){
     oFila = oTBody.insertRow(-1);
     oCelda = oFila.insertCell(-1);
 
-    var listaPlatos = oUpoMenu.platos;
-    for(var i=0;i<platos.length;i++)
+    var platos = oUpoMenu.platos;
+    for(var i=0;i< platos.length;i++)
     {
         oCelda.textContent = platos[i].id;
         oCelda = oFila.insertCell(-1);
