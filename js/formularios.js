@@ -25,7 +25,6 @@ function inicioIndex()
     document.getElementById("btnBebidas").addEventListener("click",verAltaBebidas);
     document.getElementById("btnContacto").addEventListener("click",verContacto);
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
-    document.getElementById("btnContact").addEventListener("click",enviarMensaje);
     document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
     var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
     //Lo que llega de botonesCarrusel es un array de elementos, asi que lo recorremos y le asignamos la misma función, que es 
@@ -52,6 +51,11 @@ function inicioIndex()
     formulario.txtTlf.addEventListener("keypress",solonumeros,false);
     //Iniciar sesión (tiene que estar registrado previamente);
     formIS.IS.addEventListener("click",iniciarSesion);
+
+    //Formulario de contacto
+    //Valida que todos los campos estén rellenos antes de enviar el formulario
+    document.getElementById("btnContact").addEventListener("click",enviarMensaje);
+    document.formContacto.txtTelefono.addEventListener("keypress",solonumeros);
 }
 
 function ocultarFormularios()
@@ -496,11 +500,12 @@ function verListadoClientes()
 
 }
 
-function solonumeros(e){
-	var key = window.event ? e.which : e.keyCode;
-	if (key < 48 || key > 57) {
-  		e.preventDefault();
-	}
+function solonumeros(){
+	var e = e || window.event;
+    if ((e.keyCode < 48) || (e.keyCode > 57)){
+        e.returnValue = false;
+    e.preventDefault();
+    }
 }
 
 function limpiarErrores()
@@ -523,7 +528,7 @@ function validarCliente(oEvento)
 
 	
 	limpiarErrores();
-    solonumeros(oE);
+    solonumeros();
     
     //Validar DNI
 
@@ -679,7 +684,7 @@ function enviarMensaje(oEvento)
 			var oE = oEvento || window.event;
 			
 			limpiarCampos();
-    		solonumeros(oE);
+    		solonumeros();
 			
 
 			if(nombreContacto == "")
