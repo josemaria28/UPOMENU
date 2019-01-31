@@ -465,6 +465,7 @@ function añadirIngrediente(){
 
 // Listado Platos
 function verListadoPlatos(){
+    borrarEncabezados();
     borrarTablas();
     mostrar("listaPlatos");
     ocultar("carrusel");
