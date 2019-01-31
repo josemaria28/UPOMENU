@@ -44,7 +44,8 @@ function inicioIndex()
     oUpoMenu.mostrarClientes();
     oUpoMenu.mostrarPlatos();
     oUpoMenu.mostrarIngredientes();
-    cargaComboPlatos();
+	cargaComboPlatos();
+	datosPrueba();	
     
     // Formulario Cliente
 
@@ -96,7 +97,6 @@ function verAltaMenu()
 	mostrar("frmMenu");
 	//	document.querySelector("script+script").setAttribute("src", "js/menu.js");
     frmMenu.reset();
-	datosPrueba();
 	actualizarDesplegable();
 	inicializarEventos();
 	mostrarMenus();
@@ -927,14 +927,26 @@ function validarFormulario() {
 		mostrarMensajeError(error);
 	}
 	else {
-		var pPlato = document.querySelector("#txtPrimerPlato").value;
-		var sPlato = document.querySelector("#txtSegundoPlato").value;
-		var postre = document.querySelector("#txtPostre").value;
-		var precio = document.querySelector("#txtTotal").value;
+		
 
-		var menu = new Menu(nombre, precio, pPlato, sPlato, postre);
-		oUpoMenu.agregarMenu(menu);
+//		var menu = new Menu(nombre, precio, pPlato, sPlato, postre, bebida);
 		agregarSpinner();
+		setTimeout(function (menu) {
+			var pPlato = document.querySelector("#txtPrimerPlato").value;
+			var sPlato = document.querySelector("#txtSegundoPlato").value;
+			var postre = document.querySelector("#txtPostre").value;
+			var precio = document.querySelector("#txtTotal").value;
+			var bebida = document.querySelector("#txtBebidas").value;
+
+			if (oUpoMenu.agregarMenu(new Menu(nombre, precio, pPlato, sPlato, postre, bebida))) {
+				alert("Menu agregado");
+				mostrarMenus();
+			}
+			else {
+				alert("Menu duplicado");
+			}
+		}, 3000);
+		
 	}
 }
 
@@ -1014,6 +1026,83 @@ function mostrarMenus() {
 		contador = 0;
 		container.appendChild(fila);
 	}
+
+	cargarDatosModelo();
+}
+
+function cargarDatosModelo() {
+
+	var menus = oUpoMenu.menus;
+	var nMenus = document.querySelectorAll(".card").length;
+	var nFilas = nMenus / 3;
+	var container = document.querySelector(".menus");
+	
+	nFilas = Math.ceil(nFilas);
+	
+	var j = 0;
+	var contador = 0;
+	for (var i = 0; i < nFilas; i++) {
+		var fila = document.querySelector("div.card-deck");
+
+		if (fila == undefined || fila == null) {
+			var fila = document.createElement("div");
+			fila.classList.add("card-deck");
+		}
+		
+		while (contador < 3 && menus[j] != undefined) {
+			var card = document.createElement("div");
+			card.classList.add("card");
+			var img = document.createElement("img");
+			img.classList.add("card-img-top");
+			img.setAttribute("src", "img/menu3.jpg");
+			
+			var div = document.createElement("div");
+			div.classList.add("card-img-overlay");
+			
+			var pPlato = oUpoMenu._buscarPlato(menus[j].primerPlato);
+			var pPrimerPlato = document.createElement("p");
+			pPrimerPlato.classList.add("card-text", "color-menu");
+			pPrimerPlato.textContent = "Primer plato: "+pPlato.nombre;
+			
+			var sPlato = oUpoMenu._buscarPlato(menus[j].segundoPlato);
+			var pSegundoPlato = document.createElement("p");
+			pSegundoPlato.classList.add("card-text", "color-menu");
+			pSegundoPlato.textContent = "Segundo plato: "+sPlato.nombre;
+			
+			var postre = oUpoMenu._buscarPlato(menus[j].postre);
+			var pPostre = document.createElement("p");
+			pPostre.classList.add("card-text", "color-menu");
+			pPostre.textContent = "Postre plato: "+postre.nombre;
+
+			var bebida = menus[j].bebida;
+			var pBebida = document.createElement("p");
+			pBebida.classList.add("card-text", "color-menu");
+			pBebida.textContent = "Bebida: "+bebida;
+			
+			var precio = menus[j].precio;
+			var pPrecio = document.createElement("p");
+			pPrecio.classList.add("card-text", "color-menu");
+			pPrecio.textContent = "Precio: "+precio+" €";
+			
+			var titulo = document.createElement("h4");
+			titulo.classList.add("card-title", "color-menu");
+			titulo.textContent = menus[j].nombre;
+			
+			div.appendChild(titulo);
+			div.appendChild(pPrimerPlato);
+			div.appendChild(pSegundoPlato);
+			div.appendChild(pPostre);
+			div.appendChild(pBebida);
+			div.appendChild(pPrecio);
+			card.appendChild(img);
+			card.appendChild(div);
+			fila.appendChild(card);
+			j++;
+			contador++;
+		}
+		contador = 0;
+		container.appendChild(fila);
+	}
 }
 
 function limpiarErrores() {
@@ -1035,11 +1124,7 @@ function limpiarCampos() {
 	document.querySelector("#txtNombreMenu").classList.remove("is-valid");
 	document.querySelector("#txtNombreMenu").value = "";
 
-/*	var elementos = document.querySelector(".is-valid");
-
-	for (var i = 0; i < elementos.length; i++) {
-		elementos[i].classList.remove("is-valid");
-	}*/
+	mostrarMenus();
 }
 
 function agregarSpinner() {
