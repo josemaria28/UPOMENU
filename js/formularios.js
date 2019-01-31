@@ -773,7 +773,7 @@ function iniciarSesion()
     {
         alert("Bienvenido");
         formulario.reset();
-        document.querySelector("#L1").remove();
+        document.querySelector("#dropdownMenu1").remove();
         
     }
     else
