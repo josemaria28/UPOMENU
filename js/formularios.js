@@ -470,6 +470,7 @@ function verListadoPlatos(){
     ocultar("carrusel");
     ocultar("listaClientes");
     ocultarFormularios();
+    borrarEncabezados();
     
     var divListado = document.getElementById("listaPlatos");
     divListado.className="container";
