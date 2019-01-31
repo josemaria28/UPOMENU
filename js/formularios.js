@@ -462,6 +462,7 @@ function añadirIngrediente(){
 
 function verListadoClientes()
 {
+    ocultar("carrusel");
     ocultarFormularios();
     borrarTablas();
     var divListado = document.getElementById("listaClientes");
