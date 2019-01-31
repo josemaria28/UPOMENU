@@ -775,6 +775,12 @@ function iniciarSesion()
         formulario.reset();
         document.querySelector("#dropdownMenu1").remove();
         document.querySelector("#liReg").remove();
+        var bienvenida = document.createElement("p");
+        bienvenida.style.color="rgba(151, 5, 5, 0.986)";
+        bienvenida.style.textAlign="center";
+        var textoBienvenida = document.createTextNode="Bienvenido usuario";
+        bienvenida.appendChild(textoBienvenida);
+
         
     }
     else
