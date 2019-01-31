@@ -10,11 +10,11 @@ var formulario = document.getElementById("frmRegistroCliente");
 var formIS = document.getElementById("formularioIS");
 
 //Datos iniciales de 1 cliente 
-datosIniciales();
+/*datosIniciales();
 function datosIniciales(){
     oUpoMenu.altaCliente(new Cliente("josemaria",619938534,"jose@gmail.com","12345678A","Jose@1234567890"));
     //oUpoMenu.mostrarClientes();
-}
+}*/
 
 //Manejadores de eventos 
 function inicioIndex()
@@ -29,6 +29,7 @@ function inicioIndex()
     document.getElementById("enlaceRegistrarse").addEventListener("click",verRegistro);
     document.getElementById("btnListadoClientes").addEventListener("click",verListadoClientes);
     document.getElementById("btnListadoMenus").addEventListener("click",verListadoMenus);
+    document.getElementById("verLogo").addEventListener("click",verLogo);
     var botonesCarrusel = document.getElementsByClassName("btnCarrusel");
     //Lo que llega de botonesCarrusel es un array de elementos, asi que lo recorremos y le asignamos la misma función, que es 
     //lo que buscamos
@@ -182,6 +183,19 @@ function verRegistro()
     ocultarFormularios();
     mostrar("divRegistro");
     frmRegistroCliente.reset();
+}
+
+function verLogo()
+{
+   
+    ocultar("listaClientes");
+    ocultar("listaMenus");
+    ocultar("listaPlatos");
+    ocultar("carrusel");
+    ocultarFormularios();
+    ocultar("divContacto");
+    mostrar("carrusel");
+
 }
 
 

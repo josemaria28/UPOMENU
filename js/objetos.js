@@ -9,7 +9,7 @@ class UpoMenu{
 		this.eventos = new Array();
 		this.menus = new Array();
     }
-     mostrarClientes(){ // Clientes
+    /* mostrarClientes(){ // Clientes
          console.log(".......Clientes........");
          for (var i = 0; i < this.listaClientes.length; i++) {
              console.log(this.listaClientes[i]);
@@ -28,7 +28,7 @@ class UpoMenu{
         for (var i = 0; i < this.ingredientes.length; i++) {
             console.log(this.ingredientes[i]);
         }
-    }
+    }*/
     dameIngredientes(){
         return this.ingredientes;
     }
