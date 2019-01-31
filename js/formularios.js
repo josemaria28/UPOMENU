@@ -599,13 +599,6 @@ function borrarTablas()
 {
     var tablaClientes = document.querySelectorAll("table");
     var encabezados = document.querySelectorAll("h2");
-    if(tablaClientes!=null)
-    {
-        for(var i=0;i<tablaClientes.length;i++)
-        {
-            tablaClientes[i].remove();
-        }
-    }
     if(encabezados!=null)
     {
         for(var j=0;j<encabezados.length;j++)
@@ -613,6 +606,14 @@ function borrarTablas()
             encabezados[i].remove();
         }
     }
+    if(tablaClientes!=null)
+    {
+        for(var i=0;i<tablaClientes.length;i++)
+        {
+            tablaClientes[i].remove();
+        }
+    }
+    
 }
 
 
