@@ -1498,10 +1498,12 @@ function agregarSpinnerEvento() {
 	var span = document.createElement("span");
 	span.classList.add("spinner-border", "spinner-border-sm");
 	boton.appendChild(span);
-	setTimeout(function() {frmEvento.submit();}, 3000);
+	setTimeout(limpiarCamposEvento, 3000);
 }
 
-
+function limpiarCamposEvento() {
+	frmEvento.reset();
+}
 
 function mostrarMensajeErrorEvento(error) {
 	var desplegable = document.querySelectorAll(".is-invalid");
