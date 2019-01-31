@@ -670,10 +670,10 @@ function enviarMensaje(oEvento)
 		{
 			//Antes de enviar el mensaje validamos que se hayan rellenado todos los campos correctamente,
 			//no tendrán expresiones regulares ya que puede ser libre el texto a escribir
-			var nombreContacto = formularioContacto.txtNombre.value.trim();
-			var emailContacto = formularioContacto.txtEmail.value.trim();
-			var telefonoContacto = formularioContacto.txtTelefono.value.trim();
-			var mensajeContacto = formularioContacto.txtMsg.value.trim();
+			var nombreContacto = formContacto.txtNombre.value.trim();
+			var emailContacto = formContacto.txtEmail.value.trim();
+			var telefonoContacto = formContacto.txtTelefono.value.trim();
+			var mensajeContacto = formContacto.txtMsg.value.trim();
 			var bRelleno = true;
 			var sMensaje = "";
 			var oE = oEvento || window.event;
@@ -685,30 +685,30 @@ function enviarMensaje(oEvento)
 			if(nombreContacto == "")
 			{
 				bRelleno = false;
-				formularioContacto.txtNombre.focus();
-				formularioContacto.txtNombre.classList.add("error");
+				formContacto.txtNombre.focus();
+				formContacto.txtNombre.classList.add("error");
 				
 			}
 
 			if(emailContacto == "")
 			{
 				bRelleno = false;
-				formularioContacto.txtEmail.focus();
-				formularioContacto.txtEmail.classList.add("error");
+				formContacto.txtEmail.focus();
+				formContacto.txtEmail.classList.add("error");
 			}
 
 			if(telefonoContacto == "")
 			{
 				bRelleno = false;
-				formularioContacto.txtTelefono.focus();
-				formularioContacto.txtTelefono.classList.add("error");
+				formContacto.txtTelefono.focus();
+				formContacto.txtTelefono.classList.add("error");
 			}
 			
 			if(mensajeContacto == "")
 			{
 				bRelleno = false;
-				formularioContacto.txtMsg.focus();
-				formularioContacto.txtMsg.classList.add("error");
+				formContacto.txtMsg.focus();
+				formContacto.txtMsg.classList.add("error");
 			}
 
 			if(bRelleno == false)
@@ -718,7 +718,7 @@ function enviarMensaje(oEvento)
 			else
 			{
 				alert("Gracias por contactar con nosotros");
-				formularioContacto.reset();
+				formContacto.reset();
 			}
 		}
 
