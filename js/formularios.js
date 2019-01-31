@@ -539,6 +539,7 @@ function verListadoClientes()
     var divListado = document.getElementById("listaClientes");
     var encabezado = document.createElement("h2");
     var tituloEncabezado = document.createTextNode("Listado de Clientes de UpoMenu");
+    tituloEncabezado.style.align="center";
     encabezado.appendChild(tituloEncabezado);
     var oTabla = document.createElement("table");
     oTabla.border = "1";
