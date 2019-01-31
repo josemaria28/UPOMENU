@@ -462,7 +462,7 @@ function añadirIngrediente(){
 
 function verListadoClientes()
 {
-    borrarListadoCliente();
+    borrarTablas();
     var divListado = document.getElementById("listaClientes");
     var oTabla = document.createElement("table");
     oTabla.border = "1";
@@ -517,13 +517,15 @@ function verListadoClientes()
 
 }
 
-function borrarListadoCliente()
+function borrarTablas()
 {
-    var divTablaCliente = document.getElementById("listaClientes");
-    if(!divTablaCliente==null)
+    var tablaClientes = document.querySelector("table");
+
+    for(var i=0;i<tablaClientes.length;i++)
     {
-        divTablaCliente.removeChild;
+        tablaClientes[i].remove();
     }
+
 }
 
 
